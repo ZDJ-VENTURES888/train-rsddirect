@@ -1,0 +1,1925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRAVITY — RSD Partner Training | Train.RSDDirect.com</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:        #0a0f1e;
+      --navy-mid:    #111827;
+      --navy-light:  #1a2540;
+      --navy-border: #1e2d4a;
+      --gold:        #c9a84c;
+      --gold-light:  #e8c97a;
+      --gold-dim:    #7a6130;
+      --gold-glow:   rgba(201,168,76,0.12);
+      --white:       #f5f0e8;
+      --white-dim:   rgba(245,240,232,0.6);
+      --white-faint: rgba(245,240,232,0.07);
+      --danger:      #c0392b;
+      --success:     #27ae60;
+      --blue:        #2d6fa8;
+      --blue-light:  #6aaddc;
+      --teal:        #1a6b6b;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.03; pointer-events: none; z-index: 0;
+    }
+
+    /* ═══════════════════════════ NAV ═══════════════════════════ */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 200;
+      background: rgba(10,15,30,0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--navy-border);
+      padding: 0 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-brand { display:flex; align-items:center; gap:14px; text-decoration:none; }
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px; font-weight: 700; letter-spacing: 4px;
+      color: var(--gold); text-transform: uppercase;
+    }
+    .nav-divider { width:1px; height:28px; background:var(--navy-border); }
+    .nav-sub { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white-dim); }
+    .nav-links { display:flex; gap:28px; list-style:none; }
+    .nav-links a {
+      font-size:11px; letter-spacing:2px; text-transform:uppercase;
+      color:var(--white-dim); text-decoration:none; transition:color 0.2s;
+    }
+    .nav-links a:hover { color:var(--gold); }
+    .nav-badge {
+      padding: 5px 14px;
+      background: var(--gold-glow);
+      border: 1px solid var(--gold-dim);
+      border-radius: 20px;
+      font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ═══════════════════════════ HERO ═══════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 120px 40px 100px;
+      position: relative; text-align: center; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 40%, rgba(201,168,76,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 80% 60% at 20% 90%, rgba(45,111,168,0.06) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+    }
+    .hero-eyebrow {
+      font-size: 11px; letter-spacing: 5px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 28px; position: relative;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; width: 40px; height: 1px; background: var(--gold-dim);
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(80px, 12vw, 160px);
+      font-weight: 300; letter-spacing: -3px; line-height: 0.88;
+      position: relative;
+    }
+    .hero-title .g { color: var(--gold); }
+    .hero-tagline {
+      font-size: clamp(12px, 1.8vw, 16px);
+      font-weight: 300; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--white-dim); margin-top: 28px; position: relative;
+    }
+    .hero-desc {
+      max-width: 620px; font-size: 16px; color: var(--white-dim);
+      margin-top: 28px; line-height: 1.85; position: relative;
+    }
+    .hero-credits {
+      display: flex; gap: 16px; margin-top: 48px; flex-wrap: wrap; justify-content: center;
+      position: relative;
+    }
+    .credit-pill {
+      padding: 6px 16px;
+      border: 1px solid var(--navy-border); border-radius: 20px;
+      font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--white-dim); background: var(--white-faint);
+    }
+    .hero-stats {
+      display: flex; gap: 48px; margin-top: 64px; position: relative;
+      padding-top: 48px; border-top: 1px solid var(--navy-border);
+      flex-wrap: wrap; justify-content: center;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px; font-weight: 300; color: var(--gold); line-height: 1;
+    }
+    .stat-label {
+      font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--white-dim); margin-top: 8px;
+    }
+    .hero-scroll {
+      position: absolute; bottom: 40px;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: var(--white-dim); font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--gold-dim), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%,100% { opacity:0.3; transform:scaleY(1); }
+      50%      { opacity:1;   transform:scaleY(1.2); }
+    }
+
+    /* ═══════════════════════════ SHARED LAYOUT ═══════════════════════════ */
+    .section-wrap {
+      padding: 100px 48px;
+      max-width: 1240px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .section-wrap.alt { background: var(--navy-mid); max-width: 100%; }
+    .section-wrap.alt .section-inner { max-width: 1240px; margin: 0 auto; padding: 0; }
+    .section-label {
+      font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-label::after {
+      content: ''; flex:1; max-width:60px; height:1px; background:var(--gold-dim);
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 300; line-height: 1.05; margin-bottom: 20px;
+    }
+    .section-intro {
+      font-size: 16px; color: var(--white-dim);
+      max-width: 680px; line-height: 1.85; margin-bottom: 64px;
+    }
+    .gold-line {
+      width: 100%; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+    }
+
+    /* ═══════════════════════════ GRAVITY TABLE ═══════════════════════════ */
+    .gravity-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+    .gravity-table thead tr {
+      border-bottom: 1px solid var(--gold-dim);
+    }
+    .gravity-table thead th {
+      padding: 12px 20px;
+      font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold-dim); font-weight: 600; text-align: left;
+    }
+    .gravity-table tbody tr {
+      border-bottom: 1px solid var(--navy-border);
+      transition: background 0.2s;
+    }
+    .gravity-table tbody tr:hover { background: var(--white-faint); }
+    .gravity-table tbody td {
+      padding: 22px 20px;
+      vertical-align: top;
+      font-size: 14px;
+    }
+    .g-letter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px; font-weight: 300;
+      color: var(--gold); line-height: 1;
+      width: 60px;
+    }
+    .g-force {
+      font-size: 13px; font-weight: 600; letter-spacing: 1px;
+      color: var(--white); margin-bottom: 4px;
+    }
+    .g-desc { font-size: 13px; color: var(--white-dim); line-height: 1.7; }
+    .g-module {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px; color: var(--gold-dim);
+      white-space: nowrap;
+    }
+    .physics-block {
+      background: var(--navy-mid);
+      border: 1px solid var(--navy-border);
+      border-left: 3px solid var(--gold);
+      padding: 32px 40px;
+      margin-top: 48px;
+      border-radius: 2px;
+    }
+    .physics-block h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 300;
+      color: var(--gold); margin-bottom: 12px;
+    }
+    .physics-block p { font-size: 15px; color: var(--white-dim); line-height: 1.85; }
+
+    /* ═══════════════════════════ MODULES ═══════════════════════════ */
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
+    .module-card {
+      background: var(--navy-light);
+      border: 1px solid var(--navy-border);
+      border-radius: 2px;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+      cursor: pointer;
+    }
+    .module-card:hover { border-color: var(--gold-dim); transform: translateY(-3px); }
+    .module-card.open { border-color: var(--gold-dim); }
+    .module-header {
+      padding: 28px 32px;
+      display: flex; align-items: flex-start; gap: 20px;
+    }
+    .module-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px; font-weight: 300;
+      color: rgba(201,168,76,0.2); line-height: 1;
+      flex-shrink: 0;
+    }
+    .module-meta {}
+    .module-force {
+      font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 6px;
+    }
+    .module-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 300; line-height: 1.2;
+    }
+    .module-sub {
+      font-size: 12px; color: var(--white-dim); margin-top: 6px;
+    }
+    .module-body {
+      padding: 0 32px 28px;
+      display: none;
+      border-top: 1px solid var(--navy-border);
+      margin-top: 4px;
+      padding-top: 24px;
+    }
+    .module-card.open .module-body { display: block; }
+    .module-body p { font-size: 13px; color: var(--white-dim); line-height: 1.8; margin-bottom: 16px; }
+    .module-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      background: var(--gold-glow);
+      border: 1px solid var(--gold-dim);
+      border-radius: 10px;
+      font-size: 10px; letter-spacing: 1px;
+      color: var(--gold); margin: 3px 3px 3px 0;
+    }
+    .module-list {
+      list-style: none; margin-top: 16px;
+    }
+    .module-list li {
+      font-size: 13px; color: var(--white-dim); line-height: 1.7;
+      padding: 6px 0; border-bottom: 1px solid var(--navy-border);
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    .module-list li::before {
+      content: '→'; color: var(--gold); flex-shrink: 0; margin-top: 1px;
+    }
+    .script-quote {
+      background: var(--navy);
+      border-left: 2px solid var(--gold);
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-size: 13px; font-style: italic;
+      color: var(--white); line-height: 1.8;
+      border-radius: 0 2px 2px 0;
+    }
+    .script-tag {
+      font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold-dim); margin-top: 8px; display: block;
+    }
+
+    /* ═══════════════════════════ EGO TRIANGLE ═══════════════════════════ */
+    .triangle-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .triangle-visual { display:flex; justify-content:center; }
+    .tri-svg { width:100%; max-width:420px; }
+    .tri-corner polygon, .tri-corner path { transition: all 0.3s; cursor:pointer; }
+    .tri-corner:hover polygon { filter: drop-shadow(0 0 12px var(--gold)); }
+    .tri-detail {
+      background: var(--navy-light);
+      border: 1px solid var(--navy-border);
+      border-radius: 2px;
+      padding: 36px;
+    }
+    .tri-tabs {
+      display: flex; gap: 0;
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--navy-border);
+    }
+    .tri-tab {
+      padding: 10px 22px;
+      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--white-dim); cursor: pointer;
+      border-bottom: 2px solid transparent;
+      background: none; border-top: none; border-left: none; border-right: none;
+      font-family: 'Barlow', sans-serif; transition: all 0.2s;
+    }
+    .tri-tab:hover { color: var(--white); }
+    .tri-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .tri-panel { display:none; }
+    .tri-panel.active { display:block; }
+    .tri-panel h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px; font-weight: 300; margin-bottom: 8px;
+    }
+    .panel-sub {
+      font-size: 13px; font-style: italic; color: var(--white-dim);
+      margin-bottom: 20px;
+    }
+    .subcategory-list { list-style:none; margin-bottom: 24px; }
+    .subcategory-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--navy-border);
+      font-size: 13px; color: var(--white-dim);
+      display: flex; gap: 12px; align-items: flex-start; line-height: 1.6;
+    }
+    .sub-label {
+      font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--gold); flex-shrink:0; min-width:90px; padding-top:2px;
+    }
+    .trigger-phrases {
+      background: var(--navy);
+      border: 1px solid var(--navy-border);
+      padding: 16px 20px;
+      border-radius: 2px;
+    }
+    .tp-label {
+      font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold-dim); margin-bottom: 8px;
+    }
+    .trigger-phrases p { font-size: 13px; color: var(--white-dim); line-height: 1.8; }
+
+    /* ═══════════════════════════ SCRIPTS ═══════════════════════════ */
+    .scripts-filter {
+      display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px;
+    }
+    .filter-btn {
+      padding: 7px 18px;
+      background: transparent;
+      border: 1px solid var(--navy-border);
+      border-radius: 20px;
+      font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--white-dim); cursor: pointer;
+      font-family: 'Barlow', sans-serif; transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      border-color: var(--gold-dim);
+      color: var(--gold);
+      background: var(--gold-glow);
+    }
+    .scripts-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    .script-card {
+      background: var(--navy-mid);
+      border: 1px solid var(--navy-border);
+      border-radius: 2px; overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .script-card:hover { border-color: var(--gold-dim); }
+    .script-card[data-hidden="true"] { display:none; }
+    .script-head {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--navy-border);
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
+    }
+    .script-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px; color: var(--gold-dim); flex-shrink:0;
+    }
+    .script-title { font-size: 14px; font-weight: 600; color: var(--white); line-height: 1.4; }
+    .script-gravity {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px; color: var(--gold); letter-spacing: 1px;
+      padding: 3px 8px; border: 1px solid var(--gold-dim);
+      border-radius: 3px; flex-shrink:0;
+    }
+    .script-body { padding: 20px 24px; }
+    .script-text {
+      font-size: 13px; font-style: italic; color: var(--white);
+      line-height: 1.85; border-left: 2px solid var(--gold);
+      padding-left: 16px; margin-bottom: 14px;
+    }
+    .script-intent {
+      font-size: 12px; color: var(--white-dim); line-height: 1.6;
+    }
+    .script-intent::before { content: '→ '; color: var(--gold); }
+
+    /* ═══════════════════════════ WORKSHEETS ═══════════════════════════ */
+    .worksheet-tabs {
+      display: flex; gap: 0;
+      border-bottom: 1px solid var(--navy-border);
+      margin-bottom: 40px;
+      overflow-x: auto;
+    }
+    .ws-tab {
+      padding: 12px 24px;
+      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--white-dim); cursor: pointer;
+      border-bottom: 2px solid transparent;
+      background: none; border-top: none; border-left: none; border-right: none;
+      font-family: 'Barlow', sans-serif; transition: all 0.2s; white-space: nowrap;
+    }
+    .ws-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .ws-panel { display:none; }
+    .ws-panel.active { display:block; }
+    .ws-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    .ws-field {
+      background: var(--navy-mid);
+      border: 1px solid var(--navy-border);
+      border-radius: 2px; padding: 20px 24px;
+    }
+    .ws-field label {
+      display: block;
+      font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold-dim); margin-bottom: 10px;
+    }
+    .ws-field input, .ws-field textarea {
+      width: 100%;
+      background: var(--navy);
+      border: 1px solid var(--navy-border);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 14px; font-weight: 300;
+      padding: 10px 14px;
+      border-radius: 2px;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+    }
+    .ws-field input:focus, .ws-field textarea:focus { border-color: var(--gold-dim); }
+    .ws-field.full { grid-column: 1/-1; }
+    .ws-checkgroup { display:flex; flex-direction:column; gap:8px; }
+    .ws-check {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 13px; color: var(--white-dim); cursor:pointer;
+    }
+    .ws-check input[type="checkbox"] {
+      width: 18px; height: 18px;
+      accent-color: var(--gold);
+      cursor:pointer;
+    }
+    .ws-score {
+      display: flex; gap: 8px; align-items: center; flex-wrap:wrap;
+    }
+    .ws-score-btn {
+      width: 36px; height: 36px;
+      background: var(--navy); border: 1px solid var(--navy-border);
+      border-radius: 2px; color: var(--white-dim);
+      font-size: 13px; cursor:pointer; font-family:'Barlow',sans-serif;
+      transition: all 0.2s;
+    }
+    .ws-score-btn:hover, .ws-score-btn.active { background:var(--gold-glow); border-color:var(--gold-dim); color:var(--gold); }
+    .ws-note { font-size:12px; color:var(--white-dim); margin-top:6px; line-height:1.6; }
+    .ws-btn {
+      margin-top: 32px;
+      padding: 14px 36px;
+      background: var(--gold-glow);
+      border: 1px solid var(--gold-dim);
+      color: var(--gold);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px; letter-spacing: 3px; text-transform: uppercase;
+      cursor: pointer; border-radius: 2px; transition: all 0.2s;
+    }
+    .ws-btn:hover { background: rgba(201,168,76,0.2); }
+
+    /* ═══════════════════════════ CHECKLIST ═══════════════════════════ */
+    .checklist-layout { display:grid; grid-template-columns:1fr 1fr; gap:48px; }
+    .checklist-col h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px; font-weight:300;
+      color: var(--gold); margin-bottom: 24px;
+    }
+    .check-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px 0; border-bottom: 1px solid var(--navy-border);
+      cursor: pointer; transition: background 0.2s;
+    }
+    .check-item:hover { background: var(--white-faint); margin: 0 -12px; padding: 14px 12px; }
+    .check-box {
+      width: 20px; height: 20px; flex-shrink:0;
+      border: 1px solid var(--navy-border);
+      border-radius: 2px; background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s; margin-top:2px;
+    }
+    .check-item.done .check-box {
+      background: var(--gold-glow); border-color: var(--gold);
+    }
+    .check-item.done .check-box::after {
+      content: '✓'; color: var(--gold); font-size: 12px;
+    }
+    .check-item.done .check-text { color: var(--white-dim); text-decoration: line-through; text-decoration-color: var(--gold-dim); }
+    .check-text { font-size: 14px; color: var(--white); line-height: 1.6; }
+    .check-sub { font-size: 12px; color: var(--white-dim); margin-top: 2px; }
+    .gravity-weakness {
+      background: var(--navy-mid);
+      border: 1px solid var(--navy-border);
+      border-radius: 2px; padding: 32px;
+      margin-top: 40px;
+    }
+    .gravity-weakness h4 {
+      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold-dim); margin-bottom: 20px;
+    }
+    .gravity-force-btns { display:flex; gap:10px; flex-wrap:wrap; }
+    .gf-btn {
+      padding: 10px 20px;
+      background: var(--navy); border: 1px solid var(--navy-border);
+      border-radius: 2px; color: var(--white-dim);
+      font-family: 'Cormorant Garamond',serif; font-size: 20px;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .gf-btn:hover, .gf-btn.active {
+      background: var(--gold-glow); border-color: var(--gold);
+      color: var(--gold);
+    }
+    .progress-ring { display:flex; gap:24px; margin-top:32px; align-items:center; flex-wrap:wrap; }
+    .progress-stat {
+      text-align:center;
+      background: var(--navy-mid); border: 1px solid var(--navy-border);
+      border-radius:2px; padding:16px 24px;
+    }
+    .progress-stat .ps-num {
+      font-family:'Cormorant Garamond',serif;
+      font-size:36px; font-weight:300; color:var(--gold); line-height:1;
+    }
+    .progress-stat .ps-label {
+      font-size:10px; letter-spacing:2px; text-transform:uppercase;
+      color:var(--white-dim); margin-top:6px;
+    }
+
+    /* ═══════════════════════════ POSITION MOATS ═══════════════════════════ */
+    .moats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .moat-card {
+      background: var(--navy-mid);
+      border: 1px solid var(--navy-border);
+      border-radius: 2px; padding: 28px 28px 28px 0;
+      display: flex; gap: 24px; align-items: flex-start;
+      transition: border-color 0.3s;
+    }
+    .moat-card:hover { border-color: var(--gold-dim); }
+    .moat-letter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px; font-weight: 300;
+      color: rgba(201,168,76,0.15); line-height:1;
+      margin-left: 28px; flex-shrink:0;
+    }
+    .moat-content h4 {
+      font-size: 13px; font-weight: 600; letter-spacing:1px;
+      margin-bottom: 8px;
+    }
+    .moat-content p { font-size: 13px; color: var(--white-dim); line-height:1.7; }
+
+    /* ═══════════════════════════ FOOTER ═══════════════════════════ */
+    footer {
+      border-top: 1px solid var(--navy-border);
+      padding: 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1240px; margin: 0 auto; flex-wrap:wrap; gap: 24px;
+    }
+    .footer-brand {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 16px; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .footer-sub { font-size:12px; color:var(--white-dim); margin-top:4px; letter-spacing:1px; }
+    .footer-credits { font-size:11px; color:var(--white-dim); text-align:right; letter-spacing:1px; line-height:2; }
+    .footer-links { display:flex; gap:24px; }
+    .footer-links a { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white-dim); text-decoration:none; transition:color 0.2s; }
+    .footer-links a:hover { color:var(--gold); }
+
+    /* ═══════════════════════════ FADE-IN ═══════════════════════════ */
+    .fade-up { opacity:0; transform:translateY(28px); transition:opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+
+    /* ═══════════════════════════ RESPONSIVE ═══════════════════════════ */
+    @media (max-width: 960px) {
+      .triangle-layout { grid-template-columns:1fr; }
+      .scripts-grid { grid-template-columns:1fr; }
+      .ws-grid { grid-template-columns:1fr; }
+      .checklist-layout { grid-template-columns:1fr; }
+      nav { padding: 0 20px; }
+      .nav-links { display:none; }
+      .section-wrap { padding: 64px 20px; }
+      .hero-stats { gap:32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════ NAV ══════════════════════════════ -->
+<nav>
+  <a class="nav-brand" href="#">
+    <span class="nav-logo">RSD</span>
+    <div class="nav-divider"></div>
+    <span class="nav-sub">Partner Training</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#gravity">GRAVITY</a></li>
+    <li><a href="#modules">Modules</a></li>
+    <li><a href="#triangle">Ego Triangle</a></li>
+    <li><a href="#scripts">Scripts</a></li>
+    <li><a href="#worksheets">Worksheets</a></li>
+    <li><a href="#checklist">Onboarding</a></li>
+  </ul>
+  <span class="nav-badge">v4.0 · Confidential</span>
+</nav>
+
+<!-- ══════════════════════════════ HERO ══════════════════════════════ -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-eyebrow">RSD Asymmetric Advantage OS — Master Course</div>
+  <h1 class="hero-title"><span class="g">G</span>RAVITY</h1>
+  <p class="hero-tagline">Frame Control · Behavioral Intelligence · AI-Powered Sales Systems</p>
+  <p class="hero-desc">
+    Seven forces that, when aligned, make closing inevitable. A unified operating system
+    integrating Chase Hughes behavior science, Chris Voss negotiation architecture, and
+    Alex Hormozi value engineering — built for RSD partners.
+  </p>
+  <div class="hero-credits">
+    <span class="credit-pill">Chase Hughes · NCI University</span>
+    <span class="credit-pill">Chris Voss · Black Swan Group</span>
+    <span class="credit-pill">Alex Hormozi · Acquisition.com</span>
+    <span class="credit-pill">Behavioral Psychology</span>
+    <span class="credit-pill">Second-Order AI Economy</span>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item"><div class="stat-num">11</div><div class="stat-label">Modules</div></div>
+    <div class="stat-item"><div class="stat-num">7</div><div class="stat-label">GRAVITY Forces</div></div>
+    <div class="stat-item"><div class="stat-num">18</div><div class="stat-label">Live Scripts</div></div>
+    <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">Field Worksheets</div></div>
+    <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">Leverage</div></div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div>Begin</div>
+</div>
+
+<div class="gold-line"></div>
+
+<!-- ══════════════════════════════ GRAVITY FRAMEWORK ══════════════════════════════ -->
+<div class="section-wrap" id="gravity">
+  <div class="section-label fade-up">Module 00 — Course Architecture</div>
+  <h2 class="section-title fade-up">The GRAVITY Acronym</h2>
+  <p class="section-intro fade-up">
+    GRAVITY is the unified operating principle that ties all three source systems together.
+    Seven forces that, when aligned, make closing inevitable. Every module maps to one letter.
+    Master GRAVITY and the entire framework becomes retrievable in a single word under any pressure.
+  </p>
+
+  <table class="gravity-table fade-up">
+    <thead>
+      <tr>
+        <th style="width:60px"></th>
+        <th>Force</th>
+        <th>What It Does</th>
+        <th style="width:140px">Module</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="g-letter">G</td>
+        <td>
+          <div class="g-force">Ground Your Authority</div>
+          <div class="g-desc">ACSS + Composure Protocol. Authority is behavioral before it is verbal.</div>
+        </td>
+        <td class="g-desc">Behavioral composure, certainty signals, pace control. The first three seconds determine whether the prospect treats you as an equal or a vendor.</td>
+        <td class="g-module">Module 01</td>
+      </tr>
+      <tr>
+        <td class="g-letter">R</td>
+        <td>
+          <div class="g-force">Read the Room</div>
+          <div class="g-desc">Hughes blink rate, FATE activation, tipping point signals. Real-time behavioral intelligence.</div>
+        </td>
+        <td class="g-desc">Statement→Question elicitation. CIA methodology deployed in every RSD conversation. What they correct tells you everything.</td>
+        <td class="g-module">Module 02</td>
+      </tr>
+      <tr>
+        <td class="g-letter">A</td>
+        <td>
+          <div class="g-force">Architect the Opening</div>
+          <div class="g-desc">90-Second Brain Capture + Statement→Question flow. The first 90 seconds wire everything.</div>
+        </td>
+        <td class="g-desc">Five precision moves. Not improvisation — execution. Novelty hook, perception reframe, micro-identity agreement, Lego Drop, frame lock.</td>
+        <td class="g-module">Module 03</td>
+      </tr>
+      <tr>
+        <td class="g-letter">V</td>
+        <td>
+          <div class="g-force">Validate Their Reality</div>
+          <div class="g-desc">Voss LABEL system + Tactical Empathy. When they feel fully seen, resistance dissolves.</div>
+        </td>
+        <td class="g-desc">FBI hostage negotiation methodology. Name their emotion before they do. Mirror, hold silence, surface Black Swans.</td>
+        <td class="g-module">Module 04</td>
+      </tr>
+      <tr>
+        <td class="g-letter">I</td>
+        <td>
+          <div class="g-force">Isolate the Dream Outcome</div>
+          <div class="g-desc">Hormozi Value Equation + DPP Sequence. Surface the specific future they want first.</div>
+        </td>
+        <td class="g-desc">Value = (Dream Outcome × Likelihood of Achievement) ÷ (Time Delay × Effort &amp; Sacrifice). Engineer perceived value before price is ever mentioned.</td>
+        <td class="g-module">Module 06</td>
+      </tr>
+      <tr>
+        <td class="g-letter">T</td>
+        <td>
+          <div class="g-force">Trigger the Close</div>
+          <div class="g-desc">Tipping point detection + MESO offer. The close is a wave you catch — not a door you push.</div>
+        </td>
+        <td class="g-desc">Six behavioral signals. One pivot protocol. Three-move close sequence. Read them and catch the wave at the right moment.</td>
+        <td class="g-module">Module 05</td>
+      </tr>
+      <tr>
+        <td class="g-letter">Y</td>
+        <td>
+          <div class="g-force">Your System Compounds</div>
+          <div class="g-desc">AI OS + AlwaysOn Conversion OS™ + Referral Engine. Every client becomes the next proof.</div>
+        </td>
+        <td class="g-desc">Five-layer AI architecture. SEED referral engine. The system that works when you're not in the room — turning every close into the next opportunity.</td>
+        <td class="g-module">Modules 08–10</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="physics-block fade-up">
+    <h3>The Physics Principle Behind the Metaphor</h3>
+    <p>Gravity doesn't push. It pulls — invisibly, inevitably, proportionally. The biggest mistake in sales is the push model: convincing, pitching, overcoming resistance. Top performers don't push. They create conditions where the prospect moves toward the close the way objects move toward mass — because the environment makes it natural. Every element of GRAVITY increases your pull. The prospect doesn't feel persuaded. They feel drawn. That's the difference between a close that sticks and one that reverses.</p>
+  </div>
+</div>
+
+<div class="gold-line"></div>
+
+<!-- ══════════════════════════════ EGO TRIANGLE ══════════════════════════════ -->
+<div style="background:var(--navy-mid); border-top:1px solid var(--navy-border); border-bottom:1px solid var(--navy-border);" id="triangle">
+  <div class="section-wrap">
+    <div class="section-label fade-up">Behavioral Foundation</div>
+    <h2 class="section-title fade-up">The Ego Triangle</h2>
+    <p class="section-intro fade-up">
+      Every objection, hesitation, and power play traces back to one or more corners of this triangle.
+      Diagnose the threat. Address the corner. The logic handles itself.
+    </p>
+
+    <div class="triangle-layout fade-up">
+      <div class="triangle-visual">
+        <svg class="tri-svg" viewBox="0 0 400 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g class="tri-corner" onclick="setTri('identity')" style="cursor:pointer">
+            <polygon points="200,20 300,180 100,180" fill="rgba(201,168,76,0.1)" stroke="#c9a84c" stroke-width="1.5"/>
+            <text x="200" y="90" text-anchor="middle" fill="#c9a84c" font-family="Cormorant Garamond" font-size="18" font-weight="300">Identity</text>
+            <text x="200" y="113" text-anchor="middle" fill="rgba(245,240,232,0.45)" font-family="Barlow" font-size="11">Who I believe I am</text>
+          </g>
+          <g class="tri-corner" onclick="setTri('control')" style="cursor:pointer">
+            <polygon points="100,180 20,320 200,320" fill="rgba(45,111,168,0.1)" stroke="#2d6fa8" stroke-width="1.5"/>
+            <text x="107" y="260" text-anchor="middle" fill="#6aaddc" font-family="Cormorant Garamond" font-size="18" font-weight="300">Control</text>
+            <text x="107" y="283" text-anchor="middle" fill="rgba(245,240,232,0.45)" font-family="Barlow" font-size="11">My agency &amp; power</text>
+          </g>
+          <g class="tri-corner" onclick="setTri('safety')" style="cursor:pointer">
+            <polygon points="300,180 200,320 380,320" fill="rgba(192,57,43,0.1)" stroke="#c0392b" stroke-width="1.5"/>
+            <text x="293" y="260" text-anchor="middle" fill="#e74c3c" font-family="Cormorant Garamond" font-size="18" font-weight="300">Safety</text>
+            <text x="293" y="283" text-anchor="middle" fill="rgba(245,240,232,0.45)" font-family="Barlow" font-size="11">My status &amp; belonging</text>
+          </g>
+          <text x="200" y="215" text-anchor="middle" fill="rgba(245,240,232,0.2)" font-family="Barlow Condensed" font-size="10" letter-spacing="3">EGO CORE</text>
+          <text x="135" y="192" text-anchor="middle" fill="rgba(201,168,76,0.35)" font-family="Barlow" font-size="9">I + C = Narcissistic Rage</text>
+          <text x="265" y="192" text-anchor="middle" fill="rgba(201,168,76,0.35)" font-family="Barlow" font-size="9">C + S = Panic</text>
+          <text x="200" y="342" text-anchor="middle" fill="rgba(201,168,76,0.35)" font-family="Barlow" font-size="9">I + S = Shame Spiral</text>
+          <text x="200" y="368" text-anchor="middle" fill="#c0392b" font-family="Barlow" font-size="9" letter-spacing="1">All Three = Total System Failure</text>
+        </svg>
+      </div>
+
+      <div class="tri-detail">
+        <div class="tri-tabs">
+          <button class="tri-tab active" onclick="setTri('identity')">Identity</button>
+          <button class="tri-tab" onclick="setTri('control')">Control</button>
+          <button class="tri-tab" onclick="setTri('safety')">Safety</button>
+        </div>
+
+        <div class="tri-panel active" id="tri-identity">
+          <h3 style="color:var(--gold)">Identity — Who I Believe I Am</h3>
+          <p class="panel-sub">"This is not who I am. Do not threaten that."</p>
+          <ul class="subcategory-list">
+            <li><span class="sub-label">Self-Concept</span><span>Behavior doesn't match self-image. They get defensive when exposed.</span></li>
+            <li><span class="sub-label">Narrative</span><span>"You're ruining my story." Internal scripts: I'm smart, I'm always right, I'm a victim.</span></li>
+            <li><span class="sub-label">Reputation</span><span>Don't make me look bad. Social version of identity — embarrassment in front of others.</span></li>
+            <li><span class="sub-label">Victimhood</span><span>"I am the one who was wronged." Moral superiority defense.</span></li>
+            <li><span class="sub-label">Significance</span><span>If unseen or unacknowledged, they create drama to reassert presence.</span></li>
+          </ul>
+          <div class="trigger-phrases">
+            <div class="tp-label">Trigger Phrases to Recognize</div>
+            <p>"Don't talk to me like that." · "That's not what I meant." · "I am NOT the bad guy here." · "How dare you accuse me of that." · "You don't know who you're talking to."</p>
+          </div>
+        </div>
+
+        <div class="tri-panel" id="tri-control">
+          <h3 style="color:var(--blue-light)">Control — My Agency &amp; Power</h3>
+          <p class="panel-sub">"I need to feel like I have power and predictability."</p>
+          <ul class="subcategory-list">
+            <li><span class="sub-label">Autonomy</span><span>"Don't tell me what to do." Even polite direction can feel like a power grab.</span></li>
+            <li><span class="sub-label">Frame Hijack</span><span>"Don't rewrite what just happened." If their version of reality is overruled, they resist hard.</span></li>
+            <li><span class="sub-label">Public Power</span><span>"You made me look like I'm not in charge here." Social dominance disruption.</span></li>
+            <li><span class="sub-label">Carryover</span><span>No power elsewhere in life → overcorrecting here. Road rage, entitlement, refusal to yield.</span></li>
+            <li><span class="sub-label">Uncertainty</span><span>"I can't predict what's next." Brain hates unpredictability — especially with ego attached.</span></li>
+          </ul>
+          <div class="trigger-phrases">
+            <div class="tp-label">Trigger Phrases to Recognize</div>
+            <p>"You're not listening to me." · "You're twisting my words." · "I don't have to take this." · "Let me finish." · "You don't get to decide that."</p>
+          </div>
+        </div>
+
+        <div class="tri-panel" id="tri-safety">
+          <h3 style="color:#e74c3c">Safety — My Status &amp; Belonging</h3>
+          <p class="panel-sub">"I need to feel accepted, valued, and not excluded."</p>
+          <ul class="subcategory-list">
+            <li><span class="sub-label">Social Status</span><span>Fear of being seen as less-than. Loss of standing in their peer group is a threat.</span></li>
+            <li><span class="sub-label">Belonging</span><span>"Am I still part of the tribe?" Exclusion triggers deep fear — even in business contexts.</span></li>
+            <li><span class="sub-label">Rejection</span><span>When their ideas aren't validated, the brain reads it as social exclusion.</span></li>
+            <li><span class="sub-label">Loss Aversion</span><span>Perceived loss of status or advantage triggers defensive behavior disproportionate to the actual risk.</span></li>
+            <li><span class="sub-label">Shame</span><span>"What will others think?" The intersection of Identity and Safety — the most paralyzing combination.</span></li>
+          </ul>
+          <div class="trigger-phrases">
+            <div class="tp-label">Trigger Phrases to Recognize</div>
+            <p>"I can't believe you'd say that." · "Everyone else agrees with me." · "I'm not stupid." · "That's embarrassing." · "What are people going to think?"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="gold-line"></div>
+
+<!-- ══════════════════════════════ MODULES ══════════════════════════════ -->
+<div class="section-wrap" id="modules">
+  <div class="section-label fade-up">Course Curriculum</div>
+  <h2 class="section-title fade-up">All 11 Modules</h2>
+  <p class="section-intro fade-up">
+    Click any module to expand. Complete in sequence for first-time partners.
+    Use as a reference system after certification — each module is a deployable intelligence brief.
+  </p>
+
+  <div class="module-grid">
+
+    <div class="module-card fade-up" onclick="toggleModule(this)">
+      <div class="module-header">
+        <div class="module-num">00</div>
+        <div class="module-meta">
+          <div class="module-force">Course Overview</div>
+          <div class="module-title">GRAVITY — Course Architecture</div>
+          <div class="module-sub">The unified operating principle · All 7 forces mapped</div>
+        </div>
+      </div>
+      <div class="module-body">
+        <p>GRAVITY is the retrieval system that makes the entire framework accessible under pressure. Seven letters. Seven forces. Every module maps to one letter — so when you're in a live conversation and something feels off, you can locate which force is missing and correct in real time.</p>
+        <p>The physics metaphor is not decorative. Gravity doesn't push — it creates conditions where movement toward you is the path of least resistance. Your goal in every conversation is not to convince. It is to make not-buying feel more effortful than buying.</p>
+        <span class="module-tag">G — Ground Authority</span>
+        <span class="module-tag">R — Read the Room</span>
+        <span class="module-tag">A — Architect the Open</span>
+        <span class="module-tag">V — Validate Reality</span>
+        <span class="module-tag">I — Isolate Outcome</span>
+        <span class="module-tag">T — Trigger Close</span>
+        <span class="module-tag">Y — Your System</span>
+      </div>
+    </div>
+
+    <div class="module-card fade-up" onclick="toggleModule(this)">
+      <div class="module-header">
+        <div class="module-num">01</div>
+        <div class="module-meta">
+          <div class="module-force">GRAVITY Force G — Ground Your Authority</div>
+          <div class="module-title">ACSS + FATE + PCP</div>
+          <div class="module-sub">Chase Hughes · NCI University</div>
+        </div>
+      </div>
+      <div class="module-body">
+        <p>The ACSS Priority Stack governs every human interaction before any script activates. The most important insight: 90% of entrepreneurs start at the bottom of the stack (Skills). The asymmetric advantage is always starting at the top.</p>
+        <ul class="module-list">
+          <li><strong>A — Authority:</strong> Behavioral composure, pace control, physical stillness. Perceived in the first three seconds before credentials matter. Slow speech. Long pauses. No filler words.</li>
+          <li><strong>C — Comfort:</strong> Your internal state in live interaction. Can you hold space without shrinking? Trained through the Composure Protocol: five minutes before every call.</li>
+          <li><strong>S — Social Skills:</strong> Rapport, warmth, genuine curiosity. Use their exact words back to create unconscious familiarity.</li>
+          <li><strong>S — Skills:</strong> Scripts, frameworks, techniques. The last priority — only work when A, C, and first S are in place.</li>
+        </ul>
+        <p style="margin-top:16px"><strong style="color:var(--gold)">FATE Model:</strong> Four brain override switches — Focus via Novelty, Authority via Composure, Tribe via Social Proof, Emotion as Memory.</p>
+        <p><strong style="color:var(--gold)">PCP Cascade:</strong> Perception → Context → Persuasion. In that order, always. Skip P and C and you get resistance.</p>
+        <div class="script-quote">"The brain cannot ignore novelty. Before I get into anything — I noticed something about your booking process that I think you'd actually want to know about."<span class="script-tag">FATE: Focus Activation</span></div>
+      </div>
+    </div>
+
+    <div class="module-card fade-up" onclick="toggleModule(this)">
+      <div class="module-header">
+        <div class="module-num">02</div>
+        <div class="module-meta">
+          <div class="module-force">GRAVITY Force R — Read the Room</div>
+          <div class="module-title">Statement → Question Flow</div>
+          <div class="module-sub">CIA Elicitation · NCI University</div>
+        </div>
+      </div>
+      <div class="module-body">
+        <p>The most underused technique in sales. When you ask a question first, defenses go up. When you make a statement first — then follow with a question — the brain's screening mechanism has already been bypassed.</p>
+        <p>Make a slightly incomplete or mildly inaccurate observation. Their natural drive to be understood compels them to provide the correction. Follow with a question that locks in the intel.</p>
+        <ul class="module-list">
+          <li><strong>Deliberate Understatement:</strong> "I imagine your leads are coming in pretty consistently right now." → They correct you → real picture revealed.</li>
+          <li><strong>Provocative Undervalue:</strong> "Honestly, most places at your level probably don't need a 3D tour." → They argue they DO need it — doing your pitch for you.</li>
+          <li><strong>The Lego Drop:</strong> Two facts. No conclusion. Three seconds of silence. Their brain connects them. Their conclusion is irresistible because it's theirs.</li>
+          <li><strong>Black Swan Probe:</strong> "It sounds like there's something else going on beyond just the budget question." → Surfaces the hidden constraint that controls the decision.</li>
+        </ul>
+        <div class="script-quote">"Statements reveal. Questions defend. The sequence that bypasses every wall is: observe it, state it, then invite the correction. What they correct tells you everything." <span class="script-tag">— Chase Hughes / NCI University</span></div>
+      </div>
+    </div>
+
+    <div class="module-card fade-up" onclick="toggleModule(this)">
+      <div class="module-header">
+        <div class="module-num">03</div>
+        <div class="module-meta">
+          <div class="module-force">GRAVITY Force A — Architect the Opening</div>
+          <div class="module-title">The 90-Second Brain Capture</div>
+          <div class="module-sub">Five-step sequence · Not improvisation — execution</div>
+        </div>
+      </div>
+      <div class="module-body">
+        <p>The first 90 seconds wire the operating system that runs every word afterward. Five precision moves. Get this right and the rest of the conversation becomes inevitable.</p>
+        <ul class="module-list">
+          <li><strong>0:00–0:10 — Novelty Hook:</strong> "Before I get into anything — I noticed something about your booking process that I think you'd actually want to know about."</li>
+          <li><strong>0:10–0:30 — Perception Reframe:</strong> "I'd rather spend this conversation understanding your situation than pitching you anything. Does that work?"</li>
+          <li><strong>0:30–0:55 — Micro-Identity Agreement:</strong> "Are you the kind of owner who thinks about the experience a guest has before they ever actually show up?"</li>
+          <li><strong>0:55–1:20 — The Lego Drop:</strong> "Properties with immersive virtual tours hold prospect attention five times longer. [pause] You mentioned your leads go cold after that first inquiry." [3-second silence. Say nothing.]</li>
+          <li><strong>1:20–1:30 — Frame Lock:</strong> "I want to ask you a few questions about how bookings actually work in your world right now, then I'll tell you honestly whether what we do is even relevant to you. Sound fair?"</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="module-card fade-up" onclick="toggleModule(this)">
+      <div class="module-header">
+        <div class="module-num">04</div>
+        <div class="module-meta">
+          <div class="module-force">GRAVITY Force V — Validate Their Reality</div>
+          <div class="module-title">Voss LABEL + MIRROR System</div>
+          <div class="module-sub">FBI Negotiation Methodology</div>
+        </div>
+      </div>
+      <div class="module-body">
+        <p>When you name their emotion before they do, the wall comes down. When you mirror and hold silence, intelligence flows freely.</p>
+        <ul class="module-list">
+          <li><strong>L — Listen for emotion below the words:</strong> Not content — feeling. Frustration, fear, pride, urgency, doubt. The emotion drives the objection, not the logic.</li>
+          <li><strong>A — Acknowledge without agreeing:</strong> "It seems like…" / "It sounds like…" / "It looks like…" Recognition is not agreement.</li>
+          <li><strong>B — Accusation Audit:</strong> Name every negative thing they might be thinking. "You might be thinking this is just another agency pitch. That's fair."</li>
+          <li><strong>E — Elicit "That's Right":</strong> "You're right" signals dismissal. "That's right" signals genuine alignment. Summarize their world completely until you hear it.</li>
+          <li><strong>L — Let "No" Work For You:</strong> "No" creates safety. People honor decisions protected with a no. "Is now a bad time?" — a no here is permission to proceed.</li>
+        </ul>
+        <div class="script-quote">"Help me understand — what would need to be true for this to be an easy yes for you?"<span class="script-tag">The Black Swan Question — surfaces hidden constraints that control the deal</span></div>
+      </div>
+    </div>
+
+    <div class="module-card fade-up" onclick="toggleModule(this)">
+      <div class="module-header">
+        <div class="module-num">05</div>
+        <div class="module-meta">
+          <div class="module-force">GRAVITY Force T — Trigger the Close</div>
+          <div class="module-title">Tipping Point Detection System</div>
+          <div class="module-sub">Six signals · One pivot protocol · Three-move close</div>
+        </div>
+      </div>
+      <div class="module-body">
+        <p>You don't create tipping points. You read them and catch the wave at the right moment.</p>
+        <ul class="module-list">
+          <li><strong>Blink Rate Drop:</strong> Eyes slow. Sustained contact. Absorbed expression. → Slow pace. Hold silence. Move to proposal language.</li>
+          <li><strong>Lean Forward:</strong> Physical movement toward you. Arms uncross. Nodding. → Reciprocate warmth. Narrow to specifics.</li>
+          <li><strong>Future-Tense Language:</strong> "So when we do this…" / "What would the timeline look like?" → Match their language. Mirror the future frame.</li>
+          <li><strong>Ownership Questions:</strong> "Can we customize that?" / "Do you do payment plans?" → Buying signals. Answer fully. Confirm next step.</li>
+          <li><strong>Social Proof Request:</strong> "Have you worked with anyone like us?" → Deliver Fleur De Lis case study immediately.</li>
+          <li><strong>Processing Silence:</strong> Strong statement. They go quiet. Eyes shift inward. → Do NOT fill silence. Wait for yes or real objection.</li>
+        </ul>
+        <div class="script-quote">"Are you open to me putting together something specific to your situation so you can see what this looks like solved for your space?"<span class="script-tag">Move 03 — Soft Commitment Ask · "Are you open to" eliminates resistance</span></div>
+      </div>
+    </div>
+
+    <div class="module-card fade-up" onclick="toggleModule(this)">
+      <div class="module-header">
+        <div class="module-num">06</div>
+        <div class="module-meta">
+          <div class="module-force">GRAVITY Force I — Isolate the Dream Outcome</div>
+          <div class="module-title">Hormozi Value Engineering</div>
+          <div class="module-sub">$100M Value Equation · DPP Sequence · MESO</div>
+        </div>
+      </div>
+      <div class="module-body">
+        <p><strong style="color:var(--gold)">The Value Equation:</strong> Value = (Dream Outcome × Likelihood of Achievement) ÷ (Time Delay × Effort &amp; Sacrifice)</p>
+        <ul class="module-list">
+          <li><strong>↑ DO — Maximize Dream Outcome:</strong> Not "more bookings" — "your inquiry-to-booking rate at 40%+ in 90 days from leads that are currently going cold."</li>
+          <li><strong>↑ LA — Maximize Likelihood:</strong> Fleur De Lis — 3 bookings, 6 weeks, cold leads. Named. Numbered. Specific proof raises perceived probability.</li>
+          <li><strong>↓ TD — Minimize Time Delay:</strong> "You will see results within 6 weeks of launch." Speed of first result is a value multiplier.</li>
+          <li><strong>↓ ES — Minimize Effort:</strong> "We handle everything — the shoot, processing, embed, and follow-up automation." Done-for-you commands a premium.</li>
+        </ul>
+        <p style="margin-top:16px"><strong style="color:var(--gold)">DPP Sequence — Dream → Proof → Plan:</strong> This is the order that creates belief without resistance. Engage emotion first, then proof, then plan.</p>
+        <div class="script-quote">"Imagine a prospect touring your space at 11pm from their couch — and booking by Thursday morning. Before you've made a single call."<span class="script-tag">Dream First — engage emotion before logic can form objections</span></div>
+      </div>
+    </div>
+
+    <div class="module-card fade-up" onclick="toggleModule(this)">
+      <div class="module-header">
+        <div class="module-num">07</div>
+        <div class="module-meta">
+          <div class="module-force">Second-Order AI Economy</div>
+          <div class="module-title">The POSITION Framework</div>
+          <div class="module-sub">Eight moats · Why RSD wins as AI commoditizes</div>
+        </div>
+      </div>
+      <div class="module-body">
+        <p>First-order thinking asks: how do I use AI? Second-order thinking asks: what world does widespread AI adoption create — and how do I position RSD to own that world before others see it coming?</p>
+        <ul class="module-list">
+          <li><strong>P — Physical Capture Premium:</strong> Matterport and drone cannot be replicated by AI. The irreplaceable foundation.</li>
+          <li><strong>O — Orchestration Over Execution:</strong> The emerging economy rewards architects, not laborers. RSD's value is in system design.</li>
+          <li><strong>S — Speed as the Product:</strong> Time from decision to first result is the primary value metric. Compress it and you command premium.</li>
+          <li><strong>I — Intelligence Asymmetry:</strong> You know what's working in their category. They don't. That information gap is leverage.</li>
+          <li><strong>T — Trust as the Moat:</strong> In an AI-saturated world, the agency that owns the trust relationship owns everything downstream.</li>
+          <li><strong>I — Identity-Level Positioning:</strong> RSD is not a vendor. RSD is the agency that serious operators choose.</li>
+          <li><strong>O — Offer Engineering:</strong> MESO + DPP + Value Equation = premium pricing without resistance.</li>
+          <li><strong>N — Network Effects:</strong> Each client becomes a case study. Each case study closes the next deal.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="module-card fade-up" onclick="toggleModule(this)">
+      <div class="module-header">
+        <div class="module-num">08</div>
+        <div class="module-meta">
+          <div class="module-force">GRAVITY Force Y — Your System Compounds</div>
+          <div class="module-title">The RSD AI OS Architecture</div>
+          <div class="module-sub">Five layers · AlwaysOn Conversion OS™ · Tour2Booking™</div>
+        </div>
+      </div>
+      <div class="module-body">
+        <p>Five layers. Each handles a specific function. Together they create the AlwaysOn Conversion OS™ — the system that works when you're not in the room.</p>
+        <ul class="module-list">
+          <li><strong>Layer 01 — Claude API + Genie Vee™:</strong> Intelligence Engine. Converts discovery notes into proposals and closing assets.</li>
+          <li><strong>Layer 02 — HighLevel CRM + Make:</strong> Automation Layer. AlwaysOn Conversion OS™. Triggers, workflows, follow-up cadences.</li>
+          <li><strong>Layer 03 — Revenue Intelligence Series:</strong> Content Engine. 65-article publishing agenda building ambient authority.</li>
+          <li><strong>Layer 04 — NotebookLM SALES-NEURAL-OS:</strong> Learning OS. Converts content into deployable intelligence briefs daily.</li>
+          <li><strong>Layer 05 — Matterport + DJI + HeyGen + ElevenLabs:</strong> Media Production. Tour2Booking™. The irreplaceable physical layer.</li>
+        </ul>
+        <p style="margin-top:16px"><strong style="color:var(--gold)">The Consume → Compress → Deploy → Iterate Loop:</strong> How you convert one Chase Hughes video into deployable competitive advantage within 24 hours. Consume with intent → Compress via NotebookLM → Deploy in next live interaction → Iterate from live feedback.</p>
+      </div>
+    </div>
+
+    <div class="module-card fade-up" onclick="toggleModule(this)">
+      <div class="module-header">
+        <div class="module-num">09</div>
+        <div class="module-meta">
+          <div class="module-force">Live Deployment</div>
+          <div class="module-title">The Live Playbook</div>
+          <div class="module-sub">18 copy-ready scripts · Every scenario covered</div>
+        </div>
+      </div>
+      <div class="module-body">
+        <p>Each script includes its GRAVITY force activation, source system, and deployment context. These are not templates to memorize — they are structural patterns to internalize until they become instinctive. See the Scripts section below for all 18 in full.</p>
+        <span class="module-tag">Opening Sequences</span>
+        <span class="module-tag">Objection Architecture</span>
+        <span class="module-tag">Growth + Referral</span>
+        <span class="module-tag">3A Framework</span>
+        <span class="module-tag">MESO Presentation</span>
+      </div>
+    </div>
+
+    <div class="module-card fade-up" onclick="toggleModule(this)">
+      <div class="module-header">
+        <div class="module-num">10</div>
+        <div class="module-meta">
+          <div class="module-force">Revenue Compounding</div>
+          <div class="module-title">The SEED Referral Engine</div>
+          <div class="module-sub">The missing delta — engineered referrals</div>
+        </div>
+      </div>
+      <div class="module-body">
+        <p>Referrals are not a side effect of good work. They are a system you architect deliberately. Every client is a potential referral gateway. SEED is the four-stage protocol that turns every client relationship into a repeating revenue source.</p>
+        <ul class="module-list">
+          <li><strong>S — Set the Expectation Early:</strong> In the first meeting, plant the seed: "Part of how we measure success is when clients refer others."</li>
+          <li><strong>E — Engineer the Proof Moment:</strong> At the 6-week mark, show them the data. "You've had X bookings from previously cold leads. Who else needs to see this?"</li>
+          <li><strong>E — Earn Case Study Permission:</strong> "Would you be open to us sharing what we built together? It positions you as the operator who figured this out first."</li>
+          <li><strong>D — Deploy Warm Introduction:</strong> Give them a specific name — not "anyone you know." Write the introduction message for them. One click to refer.</li>
+        </ul>
+        <p>Second-order insight: every referral client is a higher-trust close. Shorter sales cycle, less resistance, stronger commitment. The SEED engine systematically lowers acquisition cost while raising client quality.</p>
+      </div>
+    </div>
+
+    <div class="module-card fade-up" onclick="toggleModule(this)">
+      <div class="module-header">
+        <div class="module-num">11</div>
+        <div class="module-meta">
+          <div class="module-force">Concept to Habit</div>
+          <div class="module-title">Field Worksheets</div>
+          <div class="module-sub">20 repetitions to automaticity · See Worksheets section</div>
+        </div>
+      </div>
+      <div class="module-body">
+        <p>Intelligence only becomes habit when practiced under structure. Complete one set per prospect until each step is instinctive — typically 20–30 repetitions before a technique becomes a reflex rather than a conscious decision.</p>
+        <p>Five worksheets: Pre-Call Intelligence Brief, In-Call Signal Log, Post-Call Debrief, MESO Offer Architecture, and Partner Onboarding Checklist. See the interactive Worksheets section below.</p>
+        <div class="script-quote">"The worksheet is the gap between knowing and doing. Every framework that lives only in your head is a wasted framework. Write it. Score it. Iterate it."<span class="script-tag">— ZDJ / RSD Field Operating Principle</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="gold-line"></div>
+
+<!-- ══════════════════════════════ SCRIPTS ══════════════════════════════ -->
+<div style="background:var(--navy-mid); border-top:1px solid var(--navy-border); border-bottom:1px solid var(--navy-border);" id="scripts">
+  <div class="section-wrap">
+    <div class="section-label fade-up">Module 09 — Live Playbook</div>
+    <h2 class="section-title fade-up">18 Deployment-Ready Scripts</h2>
+    <p class="section-intro fade-up">
+      Each script is tagged by GRAVITY force, source system, and deployment context.
+      These are structural patterns to internalize — not lines to memorize.
+    </p>
+
+    <div class="scripts-filter fade-up">
+      <button class="filter-btn active" onclick="filterScripts('all', this)">All Scripts</button>
+      <button class="filter-btn" onclick="filterScripts('opening', this)">Opening</button>
+      <button class="filter-btn" onclick="filterScripts('objection', this)">Objection</button>
+      <button class="filter-btn" onclick="filterScripts('referral', this)">Growth & Referral</button>
+    </div>
+
+    <div class="scripts-grid">
+
+      <div class="script-card fade-up" data-type="opening">
+        <div class="script-head">
+          <div>
+            <div class="script-num">Script 01</div>
+            <div class="script-title">Cold Phone Open — Venue / Hospitality</div>
+          </div>
+          <div class="script-gravity">G + A</div>
+        </div>
+        <div class="script-body">
+          <div class="script-text">"Before I get into why I'm calling — I noticed something about your booking process and I think you'd want to know about it. Are you the kind of owner who thinks about the gap between when someone discovers you and when they actually book?"</div>
+          <div class="script-intent">Novelty hook → identity question. FATE: Focus activated before they can categorize you as a vendor.</div>
+        </div>
+      </div>
+
+      <div class="script-card fade-up" data-type="opening">
+        <div class="script-head">
+          <div>
+            <div class="script-num">Script 02</div>
+            <div class="script-title">LinkedIn Outreach — Design-Build / Coworking</div>
+          </div>
+          <div class="script-gravity">G + A</div>
+        </div>
+        <div class="script-body">
+          <div class="script-text">"I noticed something specific about how your projects are being presented online versus what clients in your category expect. Not a pitch — are you open to a quick conversation about the gap between first impression and decision?"</div>
+          <div class="script-intent">Curiosity hook → "are you open to" CTA. Creates intrigue without pressure.</div>
+        </div>
+      </div>
+
+      <div class="script-card fade-up" data-type="opening">
+        <div class="script-head">
+          <div>
+            <div class="script-num">Script 03</div>
+            <div class="script-title">The Lego Drop — Discovery Call</div>
+          </div>
+          <div class="script-gravity">R + V</div>
+        </div>
+        <div class="script-body">
+          <div class="script-text">"Properties with immersive virtual tours hold attention five times longer. [pause] You mentioned your leads go cold after that first inquiry." [3-second silence. Do not complete the thought.]</div>
+          <div class="script-intent">Two facts. No conclusion. Silence. Their brain connects them — their conclusion is irresistible because it's theirs.</div>
+        </div>
+      </div>
+
+      <div class="script-card fade-up" data-type="objection">
+        <div class="script-head">
+          <div>
+            <div class="script-num">Script 04</div>
+            <div class="script-title">Accusation Audit — Resistance Handler</div>
+          </div>
+          <div class="script-gravity">V</div>
+        </div>
+        <div class="script-body">
+          <div class="script-text">"You might be thinking this is just another agency pitch. That's fair. What would need to be true for this conversation to be worth your time?"</div>
+          <div class="script-intent">Voss Accusation Audit → inverts control. Defusing it yourself removes its power completely.</div>
+        </div>
+      </div>
+
+      <div class="script-card fade-up" data-type="objection">
+        <div class="script-head">
+          <div>
+            <div class="script-num">Script 05</div>
+            <div class="script-title">Black Swan Probe — Discovery</div>
+          </div>
+          <div class="script-gravity">V</div>
+        </div>
+        <div class="script-body">
+          <div class="script-text">"It sounds like there might be something else going on beyond just the budget question. Help me understand — what would make this an easy yes for you?"</div>
+          <div class="script-intent">Voss Black Swan + LABEL. Listen for what they don't say as much as what they do.</div>
+        </div>
+      </div>
+
+      <div class="script-card fade-up" data-type="opening">
+        <div class="script-head">
+          <div>
+            <div class="script-num">Script 06</div>
+            <div class="script-title">Dream Outcome Paint — Pre-Proposal</div>
+          </div>
+          <div class="script-gravity">I</div>
+        </div>
+        <div class="script-body">
+          <div class="script-text">"Imagine a prospect touring your space at 11pm from their couch — and booking by Thursday morning. Before you've made a single call."</div>
+          <div class="script-intent">DPP Dream First — engage emotion before logic can form objections. The emotional memory makes your solution unforgettable.</div>
+        </div>
+      </div>
+
+      <div class="script-card fade-up" data-type="opening">
+        <div class="script-head">
+          <div>
+            <div class="script-num">Script 07</div>
+            <div class="script-title">Tipping Point Pivot — Signal to Proposal</div>
+          </div>
+          <div class="script-gravity">T</div>
+        </div>
+        <div class="script-body">
+          <div class="script-text">"It sounds like what we've been talking about is pretty aligned with where you're trying to go. Are you open to me putting together something specific to your situation so you can see what this looks like solved for your space?"</div>
+          <div class="script-intent">Tipping pivot + "are you open to" close. Rushing creates pressure. Confirming creates momentum.</div>
+        </div>
+      </div>
+
+      <div class="script-card fade-up" data-type="referral">
+        <div class="script-head">
+          <div>
+            <div class="script-num">Script 08</div>
+            <div class="script-title">Fleur De Lis Anchor — Proof Deploy</div>
+          </div>
+          <div class="script-gravity">I + T</div>
+        </div>
+        <div class="script-body">
+          <div class="script-text">"A tea house we worked with had three confirmed bookings in six weeks from leads that had previously gone cold. The tour gave them something to come back to on their own time. Would it be helpful to see what that looks like?"</div>
+          <div class="script-intent">DPP Proof → FATE Tribe signal. Named, quantified, specific. Answers "why should I believe you" before they ask.</div>
+        </div>
+      </div>
+
+      <div class="script-card fade-up" data-type="opening">
+        <div class="script-head">
+          <div>
+            <div class="script-num">Script 09</div>
+            <div class="script-title">MESO Presentation — Three Options</div>
+          </div>
+          <div class="script-gravity">T</div>
+        </div>
+        <div class="script-body">
+          <div class="script-text">"I'd like to share three ways we could approach this — equivalent in outcome, different in scope. Tell me which direction feels most aligned with where you are right now."</div>
+          <div class="script-intent">Hormozi MESO — removes accept/reject pressure. Shifts conversation from "do I buy?" to "which version is right for me?"</div>
+        </div>
+      </div>
+
+      <div class="script-card fade-up" data-type="objection">
+        <div class="script-head">
+          <div>
+            <div class="script-num">Script 10</div>
+            <div class="script-title">"We Don't Have the Budget"</div>
+          </div>
+          <div class="script-gravity">V + I</div>
+        </div>
+        <div class="script-body">
+          <div class="script-text">"That makes sense. Most places don't allocate for this in advance — it usually comes from understanding what a missed booking actually costs. What's your current average booking value?"</div>
+          <div class="script-intent">3A Framework: Acknowledge → Associate → Ask. Reframes cost as opportunity cost.</div>
+        </div>
+      </div>
+
+      <div class="script-card fade-up" data-type="objection">
+        <div class="script-head">
+          <div>
+            <div class="script-num">Script 11</div>
+            <div class="script-title">"We're Already Doing Fine"</div>
+          </div>
+          <div class="script-gravity">V + T</div>
+        </div>
+        <div class="script-body">
+          <div class="script-text">"That's usually the best time. The venues we work with that got the most out of this already had momentum — they just wanted to pour fuel on it."</div>
+          <div class="script-intent">Agree + Tribal Anchor + Elicitation question. Momentum as the reason to move, not the reason to wait.</div>
+        </div>
+      </div>
+
+      <div class="script-card fade-up" data-type="objection">
+        <div class="script-head">
+          <div>
+            <div class="script-num">Script 12</div>
+            <div class="script-title">"I Need to Think About It"</div>
+          </div>
+          <div class="script-gravity">V</div>
+        </div>
+        <div class="script-body">
+          <div class="script-text">"Totally makes sense. Usually there's one specific thing someone wants to get clear on first. What would that be for you?"</div>
+          <div class="script-intent">Surfaces the real objection hiding behind the delay. Doesn't push — it opens.</div>
+        </div>
+      </div>
+
+      <div class="script-card fade-up" data-type="objection">
+        <div class="script-head">
+          <div>
+            <div class="script-num">Script 13</div>
+            <div class="script-title">"We Tried Something Like This Before"</div>
+          </div>
+          <div class="script-gravity">V + I</div>
+        </div>
+        <div class="script-body">
+          <div class="script-text">"That's really helpful to know. What specifically didn't work about it? I want to make sure I'm not walking you into the same wall."</div>
+          <div class="script-intent">Previous failure as intel source → differentiation. Positions you as a diagnostician, not a salesperson.</div>
+        </div>
+      </div>
+
+      <div class="script-card fade-up" data-type="referral">
+        <div class="script-head">
+          <div>
+            <div class="script-num">Script 14</div>
+            <div class="script-title">Post-Launch Referral Ask</div>
+          </div>
+          <div class="script-gravity">Y</div>
+        </div>
+        <div class="script-body">
+          <div class="script-text">"The results you're seeing are exactly what we planned for. Genuinely — who else in your network do you think would benefit from seeing what we put together here?"</div>
+          <div class="script-intent">SEED Referral Engine trigger. Specific ask after engineered proof moment.</div>
+        </div>
+      </div>
+
+      <div class="script-card fade-up" data-type="referral">
+        <div class="script-head">
+          <div>
+            <div class="script-num">Script 15</div>
+            <div class="script-title">Case Study Permission Ask</div>
+          </div>
+          <div class="script-gravity">Y</div>
+        </div>
+        <div class="script-body">
+          <div class="script-text">"Would you be open to us sharing what we built together? It positions you as the operator who figured this out first in your category."</div>
+          <div class="script-intent">Turns them into active marketing participant. SEED: Earn Case Study Permission.</div>
+        </div>
+      </div>
+
+      <div class="script-card fade-up" data-type="referral">
+        <div class="script-head">
+          <div>
+            <div class="script-num">Script 16</div>
+            <div class="script-title">Partner Authority Transfer</div>
+          </div>
+          <div class="script-gravity">G</div>
+        </div>
+        <div class="script-body">
+          <div class="script-text">"I want to introduce you to [Partner Name]. They run the calling side of what we do and they'll be your main contact for the next stage. I'll stay involved, but [Name] is excellent."</div>
+          <div class="script-intent">Authority transfer without losing trust. Sets partner up with credibility from day one.</div>
+        </div>
+      </div>
+
+      <div class="script-card fade-up" data-type="referral">
+        <div class="script-head">
+          <div>
+            <div class="script-num">Script 17</div>
+            <div class="script-title">Upgrade Conversation</div>
+          </div>
+          <div class="script-gravity">Y</div>
+        </div>
+        <div class="script-body">
+          <div class="script-text">"You've been running the Tour Launch Package for about six weeks. Based on what I'm seeing in your booking data, the next leverage point is adding the HighLevel automation layer. Are you open to a quick call?"</div>
+          <div class="script-intent">Data-led expansion → "are you open to" upsell. GRAVITY Y — system compounds.</div>
+        </div>
+      </div>
+
+      <div class="script-card fade-up" data-type="referral">
+        <div class="script-head">
+          <div>
+            <div class="script-num">Script 18</div>
+            <div class="script-title">Warm Introduction Request</div>
+          </div>
+          <div class="script-gravity">Y</div>
+        </div>
+        <div class="script-body">
+          <div class="script-text">"I'd love for you to introduce me to [name you identified] — I've already written a message you can send them in one click if that's easier."</div>
+          <div class="script-intent">SEED Referral Engine → frictionless referral deployment. Specificity produces results.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="gold-line"></div>
+
+<!-- ══════════════════════════════ WORKSHEETS ══════════════════════════════ -->
+<div class="section-wrap" id="worksheets">
+  <div class="section-label fade-up">Module 11 — Field Operations</div>
+  <h2 class="section-title fade-up">Interactive Field Worksheets</h2>
+  <p class="section-intro fade-up">
+    Complete one set per prospect until each step is instinctive.
+    Typically 20–30 repetitions before a technique becomes a reflex.
+  </p>
+
+  <div class="worksheet-tabs fade-up">
+    <button class="ws-tab active" onclick="setWs(0)">01 · Pre-Call</button>
+    <button class="ws-tab" onclick="setWs(1)">02 · In-Call Log</button>
+    <button class="ws-tab" onclick="setWs(2)">03 · Post-Call</button>
+    <button class="ws-tab" onclick="setWs(3)">04 · MESO Offer</button>
+  </div>
+
+  <!-- WS 01 — PRE CALL -->
+  <div class="ws-panel active" id="ws-0">
+    <div class="ws-grid">
+      <div class="ws-field"><label>Prospect / Business</label><input type="text" placeholder="e.g. Berriz Design Build"></div>
+      <div class="ws-field"><label>Category / Vertical</label><input type="text" placeholder="e.g. Design-Build / Luxury Construction"></div>
+      <div class="ws-field full">
+        <label>GRAVITY Entry Point — Which force leads this call?</label>
+        <div class="ws-score">
+          <button class="ws-score-btn" onclick="toggleActive(this)">G</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">R</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">A</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">V</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">I</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">T</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">Y</button>
+        </div>
+      </div>
+      <div class="ws-field full"><label>Novelty Hook — Write it, don't improvise</label><textarea rows="2" placeholder="Before I get into anything — I noticed something about..."></textarea></div>
+      <div class="ws-field"><label>Lego Drop — Fact 1</label><input type="text" placeholder="Properties with immersive tours hold attention 5x longer..."></div>
+      <div class="ws-field"><label>Lego Drop — Fact 2</label><input type="text" placeholder="You mentioned your leads go cold after..."></div>
+      <div class="ws-field full"><label>Dream Outcome — Vivid, specific, 90-day horizon</label><textarea rows="2" placeholder="Imagine a prospect touring your space at 11pm..."></textarea></div>
+      <div class="ws-field"><label>Proof Anchor</label><input type="text" placeholder="A tea house — 3 bookings, 6 weeks, cold leads"></div>
+      <div class="ws-field"><label>Probable Black Swan (hypothesis)</label><input type="text" placeholder="What might they not be telling me?"></div>
+      <div class="ws-field full">
+        <label>Composure Score — Run protocol first if below 7</label>
+        <div class="ws-score">
+          <span style="font-size:12px;color:var(--white-dim);margin-right:4px">1</span>
+          <button class="ws-score-btn" onclick="toggleActive(this)">1</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">2</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">3</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">4</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">5</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">6</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">7</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">8</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">9</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">10</button>
+          <span style="font-size:12px;color:var(--white-dim);margin-left:4px">10</span>
+        </div>
+        <p class="ws-note">If below 7: run 5-minute Composure Protocol — breathing (60s) → posture (60s) → anchor outcomes (60s) → opening sentence rehearsal (60s) → frame intention (60s)</p>
+      </div>
+    </div>
+    <button class="ws-btn" onclick="clearWs(0)">Clear Worksheet</button>
+  </div>
+
+  <!-- WS 02 — IN CALL -->
+  <div class="ws-panel" id="ws-1">
+    <div class="ws-grid">
+      <div class="ws-field full">
+        <label>Tipping Point Signals Observed</label>
+        <div class="ws-checkgroup">
+          <label class="ws-check"><input type="checkbox"> Blink rate drop — eyes slow, sustained contact</label>
+          <label class="ws-check"><input type="checkbox"> Lean forward / posture open / nodding</label>
+          <label class="ws-check"><input type="checkbox"> Future-tense language — "When we do this..."</label>
+          <label class="ws-check"><input type="checkbox"> Ownership questions — "Can we customize that?"</label>
+          <label class="ws-check"><input type="checkbox"> Social proof request — "Have you worked with anyone like us?"</label>
+          <label class="ws-check"><input type="checkbox"> Processing silence — they go quiet after strong statement</label>
+        </div>
+      </div>
+      <div class="ws-field full"><label>"That's Right" Moment — What produced it?</label><textarea rows="2" placeholder="I summarized their situation as..."></textarea></div>
+      <div class="ws-field full"><label>Black Swan Surface — What unexpected constraint emerged?</label><textarea rows="2" placeholder="They revealed that..."></textarea></div>
+      <div class="ws-field"><label>Statement → Question Pattern Used</label><input type="text" placeholder="Which pattern? What was the statement?"></div>
+      <div class="ws-field">
+        <label>Did you hold silence after the Lego Drop?</label>
+        <div class="ws-score">
+          <button class="ws-score-btn" onclick="toggleActive(this)">YES</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">NO</button>
+        </div>
+        <p class="ws-note">If no — note why. Filling the silence is the #1 pattern to break.</p>
+      </div>
+      <div class="ws-field full"><label>LABEL Deployed — What emotion did you name?</label><input type="text" placeholder="It sounds like the timing on this feels like a lot to take on right now..."></div>
+    </div>
+    <button class="ws-btn" onclick="clearWs(1)">Clear Worksheet</button>
+  </div>
+
+  <!-- WS 03 — POST CALL -->
+  <div class="ws-panel" id="ws-2">
+    <div class="ws-grid">
+      <div class="ws-field">
+        <label>Overall Call Quality (1–10)</label>
+        <div class="ws-score">
+          <button class="ws-score-btn" onclick="toggleActive(this)">1</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">2</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">3</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">4</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">5</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">6</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">7</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">8</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">9</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">10</button>
+        </div>
+      </div>
+      <div class="ws-field">
+        <label>Deal Probability</label>
+        <div class="ws-score">
+          <button class="ws-score-btn" onclick="toggleActive(this)">10%</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">25%</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">50%</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">75%</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">90%</button>
+        </div>
+      </div>
+      <div class="ws-field full"><label>Exact Next Step Committed To</label><input type="text" placeholder="e.g. Send MESO proposal by Thursday 5pm"></div>
+      <div class="ws-field full"><label>What Worked — Be Specific</label><textarea rows="2" placeholder="The Lego Drop landed when I said..."></textarea></div>
+      <div class="ws-field full"><label>One Thing That Would Have Made It Better</label><textarea rows="2" placeholder="I should have held silence longer when..."></textarea></div>
+      <div class="ws-field">
+        <label>Value Equation — Dream Outcome Painting (1–10)</label>
+        <div class="ws-score">
+          <button class="ws-score-btn" onclick="toggleActive(this)">1</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">2</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">3</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">4</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">5</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">6</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">7</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">8</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">9</button>
+          <button class="ws-score-btn" onclick="toggleActive(this)">10</button>
+        </div>
+      </div>
+      <div class="ws-field"><label>New Intel for the Playbook</label><textarea rows="2" placeholder="Insight to add for this vertical..."></textarea></div>
+    </div>
+    <button class="ws-btn" onclick="clearWs(2)">Clear Worksheet</button>
+  </div>
+
+  <!-- WS 04 — MESO -->
+  <div class="ws-panel" id="ws-3">
+    <div class="ws-grid">
+      <div class="ws-field full"><label>Dream Outcome — Vivid, emotional, 90-day horizon</label><textarea rows="2" placeholder="Imagine a prospect touring your space at 11pm..."></textarea></div>
+      <div class="ws-field">
+        <label>Option A — Tour Launch Package</label>
+        <input type="text" placeholder="What's included" style="margin-bottom:8px">
+        <input type="text" placeholder="Investment $">
+        <input type="text" placeholder="Time to first result" style="margin-top:8px">
+      </div>
+      <div class="ws-field">
+        <label>Option B — Tour + Content Engine</label>
+        <input type="text" placeholder="What's included" style="margin-bottom:8px">
+        <input type="text" placeholder="Investment $">
+        <input type="text" placeholder="Time to first result" style="margin-top:8px">
+      </div>
+      <div class="ws-field full">
+        <label>Option C — Full AlwaysOn OS (Tour2Booking™ + Genie Vee™)</label>
+        <input type="text" placeholder="What's included" style="margin-bottom:8px">
+        <input type="text" placeholder="Investment $">
+        <input type="text" placeholder="Non-monetary add (the anchor)" style="margin-top:8px">
+      </div>
+      <div class="ws-field full">
+        <label>Value Equation Check — Rewrite anything below 7 before presenting</label>
+        <div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:8px">
+          <div>
+            <div style="font-size:11px;color:var(--gold-dim);letter-spacing:1px;margin-bottom:6px">Dream Outcome Specificity</div>
+            <div class="ws-score">
+              <button class="ws-score-btn" onclick="toggleActive(this)">1</button>
+              <button class="ws-score-btn" onclick="toggleActive(this)">2</button>
+              <button class="ws-score-btn" onclick="toggleActive(this)">3</button>
+              <button class="ws-score-btn" onclick="toggleActive(this)">4</button>
+              <button class="ws-score-btn" onclick="toggleActive(this)">5</button>
+              <button class="ws-score-btn" onclick="toggleActive(this)">6</button>
+              <button class="ws-score-btn" onclick="toggleActive(this)">7</button>
+              <button class="ws-score-btn" onclick="toggleActive(this)">8</button>
+              <button class="ws-score-btn" onclick="toggleActive(this)">9</button>
+              <button class="ws-score-btn" onclick="toggleActive(this)">10</button>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:11px;color:var(--gold-dim);letter-spacing:1px;margin-bottom:6px">Proof Strength</div>
+            <div class="ws-score">
+              <button class="ws-score-btn" onclick="toggleActive(this)">1</button>
+              <button class="ws-score-btn" onclick="toggleActive(this)">2</button>
+              <button class="ws-score-btn" onclick="toggleActive(this)">3</button>
+              <button class="ws-score-btn" onclick="toggleActive(this)">4</button>
+              <button class="ws-score-btn" onclick="toggleActive(this)">5</button>
+              <button class="ws-score-btn" onclick="toggleActive(this)">6</button>
+              <button class="ws-score-btn" onclick="toggleActive(this)">7</button>
+              <button class="ws-score-btn" onclick="toggleActive(this)">8</button>
+              <button class="ws-score-btn" onclick="toggleActive(this)">9</button>
+              <button class="ws-score-btn" onclick="toggleActive(this)">10</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="ws-btn" onclick="clearWs(3)">Clear Worksheet</button>
+  </div>
+</div>
+
+<div class="gold-line"></div>
+
+<!-- ══════════════════════════════ ONBOARDING CHECKLIST ══════════════════════════════ -->
+<div style="background:var(--navy-mid); border-top:1px solid var(--navy-border); border-bottom:1px solid var(--navy-border);" id="checklist">
+  <div class="section-wrap">
+    <div class="section-label fade-up">Module 11 · Worksheet 05</div>
+    <h2 class="section-title fade-up">Partner Onboarding Checklist</h2>
+    <p class="section-intro fade-up">
+      Complete each milestone before advancing. First supervised call → first solo call → first close.
+      Click items to mark complete. Progress saves in this session.
+    </p>
+
+    <div class="checklist-layout fade-up">
+      <div>
+        <h3>Module Completion</h3>
+
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div>
+            <div class="check-text">Module 00 — GRAVITY</div>
+            <div class="check-sub">Can explain all 7 forces without notes</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div>
+            <div class="check-text">Module 01 — ACSS + FATE</div>
+            <div class="check-sub">Can deploy in live conversation</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div>
+            <div class="check-text">Module 02 — Statement → Question</div>
+            <div class="check-sub">Practiced 5 examples aloud</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div>
+            <div class="check-text">Module 03 — 90-Second Brain Capture</div>
+            <div class="check-sub">Recited from memory</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div>
+            <div class="check-text">Module 04 — Voss LABEL</div>
+            <div class="check-sub">Can deploy on a cold call today</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div>
+            <div class="check-text">Module 05 — Tipping Points</div>
+            <div class="check-sub">Can identify all 6 signals</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div>
+            <div class="check-text">Module 06 — Hormozi + DPP</div>
+            <div class="check-sub">Can present 3 options fluently</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div>
+            <div class="check-text">Module 07 — POSITION</div>
+            <div class="check-sub">Knows RSD's 3 primary moats</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div>
+            <div class="check-text">Module 08 — AI OS</div>
+            <div class="check-sub">Can describe all 5 layers</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div>
+            <div class="check-text">Module 09 — Live Playbook</div>
+            <div class="check-sub">Read and practiced 5 scripts</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div>
+            <div class="check-text">Module 10 — SEED Referral Engine</div>
+            <div class="check-sub">Knows the 4-stage protocol</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3>Field Milestones</h3>
+
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div>
+            <div class="check-text">First Supervised Call Completed</div>
+            <div class="check-sub">Observed by senior partner with debrief</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div>
+            <div class="check-text">First Solo Call Completed</div>
+            <div class="check-sub">Call recorded — post-call debrief worksheet completed</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div>
+            <div class="check-text">First Close Completed</div>
+            <div class="check-sub">Contract signed — SEED protocol initiated</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div>
+            <div class="check-text">First MESO Proposal Presented</div>
+            <div class="check-sub">Three options built and delivered</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div>
+            <div class="check-text">First Referral Requested</div>
+            <div class="check-sub">Script 14 or 18 deployed post-launch</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div>
+            <div class="check-text">Fleur De Lis Case Study Memorized</div>
+            <div class="check-sub">Can deliver without notes in under 30 seconds</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div>
+            <div class="check-text">AI OS All 5 Layers Operational</div>
+            <div class="check-sub">HighLevel + Genie Vee™ + NotebookLM configured</div>
+          </div>
+        </div>
+
+        <div class="gravity-weakness">
+          <h4>GRAVITY Weakness Assessment — Which force needs the most development?</h4>
+          <div class="gravity-force-btns">
+            <button class="gf-btn" onclick="toggleGf(this)">G</button>
+            <button class="gf-btn" onclick="toggleGf(this)">R</button>
+            <button class="gf-btn" onclick="toggleGf(this)">A</button>
+            <button class="gf-btn" onclick="toggleGf(this)">V</button>
+            <button class="gf-btn" onclick="toggleGf(this)">I</button>
+            <button class="gf-btn" onclick="toggleGf(this)">T</button>
+            <button class="gf-btn" onclick="toggleGf(this)">Y</button>
+          </div>
+        </div>
+
+        <div class="progress-ring" style="margin-top:32px">
+          <div class="progress-stat">
+            <div class="ps-num" id="progress-count">0</div>
+            <div class="ps-label">Items Complete</div>
+          </div>
+          <div class="progress-stat">
+            <div class="ps-num" id="progress-pct">0%</div>
+            <div class="ps-label">Certified</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="gold-line"></div>
+
+<!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
+<footer>
+  <div>
+    <div class="footer-brand">Real Space Digital</div>
+    <div class="footer-sub">train.rsddirect.com · Partner Training Portal · v4.0</div>
+  </div>
+  <div class="footer-links">
+    <a href="#gravity">GRAVITY</a>
+    <a href="#modules">Modules</a>
+    <a href="#scripts">Scripts</a>
+    <a href="#checklist">Onboarding</a>
+  </div>
+  <div class="footer-credits">
+    Zackary D. Jackson, COO · Real Space Digital / ZDJ Ventures<br>
+    Chase Hughes · Chris Voss · Alex Hormozi<br>
+    Confidential — RSD Partner Use Only · April 2026
+  </div>
+</footer>
+
+<!-- ══════════════════════════════ JAVASCRIPT ══════════════════════════════ -->
+<script>
+  // ─── Fade-in on scroll ───
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // ─── Module accordion ───
+  function toggleModule(card) {
+    card.classList.toggle('open');
+  }
+
+  // ─── Ego Triangle tabs ───
+  function setTri(id) {
+    document.querySelectorAll('.tri-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tri-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tri-' + id).classList.add('active');
+    document.querySelectorAll('.tri-tab').forEach(t => {
+      if (t.textContent.toLowerCase() === id) t.classList.add('active');
+    });
+  }
+
+  // ─── Script filter ───
+  function filterScripts(type, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.script-card').forEach(c => {
+      if (type === 'all' || c.dataset.type === type) {
+        c.removeAttribute('data-hidden');
+        c.style.display = '';
+      } else {
+        c.style.display = 'none';
+      }
+    });
+  }
+
+  // ─── Worksheet tabs ───
+  function setWs(idx) {
+    document.querySelectorAll('.ws-tab').forEach((t,i) => t.classList.toggle('active', i === idx));
+    document.querySelectorAll('.ws-panel').forEach((p,i) => p.classList.toggle('active', i === idx));
+  }
+
+  // ─── Score buttons (single-select per group) ───
+  function toggleActive(btn) {
+    const siblings = btn.parentElement.querySelectorAll('.ws-score-btn');
+    siblings.forEach(s => s.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  // ─── Clear worksheet ───
+  function clearWs(idx) {
+    const panel = document.getElementById('ws-' + idx);
+    panel.querySelectorAll('input, textarea').forEach(el => el.value = '');
+    panel.querySelectorAll('.ws-score-btn').forEach(b => b.classList.remove('active'));
+    panel.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+  }
+
+  // ─── Checklist ───
+  function toggleCheck(item) {
+    item.classList.toggle('done');
+    updateProgress();
+  }
+  function updateProgress() {
+    const all = document.querySelectorAll('.check-item');
+    const done = document.querySelectorAll('.check-item.done').length;
+    document.getElementById('progress-count').textContent = done;
+    document.getElementById('progress-pct').textContent = Math.round(done / all.length * 100) + '%';
+  }
+
+  // ─── GRAVITY force selector ───
+  function toggleGf(btn) {
+    document.querySelectorAll('.gf-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
