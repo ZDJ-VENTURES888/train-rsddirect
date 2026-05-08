@@ -1,175 +1,1057 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Founder Training — Top 2% Growth Architecture | RSD</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --navy: #0B1426; --navy-mid: #122040; --navy-light: #1a2e55;
-    --gold: #C9A84C; --gold-bright: #F0C84A; --gold-dim: #7a6128;
-    --cream: #F5EFE0; --white: #FFFFFF; --red: #E83B3B; --green: #2ECC71;
-    --gray: #8899aa; --border: rgba(201,168,76,0.2);
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--cream); min-height: 100vh; overflow-x: hidden; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Founder Training â Real Space Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --dark: #111118;
+      --dark-card: #16161e;
+      --dark-border: #2a2a3a;
+      --gold: #c9a84c;
+      --gold-dim: rgba(201,168,76,0.35);
+      --gold-glow: rgba(201,168,76,0.08);
+      --gold-text: #e2c068;
+      --white: #f4f4f0;
+      --white-dim: rgba(244,244,240,0.65);
+      --white-faint: rgba(244,244,240,0.15);
+      --accent: #8b5cf6;
+      --accent-glow: rgba(139,92,246,0.12);
+      --red: #e05a5a;
+      --green: #4ade80;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+    }
 
-  /* Back nav bar */
-  .back-bar {
-    background: rgba(11,20,38,0.97);
-    border-bottom: 1px solid var(--border);
-    padding: 12px 40px;
-    display: flex; align-items: center; justify-content: space-between;
-    position: sticky; top: 0; z-index: 100; backdrop-filter: blur(12px);
-  }
-  .back-bar a { color: var(--gold); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-decoration: none; text-transform: uppercase; }
-  .back-bar a:hover { color: var(--gold-bright); }
-  .back-bar .site-id { color: var(--gray); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; }
+    /* ââ NAV BACK BAR ââ */
+    .back-nav {
+      background: rgba(10,10,10,0.97);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .back-nav-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white-dim);
+    }
+    .back-nav-left a {
+      color: var(--gold);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .back-nav-left a:hover { opacity: 0.75; }
+    .back-nav-sep { color: var(--dark-border); }
+    .back-nav-badge {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dim);
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: var(--gold-glow);
+    }
 
-  /* Hero */
-  .hero {
-    padding: 80px 40px 60px;
-    max-width: 900px; margin: 0 auto; text-align: center;
-    border-bottom: 1px solid var(--border);
-  }
-  .hero-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
-  .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 8vw, 96px); line-height: 0.9; letter-spacing: 0.04em; color: var(--cream); margin-bottom: 24px; }
-  .hero h1 span { color: var(--gold); }
-  .hero-sub { font-size: 15px; color: rgba(245,239,224,0.6); line-height: 1.7; max-width: 560px; margin: 0 auto 32px; }
-  .access-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; border: 1px solid rgba(201,168,76,0.35); border-radius: 2px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
-  .access-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+    /* ââ HERO ââ */
+    .hero {
+      text-align: center;
+      padding: 80px 40px 60px;
+      background: linear-gradient(180deg, rgba(201,168,76,0.04) 0%, transparent 100%);
+      border-bottom: 1px solid var(--dark-border);
+    }
+    .hero-eyebrow {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 6vw, 68px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero-sub {
+      font-size: 15px;
+      color: var(--white-dim);
+      max-width: 640px;
+      margin: 0 auto 30px;
+    }
+    .hero-tags {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .hero-tag {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: 1px solid var(--dark-border);
+      padding: 6px 16px;
+      border-radius: 20px;
+      color: var(--white-dim);
+    }
+    .hero-tag.gold { border-color: var(--gold-dim); color: var(--gold); background: var(--gold-glow); }
 
-  /* Video section */
-  .video-section { padding: 60px 40px; max-width: 1100px; margin: 0 auto; }
-  .section-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(201,168,76,0.6); margin-bottom: 10px; }
-  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.06em; color: var(--cream); margin-bottom: 8px; }
-  .section-intro { font-size: 13px; color: rgba(245,239,224,0.55); line-height: 1.7; max-width: 640px; margin-bottom: 36px; }
-  .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-  @media (max-width: 700px) { .video-grid { grid-template-columns: 1fr; } .hero { padding: 60px 24px 40px; } .video-section { padding: 40px 24px; } .back-bar { padding: 12px 24px; } }
-  .video-card { background: rgba(201,168,76,0.03); border: 1px solid rgba(201,168,76,0.18); border-radius: 2px; overflow: hidden; transition: border-color 0.3s; }
-  .video-card:hover { border-color: rgba(201,168,76,0.45); }
-  .embed-wrap { position: relative; width: 100%; padding-bottom: 56.25%; background: #060c18; }
-  .embed-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-  .card-meta { padding: 18px 20px 20px; }
-  .card-tag { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(201,168,76,0.5); margin-bottom: 8px; }
-  .card-title { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.06em; color: var(--cream); margin-bottom: 6px; }
-  .card-desc { font-size: 12px; color: rgba(245,239,224,0.5); line-height: 1.65; }
-  .yt-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(201,168,76,0.65); text-decoration: none; transition: color 0.2s; }
-  .yt-link:hover { color: var(--gold); }
+    /* ââ SECTION WRAPPER ââ */
+    .section {
+      padding: 70px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3.5vw, 36px);
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .section-desc {
+      font-size: 14px;
+      color: var(--white-dim);
+      max-width: 700px;
+      margin-bottom: 40px;
+    }
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--dark-border);
+      margin: 0;
+    }
 
-  /* Modules grid */
-  .modules-section { padding: 60px 40px; max-width: 1100px; margin: 0 auto; border-top: 1px solid var(--border); }
-  .modules-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 32px; }
-  @media (max-width: 900px) { .modules-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 600px) { .modules-grid { grid-template-columns: 1fr; } .modules-section { padding: 40px 24px; } }
-  .module-card { background: rgba(201,168,76,0.03); border: 1px solid rgba(201,168,76,0.12); padding: 24px 22px; transition: background 0.2s, border-color 0.2s; }
-  .module-card:hover { background: rgba(201,168,76,0.06); border-color: rgba(201,168,76,0.3); }
-  .mod-num { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.3em; color: rgba(201,168,76,0.4); margin-bottom: 10px; }
-  .mod-title { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.06em; color: var(--cream); margin-bottom: 8px; }
-  .mod-desc { font-size: 11px; color: rgba(245,239,224,0.45); line-height: 1.6; }
-  .mod-status { display: inline-block; margin-top: 12px; padding: 3px 10px; font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; border-radius: 1px; }
-  .status-open { background: rgba(46,204,113,0.12); color: var(--green); border: 1px solid rgba(46,204,113,0.25); }
-  .status-locked { background: rgba(136,153,170,0.1); color: var(--gray); border: 1px solid rgba(136,153,170,0.2); }
+    /* ââ VIDEO GRIDS ââ */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .video-grid.three-col {
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    }
+    .video-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .video-card:hover { border-color: var(--gold-dim); transform: translateY(-2px); }
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      background: #0d0d14;
+    }
+    .video-embed iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    .video-placeholder {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #0d0d14 0%, #16161e 100%);
+      gap: 10px;
+    }
+    .placeholder-icon {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      border: 2px dashed var(--dark-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: var(--white-faint);
+    }
+    .placeholder-text {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white-faint);
+    }
+    .video-info {
+      padding: 16px 18px;
+    }
+    .video-speaker {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .video-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .video-desc {
+      font-size: 12px;
+      color: var(--white-dim);
+      line-height: 1.5;
+    }
+    .video-badge {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 10px;
+    }
+    .badge-live { background: rgba(74,222,128,0.1); color: var(--green); border: 1px solid rgba(74,222,128,0.3); }
+    .badge-soon { background: rgba(244,244,240,0.05); color: var(--white-faint); border: 1px solid var(--dark-border); }
+    .badge-featured { background: var(--gold-glow); color: var(--gold); border: 1px solid var(--gold-dim); }
 
-  /* Footer */
-  .founders-footer { padding: 40px; text-align: center; border-top: 1px solid var(--border); }
-  .founders-footer p { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(136,153,170,0.5); }
-  .founders-footer a { color: var(--gold); text-decoration: none; }
-</style>
+    /* Essential videos â 2-col prominent */
+    .video-grid-essential {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 28px;
+    }
+    @media (max-width: 880px) {
+      .video-grid-essential { grid-template-columns: 1fr; }
+    }
+
+    /* ââ PACE MODEL ââ */
+    .pace-section {
+      background: linear-gradient(135deg, rgba(201,168,76,0.03) 0%, rgba(139,92,246,0.03) 100%);
+      border-top: 1px solid var(--dark-border);
+      border-bottom: 1px solid var(--dark-border);
+    }
+    .pace-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .pace-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .pace-card:hover { border-color: var(--gold-dim); }
+    .pace-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 64px;
+      font-weight: 700;
+      color: var(--gold-glow);
+      position: absolute;
+      top: -8px;
+      right: 16px;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .pace-word {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .pace-headline {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .pace-body {
+      font-size: 13px;
+      color: var(--white-dim);
+      line-height: 1.65;
+    }
+    .pace-body strong { color: var(--gold-text); }
+    .pace-questions {
+      margin-top: 10px;
+      padding-left: 16px;
+      list-style: disc;
+      font-size: 12px;
+      color: var(--white-dim);
+    }
+    .pace-questions li { margin-bottom: 4px; }
+    .pace-credit {
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--white-faint);
+      margin-top: 12px;
+    }
+    .pace-credit a { color: var(--gold); text-decoration: none; }
+    .pace-application {
+      background: var(--dark-card);
+      border: 1px solid var(--gold-dim);
+      border-radius: 12px;
+      padding: 30px 28px;
+    }
+    .pace-application h3 {
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .pace-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .pace-table th {
+      text-align: left;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid var(--dark-border);
+      padding-bottom: 10px;
+      padding-right: 20px;
+    }
+    .pace-table td {
+      padding: 10px 20px 10px 0;
+      border-bottom: 1px solid rgba(42,42,58,0.4);
+      color: var(--white-dim);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .pace-table td:first-child { color: var(--gold-text); font-weight: 600; white-space: nowrap; }
+
+    /* ââ PARTNER OS CTA ââ */
+    .partner-cta {
+      background: linear-gradient(135deg, var(--gold-glow) 0%, rgba(139,92,246,0.06) 100%);
+      border: 1px solid var(--gold-dim);
+      border-radius: 16px;
+      padding: 50px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .partner-cta::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .partner-cta-eyebrow {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .partner-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3vw, 36px);
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .partner-cta p {
+      font-size: 14px;
+      color: var(--white-dim);
+      max-width: 580px;
+      margin: 0 auto 30px;
+    }
+    .partner-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .partner-stat { text-align: center; }
+    .partner-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: var(--gold);
+      display: block;
+    }
+    .partner-stat-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white-faint);
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 36px;
+      border-radius: 6px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline {
+      display: inline-block;
+      border: 1px solid var(--gold-dim);
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 6px;
+      margin-left: 14px;
+      transition: background 0.2s;
+    }
+    .btn-outline:hover { background: var(--gold-glow); }
+
+    /* ââ MODULES GRID ââ */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .module-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-decoration: none;
+      transition: border-color 0.3s, transform 0.3s;
+      display: block;
+    }
+    .module-card:hover { border-color: var(--gold-dim); transform: translateY(-2px); }
+    .module-card.available { cursor: pointer; }
+    .module-card.soon { opacity: 0.5; cursor: default; pointer-events: none; }
+    .module-card.featured { border-color: var(--gold-dim); background: linear-gradient(135deg, var(--dark-card) 0%, rgba(201,168,76,0.04) 100%); }
+    .module-id {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .module-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .module-desc {
+      font-size: 12px;
+      color: var(--white-dim);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .module-status {
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+    .status-live { background: rgba(74,222,128,0.1); color: var(--green); border: 1px solid rgba(74,222,128,0.25); }
+    .status-featured { background: var(--gold-glow); color: var(--gold); border: 1px solid var(--gold-dim); }
+    .status-soon { background: rgba(244,244,240,0.04); color: var(--white-faint); border: 1px solid var(--dark-border); }
+
+    /* ââ FOOTER ââ */
+    footer {
+      border-top: 1px solid var(--dark-border);
+      padding: 40px 40px;
+      text-align: center;
+    }
+    footer .logo-text {
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    footer p {
+      font-size: 11px;
+      color: var(--white-faint);
+      margin-bottom: 4px;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { opacity: 0.75; }
+
+    /* ââ RESPONSIVE ââ */
+    @media (max-width: 700px) {
+      .back-nav { padding: 12px 20px; }
+      .hero { padding: 50px 20px 40px; }
+      .section { padding: 50px 20px; }
+      .pace-grid { grid-template-columns: 1fr; }
+      .pace-application { padding: 22px 18px; }
+      .partner-cta { padding: 36px 20px; }
+      .btn-outline { margin-left: 0; margin-top: 12px; display: block; text-align: center; }
+      .partner-stats { gap: 24px; }
+      footer { padding: 32px 20px; }
+      .back-nav-badge { display: none; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="back-bar">
-  <a href="/"> ← GRAVITY Training Hub</a>
-  <span class="site-id">Train.RSDDirect.com / Founders</span>
+<!-- ââââââââââââââ BACK NAV ââââââââââââââ -->
+<nav class="back-nav">
+  <div class="back-nav-left">
+    <a href="/">â GRAVITY Training Hub</a>
+    <span class="back-nav-sep">/</span>
+    <span>RSD Founders</span>
+  </div>
+  <span class="back-nav-badge">Top 2% Access</span>
+</nav>
+
+<!-- ââââââââââââââ HERO ââââââââââââââ -->
+<header class="hero">
+  <p class="hero-eyebrow">Real Space Digital Â· Internal Only</p>
+  <h1>Founder <span>Training</span></h1>
+  <p class="hero-sub">The full intelligence stack behind how RSD thinks, sells, and scales. Everything you need to operate at the highest level of the agency.</p>
+  <div class="hero-tags">
+    <span class="hero-tag gold">Top 2% Access</span>
+    <span class="hero-tag">Behavioral Influence</span>
+    <span class="hero-tag">PACE Framework</span>
+    <span class="hero-tag">Affiliate OS</span>
+    <span class="hero-tag">Discovery Mastery</span>
+  </div>
+</header>
+
+<!-- ââââââââââââââ REFERENCE INSPIRATION VIDEOS ââââââââââââââ -->
+<hr class="section-divider">
+<div class="section" id="inspiration">
+  <p class="section-label">Mental Models Â· Influence Â· Scale</p>
+  <h2 class="section-title">Inspiration &amp; Reference Library</h2>
+  <p class="section-desc">The thinkers, frameworks, and philosophies that shape how RSD operates. Study these as operating principles â not just content.</p>
+  <div class="video-grid three-col">
+
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/8SDi2odJBdc" title="PACE Framework â Denis Shatalin" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <p class="video-speaker">Denis Shatalin</p>
+        <p class="video-title">The PACE Framework</p>
+        <p class="video-desc">Pain Â· Audience Â· Channel Â· Expansion. The exact model RSD uses to qualify, position, and close high-ticket clients.</p>
+        <span class="video-badge badge-featured">Core Framework</span>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/3mM-C0jz3co" title="Behavioral Influence â Chase Hughes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <p class="video-speaker">Chase Hughes</p>
+        <p class="video-title">Behavioral Influence &amp; Profiling</p>
+        <p class="video-desc">Read anyone in seconds. How to identify behavioral patterns and use them ethically in discovery and closing conversations.</p>
+        <span class="video-badge badge-live">High Priority</span>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/MjhDkNmtjy0" title="Never Split the Difference â Chris Voss TEDx" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <p class="video-speaker">Chris Voss</p>
+        <p class="video-title">Never Split the Difference</p>
+        <p class="video-desc">FBI negotiation tactics applied to sales. Tactical empathy, calibrated questions, and how to get to yes without pressure.</p>
+        <span class="video-badge badge-live">High Priority</span>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/SHqE3WgDHO8" title="$100M Offers â Alex Hormozi" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <p class="video-speaker">Alex Hormozi</p>
+        <p class="video-title">The $100M Offer Framework</p>
+        <p class="video-desc">How to build offers so good people feel stupid saying no. The value equation, dream outcomes, and perceived likelihood of achievement.</p>
+        <span class="video-badge badge-featured">Core Framework</span>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/SlYm7eI_TdA" title="Key Person of Influence â Daniel Priestley" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <p class="video-speaker">Daniel Priestley</p>
+        <p class="video-title">Key Person of Influence</p>
+        <p class="video-desc">How to become the most valued person in your industry. Pitch Â· Publish Â· Product Â· Profile Â· Partnerships â the 5 P's that create authority.</p>
+        <span class="video-badge badge-live">Brand Authority</span>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/JNj_sPnP850" title="Scale Your AI Agency â Liam Ottley" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <p class="video-speaker">Liam Ottley</p>
+        <p class="video-title">Scale Your AI Agency</p>
+        <p class="video-desc">Building a systems-first AI agency that runs without you. Operations, delivery, and the leverage model for sustainable growth.</p>
+        <span class="video-badge badge-live">Agency Ops</span>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/3YLyuA3oMu0" title="AI Automation Business â Nicholas Puru" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <p class="video-speaker">Nicholas Puru</p>
+        <p class="video-title">AI Automation for Business Growth</p>
+        <p class="video-desc">Practical AI implementation in agency workflows. From outreach automation to client delivery systems and AI-assisted operations.</p>
+        <span class="video-badge badge-live">AI Systems</span>
+      </div>
+    </div>
+
+  </div>
 </div>
 
-<div class="hero">
-  <div class="hero-label">Top 2% Access</div>
-  <h1>Founder<br><span>Training</span></h1>
-  <p class="hero-sub">Advanced growth architecture, AI systems strategy, and high-leverage frameworks for RSD founders and senior partners building at scale.</p>
-  <div class="access-badge"><span class="access-dot"></span> Restricted Access — Founders Only</div>
-</div>
-
-<section class="video-section">
-  <div class="section-label">Core Intelligence Assets</div>
+<!-- ââââââââââââââ ESSENTIAL TRAINING VIDEOS ââââââââââââââ -->
+<hr class="section-divider">
+<div class="section" id="training-videos">
+  <p class="section-label">RSD Internal Systems</p>
   <h2 class="section-title">Essential Training Videos</h2>
-  <p class="section-intro">Watch before your first founder-level discovery call. These two assets form the backbone of how RSD deploys AI in the field.</p>
-  <div class="video-grid">
+  <p class="section-desc">Your two most important RSD tools â the AI avatar that runs your sales flow and the knowledge system that powers your training.</p>
+  <div class="video-grid-essential">
+
     <div class="video-card">
-      <div class="embed-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/ZLd96PP0AGY?rel=0&modestbranding=1" title="Genie Vee — RSD AI Sales Avatar" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/ZLd96PP0AGY" title="Genie Veeâ¢ AI Sales Avatar â Real Space Digital" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
-      <div class="card-meta">
-        <div class="card-tag">AI Sales Avatar</div>
-        <div class="card-title">Genie Vee — The RSD Intelligence Engine</div>
-        <p class="card-desc">Converts stored discovery data into revenue-ready proposals, follow-up sequences, and closing assets in real time.</p>
-        <a href="https://youtu.be/ZLd96PP0AGY" target="_blank" rel="noopener" class="yt-link">Watch on YouTube ↗</a>
+      <div class="video-info">
+        <p class="video-speaker">RSD Internal Â· AI Sales</p>
+        <p class="video-title">Genie Veeâ¢ AI Sales Avatar</p>
+        <p class="video-desc">Your AI-powered sales assistant. How Genie Vee qualifies leads, handles objections, and converts stored conversations into revenue-ready proposals automatically.</p>
+        <span class="video-badge badge-featured">Featured Â· Live System</span>
       </div>
     </div>
+
     <div class="video-card">
-      <div class="embed-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/eP_EECrpDfs?rel=0&modestbranding=1" title="NotebookLM Neural OS" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/eP_EECrpDfs" title="NotebookLM Neural OS â RSD Training System" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
-      <div class="card-meta">
-        <div class="card-tag">AI Training System</div>
-        <div class="card-title">NotebookLM Neural OS — Training Intelligence</div>
-        <p class="card-desc">How RSD founders use Google NotebookLM as a personal AI study system — compressing the full GRAVITY framework into rapid field intelligence.</p>
-        <a href="https://youtu.be/eP_EECrpDfs" target="_blank" rel="noopener" class="yt-link">Watch on YouTube ↗</a>
+      <div class="video-info">
+        <p class="video-speaker">RSD Internal Â· Knowledge OS</p>
+        <p class="video-title">NotebookLM Neural OS</p>
+        <p class="video-desc">The training intelligence layer. How to use NotebookLM to internalize RSD methodology, prepare for discovery calls, and run the GRAVITY exam prep system.</p>
+        <span class="video-badge badge-featured">Featured Â· Live System</span>
       </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ââââââââââââââ ICP TRAINING VIDEOS ââââââââââââââ -->
+<hr class="section-divider">
+<div class="section" id="icp-videos">
+  <p class="section-label">Ideal Client Profiles Â· Vertical Training</p>
+  <h2 class="section-title">ICP Training Videos</h2>
+  <p class="section-desc">Deep-dive walkthroughs for each of RSD's core verticals. Study your prospect's world before every discovery call.</p>
+  <div class="video-grid three-col">
+
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/e8FcmSQfBS8" title="Pool Contractors ICP â RSD Training" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <p class="video-speaker">ICP Vertical Â· 01</p>
+        <p class="video-title">Pool Contractors</p>
+        <p class="video-desc">Understanding the pool construction vertical â their sales cycle, trust triggers, and how digital media accelerates referral-based growth.</p>
+        <span class="video-badge badge-live">Live</span>
+      </div>
+    </div>
+
+    <!-- Design Build â live -->
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/IJNsMC_poVY" title="Design Build & Luxury Construction ICP â RSD Training" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <p class="video-speaker">ICP Vertical Â· 02</p>
+        <p class="video-title">Design Build &amp; Luxury Construction</p>
+        <p class="video-desc">RSD's flagship vertical. How to position Matterport + media for design-build firms chasing premium clients.</p>
+        <span class="video-badge badge-live">Live</span>
+      </div>
+    </div>
+
+    <!-- Architecture Studio â placeholder -->
+    <div class="video-card">
+      <div class="video-embed">
+        <div class="video-placeholder">
+          <div class="placeholder-icon">â¶</div>
+          <span class="placeholder-text">Coming Soon</span>
+        </div>
+      </div>
+      <div class="video-info">
+        <p class="video-speaker">ICP Vertical Â· 03</p>
+        <p class="video-title">Architecture Studios</p>
+        <p class="video-desc">Positioning digital twins and virtual portfolio tours for architecture firms looking to close larger projects faster.</p>
+        <span class="video-badge badge-soon">In Production</span>
+      </div>
+    </div>
+
+    <!-- Wedding Venue â placeholder -->
+    <div class="video-card">
+      <div class="video-embed">
+        <div class="video-placeholder">
+          <div class="placeholder-icon">â¶</div>
+          <span class="placeholder-text">Coming Soon</span>
+        </div>
+      </div>
+      <div class="video-info">
+        <p class="video-speaker">ICP Vertical Â· 04</p>
+        <p class="video-title">Wedding Venues &amp; Event Spaces</p>
+        <p class="video-desc">RSD's second strongest vertical. Virtual tours that book venues before in-person visits â decision psychology and pricing strategy.</p>
+        <span class="video-badge badge-soon">In Production</span>
+      </div>
+    </div>
+
+    <!-- Luxury Home Service â placeholder -->
+    <div class="video-card">
+      <div class="video-embed">
+        <div class="video-placeholder">
+          <div class="placeholder-icon">â¶</div>
+          <span class="placeholder-text">Coming Soon</span>
+        </div>
+      </div>
+      <div class="video-info">
+        <p class="video-speaker">ICP Vertical Â· 05</p>
+        <p class="video-title">Luxury Home Service Companies</p>
+        <p class="video-desc">HVAC, remodeling, and premium home services. How media + reputation automation converts referrals into repeat-high-ticket clients.</p>
+        <span class="video-badge badge-soon">In Production</span>
+      </div>
+    </div>
+
+    <!-- Real Estate / Development â placeholder -->
+    <div class="video-card">
+      <div class="video-embed">
+        <div class="video-placeholder">
+          <div class="placeholder-icon">â¶</div>
+          <span class="placeholder-text">Coming Soon</span>
+        </div>
+      </div>
+      <div class="video-info">
+        <p class="video-speaker">ICP Vertical Â· 06</p>
+        <p class="video-title">Real Estate &amp; Development</p>
+        <p class="video-desc">How developers and agents use 3D virtual tours to sell faster, command higher prices, and reduce time-on-market.</p>
+        <span class="video-badge badge-soon">In Production</span>
+      </div>
+    </div>
+
+    <!-- Dealerships â placeholder -->
+    <div class="video-card">
+      <div class="video-embed">
+        <div class="video-placeholder">
+          <div class="placeholder-icon">â¶</div>
+          <span class="placeholder-text">Coming Soon</span>
+        </div>
+      </div>
+      <div class="video-info">
+        <p class="video-speaker">ICP Vertical Â· 07</p>
+        <p class="video-title">Auto Dealerships</p>
+        <p class="video-desc">360 virtual showrooms, drone shots, and AI lead systems for dealerships â turning digital presence into floor traffic.</p>
+        <span class="video-badge badge-soon">In Production</span>
+      </div>
+    </div>
+
+    <!-- Hospitality â placeholder -->
+    <div class="video-card">
+      <div class="video-embed">
+        <div class="video-placeholder">
+          <div class="placeholder-icon">â¶</div>
+          <span class="placeholder-text">Coming Soon</span>
+        </div>
+      </div>
+      <div class="video-info">
+        <p class="video-speaker">ICP Vertical Â· 08</p>
+        <p class="video-title">Restaurants &amp; Hospitality</p>
+        <p class="video-desc">Ambient media, virtual tours, and AI review management for restaurants and hotels that want to turn browsers into bookings.</p>
+        <span class="video-badge badge-soon">In Production</span>
+      </div>
+    </div>
+
+    <!-- Medical / Dental â placeholder -->
+    <div class="video-card">
+      <div class="video-embed">
+        <div class="video-placeholder">
+          <div class="placeholder-icon">â¶</div>
+          <span class="placeholder-text">Coming Soon</span>
+        </div>
+      </div>
+      <div class="video-info">
+        <p class="video-speaker">ICP Vertical Â· 09</p>
+        <p class="video-title">Medical &amp; Dental Practices</p>
+        <p class="video-desc">Building trust before the first appointment. How virtual tours and patient journey media reduce friction for premium practices.</p>
+        <span class="video-badge badge-soon">In Production</span>
+      </div>
+    </div>
+
+    <!-- Solar / Energy â placeholder -->
+    <div class="video-card">
+      <div class="video-embed">
+        <div class="video-placeholder">
+          <div class="placeholder-icon">â¶</div>
+          <span class="placeholder-text">Coming Soon</span>
+        </div>
+      </div>
+      <div class="video-info">
+        <p class="video-speaker">ICP Vertical Â· 10</p>
+        <p class="video-title">Solar &amp; Energy Companies</p>
+        <p class="video-desc">Prosper SHIELD 360 integration. How aerial capture and referral media systems create a self-perpetuating solar sales machine.</p>
+        <span class="video-badge badge-soon">In Production</span>
+      </div>
+    </div>
+
+    <!-- Open slot â placeholder -->
+    <div class="video-card">
+      <div class="video-embed">
+        <div class="video-placeholder">
+          <div class="placeholder-icon">â¶</div>
+          <span class="placeholder-text">Coming Soon</span>
+        </div>
+      </div>
+      <div class="video-info">
+        <p class="video-speaker">ICP Vertical Â· 11</p>
+        <p class="video-title">Emerging Verticals</p>
+        <p class="video-desc">RSD's next frontier. As new high-value verticals are validated, this slot captures the playbook for the next category we dominate.</p>
+        <span class="video-badge badge-soon">In Production</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ââââââââââââââ PACE MODEL ââââââââââââââ -->
+<hr class="section-divider">
+<section class="pace-section">
+<div class="section" id="pace">
+  <p class="section-label">Denis Shatalin Framework Â· RSD Core Methodology</p>
+  <h2 class="section-title">The PACE Model</h2>
+  <p class="section-desc">Pain Â· Audience Â· Channel Â· Expansion. The four-step framework RSD uses to qualify every prospect, build every proposal, and architect every engagement for long-term growth.</p>
+
+  <div class="pace-grid">
+    <div class="pace-card">
+      <div class="pace-letter">P</div>
+      <p class="pace-word">Pain</p>
+      <h3 class="pace-headline">What's actually broken?</h3>
+      <p class="pace-body">Surface the real, <strong>quantifiable cost</strong> of inaction. Not "I need more leads" â but "we're losing $8K/month in missed bookings because our online presence doesn't match our output." Pain must be specific, felt, and tied to dollars or time.</p>
+      <ul class="pace-questions">
+        <li>What has this problem already cost you?</li>
+        <li>What happens if nothing changes in 6 months?</li>
+        <li>Where are you losing deals you should be winning?</li>
+      </ul>
+    </div>
+
+    <div class="pace-card">
+      <div class="pace-letter">A</div>
+      <p class="pace-word">Audience</p>
+      <h3 class="pace-headline">Who exactly are you chasing?</h3>
+      <p class="pace-body">Define the <strong>exact buyer persona</strong> â their triggers, objections, decision criteria, and what "credibility" looks like to them. Audience clarity determines message, tone, and channel. Without it, everything else is noise.</p>
+      <ul class="pace-questions">
+        <li>Who is your best current client? What made them say yes?</li>
+        <li>What does your ideal client Google before hiring?</li>
+        <li>What proof matters most to them: portfolio, reviews, referrals?</li>
+      </ul>
+    </div>
+
+    <div class="pace-card">
+      <div class="pace-letter">C</div>
+      <p class="pace-word">Channel</p>
+      <h3 class="pace-headline">Where do you find them?</h3>
+      <p class="pace-body">Match the right <strong>distribution channel</strong> to the audience. Cold outreach, referral networks, SEO, paid ads, in-person events â each has a different cost-to-conversion. RSD uses channel stacking: warm intro + digital presence + AI follow-up.</p>
+      <ul class="pace-questions">
+        <li>Where does your best client spend their attention?</li>
+        <li>What channel has produced your best conversion rate?</li>
+        <li>What's the fastest path from first touch to discovery call?</li>
+      </ul>
+    </div>
+
+    <div class="pace-card">
+      <div class="pace-letter">E</div>
+      <p class="pace-word">Expansion</p>
+      <h3 class="pace-headline">How does one client become ten?</h3>
+      <p class="pace-body">Every engagement should have a <strong>built-in expansion engine</strong>. Referrals, case studies, affiliate media, upsell pathways. Design the first deal so that it generates the next three â turning clients into distribution assets.</p>
+      <ul class="pace-questions">
+        <li>What would make this client refer two more like them?</li>
+        <li>What upsell naturally follows the first 90 days?</li>
+        <li>How does this project become a public case study?</li>
+      </ul>
     </div>
   </div>
+
+  <div class="pace-application">
+    <h3>PACE Applied â RSD Discovery Framework</h3>
+    <table class="pace-table">
+      <thead>
+        <tr>
+          <th>Stage</th>
+          <th>RSD Application</th>
+          <th>Tool / Output</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>P Â· Pain</td>
+          <td>Discovery call â quantify the gap between their current presence and their output quality. Cost of lost trust, missed bookings, dead referrals.</td>
+          <td>GRAVITY Worksheet Â· In-Call Panel</td>
+        </tr>
+        <tr>
+          <td>A Â· Audience</td>
+          <td>Identify their best buyer type. Mirror their language. Understand what "credibility proof" looks like to that buyer (portfolio vs. reviews vs. virtual tour).</td>
+          <td>ICP Training Videos Â· Genie Vee Profile</td>
+        </tr>
+        <tr>
+          <td>C Â· Channel</td>
+          <td>Build the acquisition stack: affiliate intro â Matterport authority content â GEO/SEO â Meta retargeting â AI follow-up sequence.</td>
+          <td>GHL Pipeline Â· NotebookLM OS</td>
+        </tr>
+        <tr>
+          <td>E Â· Expansion</td>
+          <td>Structure every retainer with referral incentives, documented case study rights, and a 90-day review upsell path built in from day one.</td>
+          <td>Partner OS Â· Proposal Intelligence</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="pace-credit">Framework credit: <a href="https://www.youtube.com/watch?v=8SDi2odJBdc" target="_blank" rel="noopener">Denis Shatalin â PACE Model</a> Â· Adapted for RSD agency methodology</p>
+</div>
 </section>
 
-<section class="modules-section">
-  <div class="section-label">Founder Curriculum</div>
-  <h2 class="section-title">Advanced Modules</h2>
-  <p class="section-intro">Six strategic frameworks reserved for founders operating at the highest level of the RSD system.</p>
+<!-- ââââââââââââââ PARTNER & AFFILIATE OS CTA ââââââââââââââ -->
+<hr class="section-divider">
+<div class="section" id="partner-os">
+  <p class="section-label">Module F-04 Â· Affiliate Program</p>
+  <h2 class="section-title">Partner &amp; Affiliate OS</h2>
+  <p class="section-desc">RSD's referral engine. Turn your network into a scalable revenue stream with transparent commissions, a dedicated referral link, and a signed agreement that protects both sides.</p>
+
+  <div class="partner-cta">
+    <p class="partner-cta-eyebrow">Unlimited Growth Â· No Cap on Earnings</p>
+    <h2>Your Network Is an Asset.<br>Let's Monetize It Together.</h2>
+    <p>Every qualified referral you send RSD earns you 10â15% of net project revenue plus quarterly performance bonuses. No ceiling. No guesswork. Fully documented and e-signed.</p>
+    <div class="partner-stats">
+      <div class="partner-stat">
+        <span class="partner-stat-num">10â15%</span>
+        <span class="partner-stat-label">Net Project Commission</span>
+      </div>
+      <div class="partner-stat">
+        <span class="partner-stat-num">$5,100</span>
+        <span class="partner-stat-label">Example: $24K Project Â· Tier 2</span>
+      </div>
+      <div class="partner-stat">
+        <span class="partner-stat-num">15 Days</span>
+        <span class="partner-stat-label">Payment After Project Close</span>
+      </div>
+      <div class="partner-stat">
+        <span class="partner-stat-num">$1,500</span>
+        <span class="partner-stat-label">Max Quarterly Bonus</span>
+      </div>
+    </div>
+    <a href="/founders/partner-os.html" class="btn-primary">Access Partner OS â</a>
+    <a href="/founders/partner-os.html#apply" class="btn-outline">Apply Now</a>
+  </div>
+</div>
+
+<!-- ââââââââââââââ FOUNDER MODULES ââââââââââââââ -->
+<hr class="section-divider">
+<div class="section" id="modules">
+  <p class="section-label">Training Modules Â· Founder Stack</p>
+  <h2 class="section-title">Founder Modules</h2>
+  <p class="section-desc">The complete operating intelligence for running RSD at the highest level.</p>
+
   <div class="modules-grid">
-    <div class="module-card">
-      <div class="mod-num">Module F-01</div>
-      <div class="mod-title">Revenue Architecture</div>
-      <p class="mod-desc">Designing scalable retainer structures, pricing tiers, and packaging that compounds over time.</p>
-      <span class="mod-status status-open">Available</span>
+
+    <a href="/#gravity" class="module-card available" target="_blank" rel="noopener">
+      <p class="module-id">F-01 Â· Core Methodology</p>
+      <h3 class="module-title">GRAVITY Protocol</h3>
+      <p class="module-desc">The full 7-layer sales and authority framework. From prospect identification through close â every stage systematized.</p>
+      <span class="module-status status-live">Live Â· GRAVITY Hub</span>
+    </a>
+
+    <a href="/#worksheets" class="module-card available" target="_blank" rel="noopener">
+      <p class="module-id">F-02 Â· Sales Intelligence</p>
+      <h3 class="module-title">Discovery Call Mastery</h3>
+      <p class="module-desc">Pre-call research, in-call frameworks, post-call follow-up templates. Turn every discovery call into a qualified opportunity.</p>
+      <span class="module-status status-live">Live Â· Worksheets</span>
+    </a>
+
+    <a href="/#training-videos" class="module-card available" target="_blank" rel="noopener">
+      <p class="module-id">F-03 Â· Conversion Engine</p>
+      <h3 class="module-title">Proposal Intelligence (Genie Veeâ¢)</h3>
+      <p class="module-desc">AI-powered proposal generation. Stored conversations become revenue-ready proposals automatically through the Genie Vee system.</p>
+      <span class="module-status status-live">Live Â· Genie Vee</span>
+    </a>
+
+    <a href="/founders/partner-os.html" class="module-card available featured">
+      <p class="module-id">F-04 Â· Growth System</p>
+      <h3 class="module-title">Partner &amp; Affiliate OS</h3>
+      <p class="module-desc">Your full affiliate program: referral links, e-sign agreements, commission structure, and an unlimited revenue pathway through your network.</p>
+      <span class="module-status status-featured">Live Â· Full Program â</span>
+    </a>
+
+    <div class="module-card soon">
+      <p class="module-id">F-05 Â· Automation Layer</p>
+      <h3 class="module-title">AI Operations Core</h3>
+      <p class="module-desc">The full AI stack powering RSD: GHL automations, outreach sequences, scheduling AI, and the CRM pipeline architecture.</p>
+      <span class="module-status status-soon">Coming Soon</span>
     </div>
-    <div class="module-card">
-      <div class="mod-num">Module F-02</div>
-      <div class="mod-title">AI COS Framework</div>
-      <p class="mod-desc">Building your AI Chief of Staff — automating qualification, outreach, scheduling, and follow-up at scale.</p>
-      <span class="mod-status status-open">Available</span>
+
+    <div class="module-card soon">
+      <p class="module-id">F-06 Â· Wealth Architecture</p>
+      <h3 class="module-title">TradeVesting Framework</h3>
+      <p class="module-desc">ZDJ Ventures financial strategy layer. Using trading capital as a vehicle for real asset acquisition and business equity building.</p>
+      <span class="module-status status-soon">Coming Soon</span>
     </div>
-    <div class="module-card">
-      <div class="mod-num">Module F-03</div>
-      <div class="mod-title">Discovery Call Mastery</div>
-      <p class="mod-desc">The full GRAVITY sales system deployed in a live call — qualification, tipping point, and close sequence.</p>
-      <span class="mod-status status-open">Available</span>
-    </div>
-    <div class="module-card">
-      <div class="mod-num">Module F-04</div>
-      <div class="mod-title">Partner & Affiliate OS</div>
-      <p class="mod-desc">Building an affiliate ambassador network that generates qualified introductions autonomously.</p>
-      <span class="mod-status status-locked">Coming Soon</span>
-    </div>
-    <div class="module-card">
-      <div class="mod-num">Module F-05</div>
-      <div class="mod-title">Proposal Intelligence</div>
-      <p class="mod-desc">Using Genie Vee to convert discovery data into closing assets within minutes of the call.</p>
-      <span class="mod-status status-locked">Coming Soon</span>
-    </div>
-    <div class="module-card">
-      <div class="mod-num">Module F-06</div>
-      <div class="mod-title">Scale & Exit Strategy</div>
-      <p class="mod-desc">Agency valuation, operational leverage, and building a business that runs without you.</p>
-      <span class="mod-status status-locked">Coming Soon</span>
-    </div>
+
   </div>
-</section>
+</div>
 
-<footer class="founders-footer">
-  <p>Real Space Digital &nbsp;|&nbsp; <a href="/">GRAVITY Training Hub</a> &nbsp;|&nbsp; Restricted to RSD Founders</p>
-</footer>
-
-</body>
-</html>
+<!-- ââââââââââââââ FOOTER ââââââââââââââ -->
+<footer>
+  <p class="logo-text">Real Space Digital</p>
+  <p>Digitizing Reality, Elevating Sales.</p>
+  <p style="margin-top:12px;"><a href="/">â Return to GRAVITY Training Hub</a></p>
+  <p style="margin-top:16px;">Confidential Â· Internal Use Only Â· Top 2% Access Â· <a href="mailto:communications@
