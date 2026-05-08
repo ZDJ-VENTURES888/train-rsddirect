@@ -649,7 +649,170 @@
       .section-wrap { padding: 64px 20px; }
       .hero-stats { gap:32px; }
     }
-  </style>
+  
+  /* ── Featured Training Videos Section ── */
+  #training-videos {
+    padding: 80px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 40px;
+  }
+  @media (max-width: 768px) {
+    .video-grid { grid-template-columns: 1fr; gap: 24px; }
+    #training-videos { padding: 60px 20px; }
+  }
+  .video-card {
+    background: rgba(201,168,76,0.04);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .video-card:hover { border-color: rgba(201,168,76,0.5); }
+  .video-embed-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: #050a14;
+  }
+  .video-embed-wrapper iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+  .video-card-meta { padding: 20px 22px 22px; }
+  .video-card-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.55);
+    margin-bottom: 8px;
+  }
+  .video-card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #f5f0e8;
+    margin: 0 0 6px;
+  }
+  .video-card-desc {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    color: rgba(245,240,232,0.5);
+    line-height: 1.6;
+    margin: 0;
+  }
+  .video-yt-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .video-yt-link:hover { color: #c9a84c; }
+
+  /* ── Hamburger button ── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 1px;
+    cursor: pointer;
+    padding: 0;
+    transition: border-color 0.2s;
+  }
+  .nav-hamburger:hover { border-color: rgba(201,168,76,0.7); }
+  .nav-hamburger span {
+    display: block;
+    width: 18px;
+    height: 1.5px;
+    background: #c9a84c;
+    transition: transform 0.25s, opacity 0.25s;
+    transform-origin: center;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ── Mobile drawer ── */
+  .nav-mobile-drawer {
+    display: none;
+    position: fixed;
+    top: 64px;
+    left: 0; right: 0;
+    z-index: 185;
+    background: rgba(8,12,26,0.97);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    flex-direction: column;
+    padding: 8px 0 16px;
+    backdrop-filter: blur(12px);
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.28s cubic-bezier(0.4,0,0.2,1), opacity 0.22s;
+  }
+  .nav-mobile-drawer.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+  .nav-mobile-drawer a {
+    display: block;
+    padding: 13px 32px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.75);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,168,76,0.07);
+    transition: color 0.15s, background 0.15s;
+  }
+  .nav-mobile-drawer a:hover { color: #c9a84c; background: rgba(201,168,76,0.05); }
+  .nav-mobile-drawer a.mobile-founders-link {
+    color: #c9a84c;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+    border-top: 1px solid rgba(201,168,76,0.12);
+    border-bottom: none;
+  }
+
+  /* ── Show hamburger on mobile/tablet ── */
+  @media (max-width: 900px) {
+    .nav-hamburger { display: flex !important; }
+    .nav-mobile-drawer { display: flex; }
+    .nav-links, .nav-badge { display: none !important; }
+  }
+
+  /* ── Stack worksheet action bar on mobile ── */
+  @media (max-width: 480px) {
+    .ws-action-bar { flex-direction: column; }
+    .ws-email-input { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.2); }
+    .ws-action-btn { justify-content: center; }
+  }
+</style>
 </head>
 <body>
 
@@ -667,9 +830,33 @@
     <li><a href="#scripts">Scripts</a></li>
     <li><a href="#worksheets">Worksheets</a></li>
     <li><a href="#checklist">Onboarding</a></li>
-  </ul>
+  <li><a href="#training-videos">Videos</a></li>
+        </ul>
   <span class="nav-badge">v4.0 · Confidential</span>
-</nav>
+
+        <button class="nav-hamburger" id="nav-hamburger" onclick="navToggle()" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button></nav>
+<div class="nav-mobile-drawer" id="nav-mobile-drawer">
+  <a href="#gravity" onclick="navClose()">GRAVITY</a>
+  <a href="#training-videos" onclick="navClose()">Videos</a>
+  <a href="#modules" onclick="navClose()">Modules</a>
+  <a href="#triangle" onclick="navClose()">Ego Triangle</a>
+  <a href="#scripts" onclick="navClose()">Scripts</a>
+  <a href="#worksheets" onclick="navClose()">Worksheets</a>
+  <a href="#checklist" onclick="navClose()">Onboarding</a>
+  <a href="https://founders.train.rsddirect.com" target="_blank" rel="noopener noreferrer"
+     class="mobile-founders-link" onclick="navClose()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+      <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+    </svg>
+    Founder Training
+  </a>
+</div>
+
 
 <!-- ══════════════════════════════ HERO ══════════════════════════════ -->
 <div class="hero">
@@ -797,7 +984,75 @@
 <div class="gold-line"></div>
 
 <!-- ══════════════════════════════ EGO TRIANGLE ══════════════════════════════ -->
-<div style="background:var(--navy-mid); border-top:1px solid var(--navy-border); border-bottom:1px solid var(--navy-border);" id="triangle">
+<div style="background:var(--navy-mid); border-top:1px solid var(--navy-border); border-bottom:1px solid var(--navy-border
+<section>
+  <div id="training-videos">
+    <div class="section-label">In-House Training</div>
+    <h2 class="section-title">Featured Training Videos</h2>
+    <p class="section-intro">
+      Two essential training assets for RSD partners — the Genie Vee AI Sales Avatar and the
+      NotebookLM Neural OS training system. Watch before your first discovery call.
+    </p>
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-embed-wrapper">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/ZLd96PP0AGY?rel=0&modestbranding=1"
+            title="Genie Vee — RSD AI Sales Avatar"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-card-meta">
+          <div class="video-card-label">AI Sales Avatar</div>
+          <div class="video-card-title">Genie Vee — The RSD Intelligence Engine</div>
+          <p class="video-card-desc">
+            Meet Genie Vee — RSD's AI-powered avatar that converts stored discovery data into
+            revenue-ready proposals, follow-up sequences, and closing assets in real time.
+          </p>
+          <a href="https://youtu.be/ZLd96PP0AGY" target="_blank" rel="noopener noreferrer" class="video-yt-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+            Watch on YouTube
+          </a>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-embed-wrapper">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/eP_EECrpDfs?rel=0&modestbranding=1"
+            title="NotebookLM Neural OS — RSD AI Training System"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-card-meta">
+          <div class="video-card-label">AI Training System</div>
+          <div class="video-card-title">NotebookLM Neural OS — Training Intelligence</div>
+          <p class="video-card-desc">
+            How RSD partners use Google NotebookLM as a personal AI study system — compressing
+            the full GRAVITY framework into rapid, queryable intelligence for field deployment.
+          </p>
+          <a href="https://youtu.be/eP_EECrpDfs" target="_blank" rel="noopener noreferrer" class="video-yt-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+            Watch on YouTube
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+);" id="triangle">
   <div class="section-wrap">
     <div class="section-label fade-up">Behavioral Foundation</div>
     <h2 class="section-title fade-up">The Ego Triangle</h2>
@@ -1920,6 +2175,27 @@
     document.querySelectorAll('.gf-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
   }
+</script>
+
+<script>
+  function navToggle() {
+    const drawer = document.getElementById('nav-mobile-drawer');
+    const hamburger = document.getElementById('nav-hamburger');
+    const isOpen = drawer.classList.contains('open');
+    drawer.classList.toggle('open', !isOpen);
+    hamburger.classList.toggle('open', !isOpen);
+  }
+  function navClose() {
+    document.getElementById('nav-mobile-drawer').classList.remove('open');
+    document.getElementById('nav-hamburger').classList.remove('open');
+  }
+  document.addEventListener('click', function(e) {
+    const drawer = document.getElementById('nav-mobile-drawer');
+    const hamburger = document.getElementById('nav-hamburger');
+    if (drawer && drawer.classList.contains('open')) {
+      if (!drawer.contains(e.target) && !hamburger.contains(e.target)) navClose();
+    }
+  });
 </script>
 </body>
 </html>
