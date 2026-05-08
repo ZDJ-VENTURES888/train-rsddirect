@@ -812,6 +812,44 @@
     .ws-email-input { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.2); }
     .ws-action-btn { justify-content: center; }
   }
+
+  .ws-action-bar {
+    display: flex; align-items: stretch; gap: 0;
+    margin: 20px 0 12px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 2px; overflow: hidden;
+  }
+  .ws-email-input {
+    flex: 1; background: rgba(201,168,76,0.04);
+    border: none; border-right: 1px solid rgba(201,168,76,0.2);
+    padding: 10px 14px;
+    font-family: 'Barlow', sans-serif; font-size: 12px; color: #f5f0e8; outline: none;
+  }
+  .ws-email-input::placeholder { color: rgba(245,240,232,0.3); }
+  .ws-email-input:focus { background: rgba(201,168,76,0.08); }
+  .ws-action-btn {
+    display: flex; align-items: center; gap: 6px; padding: 10px 16px;
+    background: rgba(201,168,76,0.06);
+    border: none; border-right: 1px solid rgba(201,168,76,0.2);
+    font-family: 'Barlow Condensed', sans-serif; font-size: 10px;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(201,168,76,0.8); cursor: pointer;
+    transition: background 0.2s, color 0.2s; white-space: nowrap;
+  }
+  .ws-action-btn:last-child { border-right: none; }
+  .ws-action-btn:hover { background: rgba(201,168,76,0.14); color: #c9a84c; }
+  @media (max-width: 480px) {
+    .ws-action-bar { flex-direction: column; }
+    .ws-email-input { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.2); }
+    .ws-action-btn { border-right: none; justify-content: center; }
+  }
+  @media print {
+    body > *:not(#worksheets) { display: none !important; }
+    #worksheets .ws-tab-bar, #worksheets .ws-action-bar,
+    #worksheets .ws-btn, nav, .promo-strip, .nav-mobile-drawer { display: none !important; }
+    .ws-panel { display: block !important; page-break-after: always; }
+    .ws-panel:not(.print-active) { display: none !important; }
+  }
 </style>
 </head>
 <body>
@@ -845,7 +883,7 @@
   <a href="#scripts" onclick="navClose()">Scripts</a>
   <a href="#worksheets" onclick="navClose()">Worksheets</a>
   <a href="#checklist" onclick="navClose()">Onboarding</a>
-  <a href="https://founders.train.rsddirect.com" target="_blank" rel="noopener noreferrer"
+  <a href="/founders/" target="_blank" rel="noopener noreferrer"
      class="mobile-founders-link" onclick="navClose()">
     <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24"
          fill="none" stroke="currentColor" stroke-width="2"
@@ -1756,7 +1794,12 @@
         <p class="ws-note">If below 7: run 5-minute Composure Protocol — breathing (60s) → posture (60s) → anchor outcomes (60s) → opening sentence rehearsal (60s) → frame intention (60s)</p>
       </div>
     </div>
-    <button class="ws-btn" onclick="clearWs(0)">Clear Worksheet</button>
+    
+          <div class="ws-action-bar">
+            <input type="email" class="ws-email-input" placeholder="your@email.com" aria-label="Email">
+            <button class="ws-action-btn" onclick="wsSendEmail(this)"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> Email</button>
+            <button class="ws-action-btn" onclick="wsPrint(this)"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> Print / PDF</button>
+          </div><button class="ws-btn" onclick="clearWs(0)">Clear Worksheet</button>
   </div>
 
   <!-- WS 02 — IN CALL -->
@@ -1786,7 +1829,12 @@
       </div>
       <div class="ws-field full"><label>LABEL Deployed — What emotion did you name?</label><input type="text" placeholder="It sounds like the timing on this feels like a lot to take on right now..."></div>
     </div>
-    <button class="ws-btn" onclick="clearWs(1)">Clear Worksheet</button>
+    
+          <div class="ws-action-bar">
+            <input type="email" class="ws-email-input" placeholder="your@email.com" aria-label="Email">
+            <button class="ws-action-btn" onclick="wsSendEmail(this)"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> Email</button>
+            <button class="ws-action-btn" onclick="wsPrint(this)"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> Print / PDF</button>
+          </div><button class="ws-btn" onclick="clearWs(1)">Clear Worksheet</button>
   </div>
 
   <!-- WS 03 — POST CALL -->
@@ -1837,7 +1885,12 @@
       </div>
       <div class="ws-field"><label>New Intel for the Playbook</label><textarea rows="2" placeholder="Insight to add for this vertical..."></textarea></div>
     </div>
-    <button class="ws-btn" onclick="clearWs(2)">Clear Worksheet</button>
+    
+          <div class="ws-action-bar">
+            <input type="email" class="ws-email-input" placeholder="your@email.com" aria-label="Email">
+            <button class="ws-action-btn" onclick="wsSendEmail(this)"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> Email</button>
+            <button class="ws-action-btn" onclick="wsPrint(this)"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> Print / PDF</button>
+          </div><button class="ws-btn" onclick="clearWs(2)">Clear Worksheet</button>
   </div>
 
   <!-- WS 04 — MESO -->
@@ -1898,7 +1951,12 @@
         </div>
       </div>
     </div>
-    <button class="ws-btn" onclick="clearWs(3)">Clear Worksheet</button>
+    
+          <div class="ws-action-bar">
+            <input type="email" class="ws-email-input" placeholder="your@email.com" aria-label="Email">
+            <button class="ws-action-btn" onclick="wsSendEmail(this)"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> Email</button>
+            <button class="ws-action-btn" onclick="wsPrint(this)"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> Print / PDF</button>
+          </div><button class="ws-btn" onclick="clearWs(3)">Clear Worksheet</button>
   </div>
 </div>
 
@@ -2196,6 +2254,35 @@
       if (!drawer.contains(e.target) && !hamburger.contains(e.target)) navClose();
     }
   });
+</script>
+
+<script>
+  function wsGetFieldData(panel) {
+    const rows = [];
+    panel.querySelectorAll('.ws-field,.ws-note').forEach(f => {
+      const lbl = f.querySelector('label');
+      const inp = f.querySelector('input,textarea,select');
+      if (lbl && inp && inp.value.trim()) rows.push(lbl.textContent.trim().replace(/\s+/g,' ') + ': ' + inp.value.trim());
+    });
+    return rows.join('\n');
+  }
+  function wsSendEmail(btn) {
+    const panel = btn.closest('.ws-panel');
+    const em = panel.querySelector('.ws-email-input');
+    if (!em || !em.value.trim()) { if(em){em.focus();em.style.borderColor='#c03';setTimeout(()=>{em.style.borderColor=''},1500);} return; }
+    const title = (panel.querySelector('h2,h3,.ws-title')||{}).textContent||'Worksheet';
+    const sub = encodeURIComponent('RSD Training — ' + title.trim().replace(/\s+/g,' ').substring(0,60));
+    const body = encodeURIComponent(wsGetFieldData(panel)||'(No fields filled)');
+    window.location.href = 'mailto:'+em.value.trim()+'?subject='+sub+'&body='+body;
+  }
+  function wsPrint(btn) {
+    const panel = btn.closest('.ws-panel');
+    document.querySelectorAll('.ws-panel').forEach(p=>p.classList.remove('print-active'));
+    panel.classList.add('print-active');
+    const orig = btn.innerHTML;
+    btn.textContent = 'Preparing...';
+    setTimeout(()=>{ window.print(); setTimeout(()=>{ btn.innerHTML=orig; panel.classList.remove('print-active'); },1500); },300);
+  }
 </script>
 </body>
 </html>
