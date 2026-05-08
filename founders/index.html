@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Founder Training — Top 2% Growth Architecture | RSD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1426; --navy-mid: #122040; --navy-light: #1a2e55;
+    --gold: #C9A84C; --gold-bright: #F0C84A; --gold-dim: #7a6128;
+    --cream: #F5EFE0; --white: #FFFFFF; --red: #E83B3B; --green: #2ECC71;
+    --gray: #8899aa; --border: rgba(201,168,76,0.2);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--cream); min-height: 100vh; overflow-x: hidden; }
+
+  /* Back nav bar */
+  .back-bar {
+    background: rgba(11,20,38,0.97);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100; backdrop-filter: blur(12px);
+  }
+  .back-bar a { color: var(--gold); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-decoration: none; text-transform: uppercase; }
+  .back-bar a:hover { color: var(--gold-bright); }
+  .back-bar .site-id { color: var(--gray); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; }
+
+  /* Hero */
+  .hero {
+    padding: 80px 40px 60px;
+    max-width: 900px; margin: 0 auto; text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+  .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 8vw, 96px); line-height: 0.9; letter-spacing: 0.04em; color: var(--cream); margin-bottom: 24px; }
+  .hero h1 span { color: var(--gold); }
+  .hero-sub { font-size: 15px; color: rgba(245,239,224,0.6); line-height: 1.7; max-width: 560px; margin: 0 auto 32px; }
+  .access-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; border: 1px solid rgba(201,168,76,0.35); border-radius: 2px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+  .access-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+
+  /* Video section */
+  .video-section { padding: 60px 40px; max-width: 1100px; margin: 0 auto; }
+  .section-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(201,168,76,0.6); margin-bottom: 10px; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.06em; color: var(--cream); margin-bottom: 8px; }
+  .section-intro { font-size: 13px; color: rgba(245,239,224,0.55); line-height: 1.7; max-width: 640px; margin-bottom: 36px; }
+  .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  @media (max-width: 700px) { .video-grid { grid-template-columns: 1fr; } .hero { padding: 60px 24px 40px; } .video-section { padding: 40px 24px; } .back-bar { padding: 12px 24px; } }
+  .video-card { background: rgba(201,168,76,0.03); border: 1px solid rgba(201,168,76,0.18); border-radius: 2px; overflow: hidden; transition: border-color 0.3s; }
+  .video-card:hover { border-color: rgba(201,168,76,0.45); }
+  .embed-wrap { position: relative; width: 100%; padding-bottom: 56.25%; background: #060c18; }
+  .embed-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+  .card-meta { padding: 18px 20px 20px; }
+  .card-tag { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(201,168,76,0.5); margin-bottom: 8px; }
+  .card-title { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.06em; color: var(--cream); margin-bottom: 6px; }
+  .card-desc { font-size: 12px; color: rgba(245,239,224,0.5); line-height: 1.65; }
+  .yt-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(201,168,76,0.65); text-decoration: none; transition: color 0.2s; }
+  .yt-link:hover { color: var(--gold); }
+
+  /* Modules grid */
+  .modules-section { padding: 60px 40px; max-width: 1100px; margin: 0 auto; border-top: 1px solid var(--border); }
+  .modules-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 32px; }
+  @media (max-width: 900px) { .modules-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .modules-grid { grid-template-columns: 1fr; } .modules-section { padding: 40px 24px; } }
+  .module-card { background: rgba(201,168,76,0.03); border: 1px solid rgba(201,168,76,0.12); padding: 24px 22px; transition: background 0.2s, border-color 0.2s; }
+  .module-card:hover { background: rgba(201,168,76,0.06); border-color: rgba(201,168,76,0.3); }
+  .mod-num { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.3em; color: rgba(201,168,76,0.4); margin-bottom: 10px; }
+  .mod-title { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.06em; color: var(--cream); margin-bottom: 8px; }
+  .mod-desc { font-size: 11px; color: rgba(245,239,224,0.45); line-height: 1.6; }
+  .mod-status { display: inline-block; margin-top: 12px; padding: 3px 10px; font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; border-radius: 1px; }
+  .status-open { background: rgba(46,204,113,0.12); color: var(--green); border: 1px solid rgba(46,204,113,0.25); }
+  .status-locked { background: rgba(136,153,170,0.1); color: var(--gray); border: 1px solid rgba(136,153,170,0.2); }
+
+  /* Footer */
+  .founders-footer { padding: 40px; text-align: center; border-top: 1px solid var(--border); }
+  .founders-footer p { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(136,153,170,0.5); }
+  .founders-footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="back-bar">
+  <a href="/"> ← GRAVITY Training Hub</a>
+  <span class="site-id">Train.RSDDirect.com / Founders</span>
+</div>
+
+<div class="hero">
+  <div class="hero-label">Top 2% Access</div>
+  <h1>Founder<br><span>Training</span></h1>
+  <p class="hero-sub">Advanced growth architecture, AI systems strategy, and high-leverage frameworks for RSD founders and senior partners building at scale.</p>
+  <div class="access-badge"><span class="access-dot"></span> Restricted Access — Founders Only</div>
+</div>
+
+<section class="video-section">
+  <div class="section-label">Core Intelligence Assets</div>
+  <h2 class="section-title">Essential Training Videos</h2>
+  <p class="section-intro">Watch before your first founder-level discovery call. These two assets form the backbone of how RSD deploys AI in the field.</p>
+  <div class="video-grid">
+    <div class="video-card">
+      <div class="embed-wrap">
+        <iframe src="https://www.youtube-nocookie.com/embed/ZLd96PP0AGY?rel=0&modestbranding=1" title="Genie Vee — RSD AI Sales Avatar" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="card-meta">
+        <div class="card-tag">AI Sales Avatar</div>
+        <div class="card-title">Genie Vee — The RSD Intelligence Engine</div>
+        <p class="card-desc">Converts stored discovery data into revenue-ready proposals, follow-up sequences, and closing assets in real time.</p>
+        <a href="https://youtu.be/ZLd96PP0AGY" target="_blank" rel="noopener" class="yt-link">Watch on YouTube ↗</a>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="embed-wrap">
+        <iframe src="https://www.youtube-nocookie.com/embed/eP_EECrpDfs?rel=0&modestbranding=1" title="NotebookLM Neural OS" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="card-meta">
+        <div class="card-tag">AI Training System</div>
+        <div class="card-title">NotebookLM Neural OS — Training Intelligence</div>
+        <p class="card-desc">How RSD founders use Google NotebookLM as a personal AI study system — compressing the full GRAVITY framework into rapid field intelligence.</p>
+        <a href="https://youtu.be/eP_EECrpDfs" target="_blank" rel="noopener" class="yt-link">Watch on YouTube ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="modules-section">
+  <div class="section-label">Founder Curriculum</div>
+  <h2 class="section-title">Advanced Modules</h2>
+  <p class="section-intro">Six strategic frameworks reserved for founders operating at the highest level of the RSD system.</p>
+  <div class="modules-grid">
+    <div class="module-card">
+      <div class="mod-num">Module F-01</div>
+      <div class="mod-title">Revenue Architecture</div>
+      <p class="mod-desc">Designing scalable retainer structures, pricing tiers, and packaging that compounds over time.</p>
+      <span class="mod-status status-open">Available</span>
+    </div>
+    <div class="module-card">
+      <div class="mod-num">Module F-02</div>
+      <div class="mod-title">AI COS Framework</div>
+      <p class="mod-desc">Building your AI Chief of Staff — automating qualification, outreach, scheduling, and follow-up at scale.</p>
+      <span class="mod-status status-open">Available</span>
+    </div>
+    <div class="module-card">
+      <div class="mod-num">Module F-03</div>
+      <div class="mod-title">Discovery Call Mastery</div>
+      <p class="mod-desc">The full GRAVITY sales system deployed in a live call — qualification, tipping point, and close sequence.</p>
+      <span class="mod-status status-open">Available</span>
+    </div>
+    <div class="module-card">
+      <div class="mod-num">Module F-04</div>
+      <div class="mod-title">Partner & Affiliate OS</div>
+      <p class="mod-desc">Building an affiliate ambassador network that generates qualified introductions autonomously.</p>
+      <span class="mod-status status-locked">Coming Soon</span>
+    </div>
+    <div class="module-card">
+      <div class="mod-num">Module F-05</div>
+      <div class="mod-title">Proposal Intelligence</div>
+      <p class="mod-desc">Using Genie Vee to convert discovery data into closing assets within minutes of the call.</p>
+      <span class="mod-status status-locked">Coming Soon</span>
+    </div>
+    <div class="module-card">
+      <div class="mod-num">Module F-06</div>
+      <div class="mod-title">Scale & Exit Strategy</div>
+      <p class="mod-desc">Agency valuation, operational leverage, and building a business that runs without you.</p>
+      <span class="mod-status status-locked">Coming Soon</span>
+    </div>
+  </div>
+</section>
+
+<footer class="founders-footer">
+  <p>Real Space Digital &nbsp;|&nbsp; <a href="/">GRAVITY Training Hub</a> &nbsp;|&nbsp; Restricted to RSD Founders</p>
+</footer>
+
+</body>
+</html>
