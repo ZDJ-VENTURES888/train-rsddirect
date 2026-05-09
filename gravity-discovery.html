@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GRAVITY Framework — Sales Discovery Add-On | Real Space Digital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --navy:        #0A1F44;
+      --navy-mid:    #122860;
+      --navy-light:  #1a3472;
+      --gold:        #C9A84C;
+      --gold-light:  #E8CC7A;
+      --gold-pale:   #F5E9C8;
+      --white:       #FFFFFF;
+      --off-white:   #F8F6F1;
+      --gray-50:     #F4F4F4;
+      --gray-200:    #E0E0E0;
+      --gray-500:    #888888;
+      --gray-700:    #444444;
+      --red-signal:  #C0392B;
+      --green-ok:    #1A7A4A;
+
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'DM Sans', sans-serif;
+      --font-mono:    'DM Mono', monospace;
+
+      --radius:  6px;
+      --radius-lg: 12px;
+      --shadow-sm: 0 2px 8px rgba(10,31,68,.10);
+      --shadow-md: 0 6px 24px rgba(10,31,68,.14);
+      --shadow-lg: 0 16px 48px rgba(10,31,68,.18);
+    }
+
+    /* ── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ──────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--navy); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    /* ── TOP NAV ────────────────────────────────────────────── */
+    .topnav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,31,68,.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,.25);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px; height: 58px;
+    }
+    .topnav-brand {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .topnav-badge {
+      background: var(--gold);
+      color: var(--navy);
+      font-family: var(--font-mono);
+      font-size: 10px; font-weight: 500;
+      padding: 3px 8px; border-radius: 3px;
+      letter-spacing: .08em;
+    }
+    .topnav-title {
+      font-family: var(--font-display);
+      font-size: 15px; color: var(--white);
+      letter-spacing: .02em;
+    }
+    .topnav-links {
+      display: flex; gap: 4px;
+    }
+    .topnav-links a {
+      color: rgba(255,255,255,.65);
+      font-size: 12px; font-weight: 500;
+      text-decoration: none;
+      padding: 6px 12px; border-radius: 4px;
+      transition: all .2s;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .topnav-links a:hover { color: var(--gold); background: rgba(201,168,76,.10); }
+    .topnav-links a.active { color: var(--gold); }
+
+    /* ── HERO ───────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #0d2455 100%);
+      padding: 80px 32px 64px;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 1;
+    }
+    .hero-inner { position: relative; max-width: 1100px; margin: 0 auto; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--gold); letter-spacing: .12em; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 32px; height: 1px; background: var(--gold);
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 900; line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero-sub {
+      font-size: 17px; color: rgba(255,255,255,.7);
+      max-width: 640px; line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .hero-meta {
+      display: flex; gap: 24px; flex-wrap: wrap;
+    }
+    .hero-chip {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(201,168,76,.12);
+      border: 1px solid rgba(201,168,76,.25);
+      border-radius: 20px; padding: 6px 16px;
+      font-size: 12px; color: var(--gold-light);
+      font-family: var(--font-mono);
+    }
+    .hero-chip svg { width: 13px; height: 13px; fill: var(--gold); }
+
+    /* ── SECTION LAYOUT ─────────────────────────────────────── */
+    .section {
+      max-width: 1100px; margin: 0 auto;
+      padding: 64px 32px;
+    }
+    .section + .section { padding-top: 0; }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,.3), transparent);
+      margin: 0 32px;
+    }
+
+    .section-label {
+      font-family: var(--font-mono); font-size: 10px;
+      color: var(--gold); letter-spacing: .14em; text-transform: uppercase;
+      margin-bottom: 8px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(201,168,76,.25); }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 700; color: var(--white);
+      margin-bottom: 8px; line-height: 1.2;
+    }
+    .section-desc {
+      font-size: 14px; color: rgba(255,255,255,.55);
+      margin-bottom: 36px; max-width: 600px;
+    }
+
+    /* ── CARD BASE ───────────────────────────────────────────── */
+    .card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .card:hover {
+      border-color: rgba(201,168,76,.3);
+      box-shadow: var(--shadow-md);
+    }
+    .card-gold {
+      background: rgba(201,168,76,.07);
+      border-color: rgba(201,168,76,.2);
+    }
+
+    /* ── POSITIONING PILLARS ─────────────────────────────────── */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .pillar {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-left: 3px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      transition: all .2s;
+    }
+    .pillar:hover {
+      background: rgba(201,168,76,.06);
+      border-color: rgba(201,168,76,.4);
+      transform: translateY(-2px);
+    }
+    .pillar-num {
+      font-family: var(--font-mono); font-size: 10px;
+      color: var(--gold); letter-spacing: .1em;
+      margin-bottom: 6px;
+    }
+    .pillar-title {
+      font-size: 15px; font-weight: 600; color: var(--white);
+      margin-bottom: 6px;
+    }
+    .pillar-body {
+      font-size: 13px; color: rgba(255,255,255,.6);
+      line-height: 1.6;
+    }
+
+    /* ── CALLOUT BOX ─────────────────────────────────────────── */
+    .callout {
+      background: rgba(201,168,76,.08);
+      border: 1px solid rgba(201,168,76,.3);
+      border-left: 4px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      font-size: 14px; font-style: italic;
+      color: rgba(255,255,255,.85);
+      line-height: 1.7;
+      margin: 24px 0;
+    }
+    .callout strong { color: var(--gold); font-style: normal; }
+
+    /* ── SIGNAL TABLE ────────────────────────────────────────── */
+    .signal-table {
+      width: 100%; border-collapse: collapse;
+      font-size: 13px;
+    }
+    .signal-table thead th {
+      background: var(--navy-mid);
+      color: var(--gold);
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: 12px 16px; text-align: left;
+      border-bottom: 2px solid rgba(201,168,76,.3);
+    }
+    .signal-table tbody tr {
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      transition: background .15s;
+    }
+    .signal-table tbody tr:hover { background: rgba(201,168,76,.05); }
+    .signal-table td {
+      padding: 14px 16px; vertical-align: top;
+      color: rgba(255,255,255,.75);
+    }
+    .signal-table td:first-child {
+      font-weight: 600; color: var(--white);
+      min-width: 180px;
+    }
+    .signal-table td:last-child {
+      color: var(--gold-light); font-family: var(--font-mono);
+      font-size: 12px; white-space: nowrap;
+    }
+    .signal-dot {
+      display: inline-block; width: 8px; height: 8px;
+      background: var(--gold); border-radius: 50%;
+      margin-right: 8px; flex-shrink: 0;
+    }
+
+    /* ── TIMING TIMELINE ─────────────────────────────────────── */
+    .timeline {
+      display: flex; gap: 0;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute; top: 40px; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--gold), rgba(201,168,76,.2));
+      z-index: 0;
+    }
+    .timeline-phase {
+      flex: 1; position: relative; z-index: 1;
+      padding: 0 12px;
+    }
+    .timeline-phase:first-child { padding-left: 0; }
+    .timeline-phase:last-child { padding-right: 0; }
+
+    .phase-dot {
+      width: 16px; height: 16px;
+      background: var(--gold); border-radius: 50%;
+      border: 3px solid var(--navy);
+      box-shadow: 0 0 0 2px var(--gold);
+      margin-bottom: 16px;
+    }
+    .phase-time {
+      font-family: var(--font-mono); font-size: 10px;
+      color: var(--gold); letter-spacing: .08em;
+      margin-bottom: 6px;
+    }
+    .phase-name {
+      font-size: 14px; font-weight: 600; color: var(--white);
+      margin-bottom: 6px;
+    }
+    .phase-role {
+      font-size: 11px; color: var(--gold-light); font-style: italic;
+      margin-bottom: 8px;
+    }
+    .phase-desc {
+      font-size: 12px; color: rgba(255,255,255,.55); line-height: 1.55;
+    }
+    .phase-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      padding: 16px; margin-top: 8px;
+      transition: all .2s;
+    }
+    .phase-card:hover {
+      border-color: rgba(201,168,76,.3);
+      background: rgba(201,168,76,.06);
+    }
+
+    /* ── QUESTION BANK ───────────────────────────────────────── */
+    .q-group { margin-bottom: 28px; }
+    .q-group-label {
+      font-family: var(--font-mono); font-size: 10px;
+      color: var(--gold); letter-spacing: .1em; text-transform: uppercase;
+      margin-bottom: 12px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .q-group-label::after { content: ''; flex: 1; height: 1px; background: rgba(201,168,76,.2); }
+
+    .question-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-bottom: 10px;
+      position: relative;
+      transition: all .2s;
+      cursor: default;
+    }
+    .question-card:hover {
+      border-color: rgba(201,168,76,.35);
+      background: rgba(201,168,76,.05);
+    }
+    .question-card .q-num {
+      position: absolute; top: 16px; left: 20px;
+      font-family: var(--font-mono); font-size: 10px;
+      color: var(--gold); letter-spacing: .06em;
+    }
+    .question-card .q-text {
+      font-size: 14px; font-style: italic;
+      color: rgba(255,255,255,.88);
+      padding-left: 36px; line-height: 1.6;
+      margin-bottom: 8px;
+    }
+    .question-card .q-listen {
+      font-size: 12px; color: rgba(255,255,255,.45);
+      padding-left: 36px; line-height: 1.5;
+    }
+    .question-card .q-listen span { color: var(--gold-light); }
+
+    /* ── PATTERNS GRID ───────────────────────────────────────── */
+    .patterns-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+    }
+    .pattern-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07);
+      border-top: 2px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      transition: all .2s;
+    }
+    .pattern-card:hover {
+      background: rgba(201,168,76,.06);
+      border-top-color: var(--gold-light);
+    }
+    .pattern-num {
+      font-family: var(--font-mono); font-size: 10px;
+      color: var(--gold); margin-bottom: 6px;
+    }
+    .pattern-name { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 6px; }
+    .pattern-desc { font-size: 12px; color: rgba(255,255,255,.55); line-height: 1.5; }
+
+    /* ── ROI FORMULAS ────────────────────────────────────────── */
+    .roi-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+    }
+    .roi-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: all .2s;
+    }
+    .roi-card:hover { border-color: rgba(201,168,76,.3); }
+    .roi-label {
+      font-family: var(--font-mono); font-size: 10px;
+      color: var(--gold); letter-spacing: .1em;
+      text-transform: uppercase; margin-bottom: 8px;
+    }
+    .roi-name { font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 10px; }
+    .roi-formula {
+      background: rgba(10,31,68,.6);
+      border: 1px solid rgba(201,168,76,.2);
+      border-radius: 4px; padding: 10px 12px;
+      font-family: var(--font-mono); font-size: 12px;
+      color: rgba(255,255,255,.7); line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    .roi-example {
+      font-size: 12px; color: rgba(255,255,255,.5);
+      font-style: italic; line-height: 1.5;
+    }
+    .roi-example strong { color: var(--gold-light); font-style: normal; }
+
+    /* ── LIVE SCRIPT BOX ─────────────────────────────────────── */
+    .live-script {
+      background: rgba(10,31,68,.7);
+      border: 1px solid rgba(201,168,76,.25);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 24px 0;
+      position: relative;
+    }
+    .live-script::before {
+      content: 'LIVE SCRIPT';
+      position: absolute; top: -9px; left: 20px;
+      background: var(--gold); color: var(--navy);
+      font-family: var(--font-mono); font-size: 9px;
+      font-weight: 600; letter-spacing: .1em;
+      padding: 2px 8px; border-radius: 3px;
+    }
+    .live-script p {
+      font-size: 14px; font-style: italic;
+      color: rgba(255,255,255,.85); line-height: 1.8;
+    }
+    .live-script p strong { color: var(--gold); font-style: normal; }
+
+    /* ── OBJECTION CARDS ─────────────────────────────────────── */
+    .objection-set { display: grid; gap: 20px; }
+    .obj-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: box-shadow .2s;
+    }
+    .obj-card:hover { box-shadow: var(--shadow-md); }
+    .obj-header {
+      background: var(--navy-mid);
+      padding: 16px 22px;
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .obj-icon {
+      width: 32px; height: 32px; flex-shrink: 0;
+      background: rgba(201,168,76,.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+    }
+    .obj-title {
+      font-size: 15px; font-weight: 600; color: var(--white);
+      font-style: italic; line-height: 1.4;
+    }
+    .obj-body { display: grid; grid-template-columns: 1fr 1fr; }
+    .obj-col { padding: 18px 22px; }
+    .obj-col:first-child { border-right: 1px solid rgba(255,255,255,.06); }
+    .obj-col-label {
+      font-family: var(--font-mono); font-size: 9px;
+      color: var(--gold); letter-spacing: .1em;
+      text-transform: uppercase; margin-bottom: 8px;
+    }
+    .obj-col-text {
+      font-size: 13px; color: rgba(255,255,255,.65);
+      line-height: 1.6;
+    }
+    .obj-script {
+      background: rgba(10,31,68,.5);
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 16px 22px;
+      font-size: 13px; font-style: italic;
+      color: rgba(255,255,255,.8); line-height: 1.7;
+    }
+
+    /* ── QUICK-REFERENCE CARD ────────────────────────────────── */
+    .qr-wrap {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+      margin-bottom: 24px;
+    }
+    .qr-card { border-radius: var(--radius-lg); padding: 24px; }
+    .qr-card.never { background: rgba(192,57,43,.08); border: 1px solid rgba(192,57,43,.25); }
+    .qr-card.always { background: rgba(26,122,74,.08); border: 1px solid rgba(26,122,74,.25); }
+    .qr-title {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase;
+      margin-bottom: 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .qr-title.never { color: #e74c3c; }
+    .qr-title.always { color: #2ecc71; }
+    .qr-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13px; color: rgba(255,255,255,.75);
+      margin-bottom: 10px; line-height: 1.5;
+    }
+    .qr-icon { flex-shrink: 0; margin-top: 1px; font-size: 12px; }
+
+    .sequence-bar {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201,168,76,.25);
+      border-radius: var(--radius);
+      padding: 20px 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .seq-step {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .seq-dot {
+      width: 10px; height: 10px; background: var(--gold);
+      border-radius: 50%; flex-shrink: 0;
+    }
+    .seq-text { font-size: 13px; color: var(--white); }
+    .seq-time { font-family: var(--font-mono); font-size: 10px; color: var(--gold); }
+    .seq-arrow { color: rgba(201,168,76,.4); font-size: 16px; }
+
+    /* ── FOOTER ──────────────────────────────────────────────── */
+    .footer {
+      background: rgba(0,0,0,.3);
+      border-top: 1px solid rgba(201,168,76,.15);
+      padding: 28px 32px;
+      text-align: center;
+    }
+    .footer p {
+      font-size: 12px; color: rgba(255,255,255,.35);
+      font-family: var(--font-mono);
+    }
+    .footer a { color: var(--gold); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+
+    /* ── TABS ────────────────────────────────────────────────── */
+    .tabs { display: flex; gap: 0; margin-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .tab {
+      padding: 10px 20px;
+      font-size: 13px; font-weight: 500;
+      color: rgba(255,255,255,.5);
+      cursor: pointer; border-bottom: 2px solid transparent;
+      transition: all .2s; margin-bottom: -1px;
+    }
+    .tab:hover { color: var(--gold); }
+    .tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+    /* ── OPENING SCRIPTS ─────────────────────────────────────── */
+    .scripts-grid { display: grid; gap: 16px; }
+    .script-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .script-header {
+      background: rgba(201,168,76,.1);
+      border-bottom: 1px solid rgba(201,168,76,.2);
+      padding: 12px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .script-label {
+      font-family: var(--font-mono); font-size: 10px;
+      color: var(--gold); letter-spacing: .1em; text-transform: uppercase;
+    }
+    .script-body {
+      padding: 20px;
+      font-size: 14px; font-style: italic;
+      color: rgba(255,255,255,.82); line-height: 1.8;
+    }
+    .script-body strong { color: var(--white); font-style: normal; }
+
+    /* ── UTIL ────────────────────────────────────────────────── */
+    .mb-8 { margin-bottom: 8px; }
+    .mb-16 { margin-bottom: 16px; }
+    .mb-24 { margin-bottom: 24px; }
+    .mb-32 { margin-bottom: 32px; }
+    .text-gold { color: var(--gold); }
+    .text-sm { font-size: 13px; }
+    .text-xs { font-size: 11px; font-family: var(--font-mono); }
+
+    /* ── WIREFRAME ANNOTATIONS ───────────────────────────────── */
+    .wf-note {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(201,168,76,.12);
+      border: 1px dashed rgba(201,168,76,.4);
+      border-radius: 4px; padding: 4px 10px;
+      font-size: 11px; color: var(--gold);
+      font-family: var(--font-mono);
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .timeline { flex-direction: column; gap: 16px; }
+      .timeline::before { display: none; }
+      .qr-wrap { grid-template-columns: 1fr; }
+      .obj-body { grid-template-columns: 1fr; }
+      .topnav-links { display: none; }
+      .sequence-bar { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════ TOP NAV -->
+<nav class="topnav">
+  <div class="topnav-brand">
+    <span class="topnav-badge">GRAVITY</span>
+    <span class="topnav-title">Sales Discovery Add-On</span>
+  </div>
+  <div class="topnav-links">
+    <a href="#positioning" class="active">Positioning</a>
+    <a href="#signals">Signals</a>
+    <a href="#timing">Timing</a>
+    <a href="#scripts">Scripts</a>
+    <a href="#questions">Questions</a>
+    <a href="#roi">ROI</a>
+    <a href="#objections">Objections</a>
+    <a href="#quickref">Quick Ref</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════════════════════ HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">GRAVITY Framework · Sales Discovery Add-On</div>
+    <h1>You Are Not the <span>AI Business.</span><br>You Are the Operational<br>Waste Eliminator.</h1>
+    <p class="hero-sub">This module integrates directly with the GRAVITY Worksheets as a live reference for every RSD discovery call — from pre-call research through objection handling and ROI close.</p>
+    <div class="hero-meta">
+      <div class="hero-chip">
+        <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill-opacity=".3"/><path d="M8 4v4l3 2"/></svg>
+        30-Min Call Structure
+      </div>
+      <div class="hero-chip">
+        <svg viewBox="0 0 16 16"><path d="M2 4h12M2 8h8M2 12h10"/><path stroke-width="1.5" d="M2 4h12M2 8h8M2 12h10" fill="none" stroke="currentColor" stroke-linecap="round"/></svg>
+        9 Deep-Dive Questions
+      </div>
+      <div class="hero-chip">
+        <svg viewBox="0 0 16 16"><path d="M8 2l2 5h5l-4 3 2 5-5-3-5 3 2-5-4-3h5z"/></svg>
+        5 ROI Formulas
+      </div>
+      <div class="hero-chip">
+        <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>
+        3 Objection Scripts
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════════════════════ SECTION 1: POSITIONING -->
+<section class="section" id="positioning">
+  <div class="section-label">Section 01</div>
+  <h2 class="section-title">The Core Positioning Shift</h2>
+  <p class="section-desc">Lock this in before every call, every proposal, every follow-up.</p>
+
+  <div class="callout" style="margin-bottom:32px;">
+    <strong>GRAVITY Rule:</strong> Every word in your pitch that doesn't connect to time saved, money recovered, or waste eliminated is a word costing you the deal. Stop leading with AI. Lead with the problem.
+  </div>
+
+  <div class="pillars-grid">
+    <div class="pillar">
+      <div class="pillar-num">PILLAR 01</div>
+      <div class="pillar-title">Lead with Process, Not Tools</div>
+      <div class="pillar-body">Anchor your message to bottleneck mapping and operational design. This signals you understand how the business works — not just how the software works.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">PILLAR 02</div>
+      <div class="pillar-title">Be the Architect, Not the Installer</div>
+      <div class="pillar-body">Anyone can connect two apps. Very few can analyze a full operation and design a system that scales. Position as the architect who owns the vision.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">PILLAR 03</div>
+      <div class="pillar-title">Sell Leverage, Not AI</div>
+      <div class="pillar-body">Companies don't want more tools — they want less friction. Lead with what disappears from their plate, not what gets added to their tech stack.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">PILLAR 04</div>
+      <div class="pillar-title">Be the ROI Partner, Not the Vendor</div>
+      <div class="pillar-body">Vendors sell outputs. Partners sell outcomes: saved hours, headcount redirected, and revenue accelerated. Outcomes are always measured in their language.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">PILLAR 05</div>
+      <div class="pillar-title">Be the End-to-End System Builder</div>
+      <div class="pillar-body">The person who maps, designs, builds, deploys, trains, documents, and supports eliminates nearly all competition immediately. Own the full lifecycle.</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ════════════════════════════════════════════════════════════ SECTION 2: SIGNALS -->
+<section class="section" id="signals">
+  <div class="section-label">Section 02</div>
+  <h2 class="section-title">Pre-Call Ready-Buyer Signal Checklist</h2>
+  <p class="section-desc">Use before every first-touch outreach. 3+ signals = likely $50K–$200K in annual operational waste sitting untouched.</p>
+
+  <div class="wf-note">⚑ Interactive checklist — signals toggle on click in final build</div>
+
+  <table class="signal-table">
+    <thead>
+      <tr>
+        <th>Signal</th>
+        <th>How to Spot It (Public Sources)</th>
+        <th>Waste Potential</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="signal-dot"></span>Hiring for Admin / Ops / Coordinator</td>
+        <td>Check Indeed, LinkedIn, company job page. Compare $40–55K hire cost ($52–75K fully loaded) to a $1–5K AI agent build — same output, no turnover.</td>
+        <td>$52K–$75K/yr displaced</td>
+      </tr>
+      <tr>
+        <td><span class="signal-dot"></span>Founder Still in Day-to-Day Ops</td>
+        <td>Website lists owner as primary contact. Google reviews mention owner by name in operational context. LinkedIn still shows Owner-Operator title.</td>
+        <td>$50K–$100K redirectable capacity</td>
+      </tr>
+      <tr>
+        <td><span class="signal-dot"></span>Recently Announced Growth Milestone</td>
+        <td>LinkedIn / social: new location, record quarter, revenue milestone, X+ projects completed. Rapid growth always equals broken systems.</td>
+        <td>High urgency — owner has authority</td>
+      </tr>
+      <tr>
+        <td><span class="signal-dot"></span>Running 5+ Disconnected Tools</td>
+        <td>Logos in website footer (ServiceTitan, QuickBooks, Google, etc.). Staff copy-pasting between systems is near-universal in this revenue band.</td>
+        <td>$20K–$60K/yr in manual transfer</td>
+      </tr>
+      <tr>
+        <td><span class="signal-dot"></span>Google Reviews Mention Operational Friction</td>
+        <td>1–2 star reviews citing missed calls, slow follow-up, communication gaps. These are a free operational audit of any local business.</td>
+        <td>Quantifiable service delivery gap</td>
+      </tr>
+      <tr>
+        <td><span class="signal-dot"></span>High Workflow-Volume Industry</td>
+        <td>Healthcare, real estate, finance, logistics, hospitality, contracting — repetitive tasks, multiple handoffs, multi-tool data movement at scale.</td>
+        <td>Volume × ROI formula = large deal</td>
+      </tr>
+      <tr>
+        <td><span class="signal-dot"></span>Revenue Band: $500K–$5M</td>
+        <td>Big enough for real operational pain across multiple people. Small enough that there's no internal IT / CTO. Owner has authority to write the check.</td>
+        <td>Optimal deal size + closing speed</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout" style="margin-top:24px;">
+    <strong>GRAVITY Pre-Call Rule:</strong> Never get on a discovery call cold. Know 3+ signals before the conversation starts. The call confirms what you already suspect — it doesn't build the case from zero.
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ════════════════════════════════════════════════════════════ SECTION 3: TIMING -->
+<section class="section" id="timing">
+  <div class="section-label">Section 03</div>
+  <h2 class="section-title">30-Minute Discovery Call Timing Guide</h2>
+  <p class="section-desc">The deal is won or lost here — not in the proposal, not in the follow-up.</p>
+
+  <div class="timeline mb-32">
+    <div class="timeline-phase">
+      <div class="phase-dot"></div>
+      <div class="phase-card">
+        <div class="phase-time">0–2 MIN</div>
+        <div class="phase-name">Open &amp; Frame</div>
+        <div class="phase-role">The Consultant</div>
+        <div class="phase-desc">Set the frame. Make it about them. Use the Opening Script. No slides. No tools talk. Establish this is a diagnosis, not a demo.</div>
+      </div>
+    </div>
+    <div class="timeline-phase">
+      <div class="phase-dot"></div>
+      <div class="phase-card">
+        <div class="phase-time">2–7 MIN</div>
+        <div class="phase-name">Business Overview</div>
+        <div class="phase-role">The Architect Listening</div>
+        <div class="phase-desc">Ask 3–5 overview questions. Let them talk 60+ seconds uninterrupted. Build your mental map: revenue, team size, volume, tech stack.</div>
+      </div>
+    </div>
+    <div class="timeline-phase">
+      <div class="phase-dot"></div>
+      <div class="phase-card">
+        <div class="phase-time">7–20 MIN</div>
+        <div class="phase-name">Workflow Deep Dive</div>
+        <div class="phase-role">The Surgeon Diagnosing</div>
+        <div class="phase-desc">Run the 9 Deep-Dive questions. Listen for the 5 Billable System Patterns. When they describe a problem — don't solve it. Say "Tell me more about that."</div>
+      </div>
+    </div>
+    <div class="timeline-phase">
+      <div class="phase-dot"></div>
+      <div class="phase-card">
+        <div class="phase-time">20–25 MIN</div>
+        <div class="phase-name">Quantify ROI</div>
+        <div class="phase-role">The CFO Doing Math</div>
+        <div class="phase-desc">Pull numbers FROM them using the ROI formulas. Do the math out loud together. When they confirm the number, they've sold themselves.</div>
+      </div>
+    </div>
+    <div class="timeline-phase">
+      <div class="phase-dot"></div>
+      <div class="phase-card">
+        <div class="phase-time">25–30 MIN</div>
+        <div class="phase-name">Close &amp; Next Steps</div>
+        <div class="phase-role">The Partner</div>
+        <div class="phase-desc">Summarize 2–3 highest-leverage opportunities. Anchor cost of inaction. Present the next step as a natural move, not a pitch.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Timing Rule:</strong> If you're still on Overview questions at the 10-minute mark, you're pitching — not diagnosing. Redirect: <em>"Let me ask you something more specific about how your team handles [X]."</em>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ════════════════════════════════════════════════════════════ SECTION 4: SCRIPTS -->
+<section class="section" id="scripts">
+  <div class="section-label">Section 04</div>
+  <h2 class="section-title">Opening Scripts &amp; Frame-Setting Templates</h2>
+  <p class="section-desc">Use word-for-word or as a close guide. The first 60 seconds determine whether this is a pitch or a diagnosis.</p>
+
+  <div class="scripts-grid mb-32">
+    <div class="script-card">
+      <div class="script-header">
+        <span class="script-label">Primary — Cold / Warm Intro</span>
+      </div>
+      <div class="script-body">
+        "Great to meet you. Before anything else — I want to understand how your operation actually runs day-to-day. Where your team spends time, where things get stuck, what your current tech stack looks like. From there we can identify where the biggest opportunities are. And if there's a clear fit, I'll walk you through exactly what next steps look like. <strong>Sound good?</strong>"
+      </div>
+    </div>
+    <div class="script-card">
+      <div class="script-header">
+        <span class="script-label">Referral / Warm Intro Variant</span>
+      </div>
+      <div class="script-body">
+        "[Name] speaks highly of what you've built. I always like to start these conversations by getting a real picture of how the operation runs — not the polished version, <strong>the real one.</strong> The busy parts, the frustrating parts, the stuff that slows everything down. That's where the value always lives. <strong>Mind if we start there?</strong>"
+      </div>
+    </div>
+    <div class="script-card">
+      <div class="script-header">
+        <span class="script-label">Inbound / Request Variant</span>
+      </div>
+      <div class="script-body">
+        "Thanks for reaching out. To make sure anything I put together is actually built around your business — not a generic deck — I'd love to spend most of this call in your world. Walk me through how a typical week runs for you and your team. <strong>I'll ask some pointed questions along the way.</strong>"
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-bottom:12px;">Frame Rules</div>
+  <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap:10px;">
+    <div class="card" style="padding:14px 18px;">
+      <div style="font-size:12px; color:rgba(255,255,255,.55);">🚫 Never open with your services, tools, or case studies</div>
+    </div>
+    <div class="card" style="padding:14px 18px;">
+      <div style="font-size:12px; color:rgba(255,255,255,.55);">🚫 Never use the word "AI" in the first 5 minutes</div>
+    </div>
+    <div class="card" style="padding:14px 18px;">
+      <div style="font-size:12px; color:rgba(255,255,255,.55);">✅ The frame is always: <strong style="color:var(--gold)">Diagnosis, not Demo</strong></div>
+    </div>
+    <div class="card" style="padding:14px 18px;">
+      <div style="font-size:12px; color:rgba(255,255,255,.55);">✅ Use <strong style="color:var(--gold)">"Are you open to"</strong> for any soft ask</div>
+    </div>
+    <div class="card" style="padding:14px 18px;">
+      <div style="font-size:12px; color:rgba(255,255,255,.55);">✅ Use <strong style="color:var(--gold)">"Know that"</strong> when establishing credibility</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ════════════════════════════════════════════════════════════ SECTION 5: QUESTIONS -->
+<section class="section" id="questions">
+  <div class="section-label">Section 05</div>
+  <h2 class="section-title">Workflow Deep-Dive Question Bank</h2>
+  <p class="section-desc">Run during minutes 7–20. Listen for the 5 Billable System Patterns below. Never solve in the moment — say "Tell me more about that."</p>
+
+  <div class="q-group">
+    <div class="q-group-label">The Opener — Always Lead With This</div>
+    <div class="question-card">
+      <div class="q-num">Q1</div>
+      <div class="q-text">"Walk me through your process from start to finish — from the moment a new client or order comes in, what happens?"</div>
+      <div class="q-listen">Listen for: <span>Where it starts, who touches it first, how information moves, where handoffs happen, where the prospect pauses or sighs.</span></div>
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-group-label">Volume &amp; Capacity</div>
+    <div class="question-card">
+      <div class="q-num">Q2</div>
+      <div class="q-text">"Which teams rely most on manual work right now? What does a heavy day look like for them?"</div>
+      <div class="q-listen">Listen for: <span>Bottlenecks, overwhelmed roles, recurring firefighting, tasks that expand to fill all available time.</span></div>
+    </div>
+    <div class="question-card">
+      <div class="q-num">Q3</div>
+      <div class="q-text">"How many [leads / appointments / orders / reports / follow-ups] does your team process in a typical week?"</div>
+      <div class="q-listen">Listen for: <span>Volume numbers — this is the multiplier in every ROI formula.</span></div>
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-group-label">Tool &amp; Integration</div>
+    <div class="question-card">
+      <div class="q-num">Q4</div>
+      <div class="q-text">"Walk me through your current tech stack — what tools does your team use day-to-day?"</div>
+      <div class="q-listen">Listen for: <span>5+ disconnected tools, anything without native integration to anything else, tools they "love but hate."</span></div>
+    </div>
+    <div class="question-card">
+      <div class="q-num">Q5</div>
+      <div class="q-text">"When information needs to move between those tools — how does that happen today?"</div>
+      <div class="q-listen">Listen for: <span>Copy-paste, manual re-entry, email chains. That gap is a billable automation every single time.</span></div>
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-group-label">Bottleneck &amp; Friction</div>
+    <div class="question-card">
+      <div class="q-num">Q6</div>
+      <div class="q-text">"Where does work tend to slow down or get stuck? What usually triggers that?"</div>
+      <div class="q-listen">Listen for: <span>Approval delays, missing information, someone not responding fast enough — each is an automation target.</span></div>
+    </div>
+    <div class="question-card">
+      <div class="q-num">Q7</div>
+      <div class="q-text">"Is there anything that basically stops when one specific person is out or unavailable?"</div>
+      <div class="q-listen">Listen for: <span>Single-point-of-failure processes. These are the highest-urgency and easiest-to-close automation targets.</span></div>
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-group-label">Owner Time &amp; Strategic Capacity</div>
+    <div class="question-card">
+      <div class="q-num">Q8</div>
+      <div class="q-text">"As the owner — what percentage of your week are you personally spending on operational tasks versus revenue-generating work?"</div>
+      <div class="q-listen">Listen for: <span>Any number above 30% in ops is a major ROI opportunity. Owner time is always worth $100–$250/hr minimum.</span></div>
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-group-label">Growth Readiness — The Anchor Close Setup</div>
+    <div class="question-card">
+      <div class="q-num">Q9</div>
+      <div class="q-text">"If you doubled your volume tomorrow — which part of your operation would break first?"</div>
+      <div class="q-listen">Listen for: <span>The constraint they already know about but haven't solved. This becomes the anchor point for the close and the headline of the proposal.</span></div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>GRAVITY Discovery Rule:</strong> When the prospect describes a problem — don't say "we can automate that." Say <em>"Tell me more about that."</em> The deeper they go, the larger the deal becomes.
+  </div>
+
+  <div style="margin-top:32px;">
+    <div class="section-label" style="margin-bottom:16px;">The 5 Billable System Patterns — Listen for These</div>
+    <div class="patterns-grid">
+      <div class="pattern-card">
+        <div class="pattern-num">PATTERN 01</div>
+        <div class="pattern-name">Manual Multi-System Entry</div>
+        <div class="pattern-desc">Data entered into multiple systems by hand. Always indicates an integration gap with immediate, calculable ROI.</div>
+      </div>
+      <div class="pattern-card">
+        <div class="pattern-num">PATTERN 02</div>
+        <div class="pattern-name">Single-Person Approval Bottleneck</div>
+        <div class="pattern-desc">Approvals held by one person. Work stops, backlogs build. Classic workflow automation opportunity.</div>
+      </div>
+      <div class="pattern-card">
+        <div class="pattern-num">PATTERN 03</div>
+        <div class="pattern-name">Person-Dependent Process</div>
+        <div class="pattern-desc">Work stops when a specific person is unavailable. Highest urgency trigger. Easiest close because the pain is constant.</div>
+      </div>
+      <div class="pattern-card">
+        <div class="pattern-num">PATTERN 04</div>
+        <div class="pattern-name">Copy-Paste Between Non-Integrated Tools</div>
+        <div class="pattern-desc">Annual cost always larger than the owner realizes. ROI calculation is immediate and undeniable — show it side by side.</div>
+      </div>
+      <div class="pattern-card">
+        <div class="pattern-num">PATTERN 05</div>
+        <div class="pattern-name">Critical Info in Email / Memory</div>
+        <div class="pattern-desc">Invisible operational debt. AI knowledge base or CRM automation is the solution. Quantify with error cost formula.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ════════════════════════════════════════════════════════════ SECTION 6: ROI -->
+<section class="section" id="roi">
+  <div class="section-label">Section 06</div>
+  <h2 class="section-title">ROI Calculation Formulas &amp; Live Scripts</h2>
+  <p class="section-desc">All inputs come FROM the prospect — not from you. Do the math out loud. When they confirm the number, they've sold themselves.</p>
+
+  <div class="live-script mb-32">
+    <p>"If I'm hearing this right — <strong>[X hours]</strong> per week across <strong>[Y people]</strong> at roughly <strong>[Z per hour]</strong>, fully loaded — that's about <strong>$[Total] per year</strong> just on that one task. <strong>Does that sound right?</strong>"</p>
+  </div>
+
+  <div class="roi-grid mb-32">
+    <div class="roi-card">
+      <div class="roi-label">Formula 01</div>
+      <div class="roi-name">Manual Hours Removed</div>
+      <div class="roi-formula">hrs/wk on task × people who touch it<br>× fully loaded hourly rate × 52</div>
+      <div class="roi-example">Front desk 18 hrs/wk × $28/hr = <strong>~$26K/yr</strong> on appointment reminders alone</div>
+    </div>
+    <div class="roi-card">
+      <div class="roi-label">Formula 02</div>
+      <div class="roi-name">Cycle Time Reduction</div>
+      <div class="roi-formula">% more leads converting (speed advantage)<br>× avg deal value × monthly lead volume</div>
+      <div class="roi-example">Same-day vs. 3-day estimates: 30% more conversions × $2,500 avg = <strong>+$10K/mo</strong></div>
+    </div>
+    <div class="roi-card">
+      <div class="roi-label">Formula 03</div>
+      <div class="roi-name">Error Reduction</div>
+      <div class="roi-formula">errors per month × cost per error × 12</div>
+      <div class="roi-example">5 errors/mo at $500 each = <strong>$30K/yr</strong> in rework, refunds, and lost trust</div>
+    </div>
+    <div class="roi-card">
+      <div class="roi-label">Formula 04</div>
+      <div class="roi-name">Team Capacity Unlocked</div>
+      <div class="roi-formula">owner/manager hrs/wk on ops tasks<br>× conservative hourly value × 52</div>
+      <div class="roi-example">10 hrs/wk × $150/hr = <strong>$78K/yr</strong> in redirectable strategic capacity</div>
+    </div>
+    <div class="roi-card">
+      <div class="roi-label">Formula 05</div>
+      <div class="roi-name">Headcount Cost Displaced</div>
+      <div class="roi-formula">fully loaded new hire cost<br>vs. monthly AI agent cost × 12</div>
+      <div class="roi-example">$60K hire vs. $500/mo AI receptionist = <strong>$54K/yr savings</strong> at 80% task coverage</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>GRAVITY ROI Rule:</strong> Never estimate the number for them. The inputs must come from their mouth. Their number. Their confirmation. That is your proposal's anchor — and you can quote them directly back to them in writing.
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ════════════════════════════════════════════════════════════ SECTION 7: OBJECTIONS -->
+<section class="section" id="objections">
+  <div class="section-label">Section 07</div>
+  <h2 class="section-title">Objection Response Scripts</h2>
+  <p class="section-desc">The three most common local business objections — and why each is actually a buying signal when you know how to flip it.</p>
+
+  <div class="objection-set">
+
+    <div class="obj-card">
+      <div class="obj-header">
+        <div class="obj-icon">⏱</div>
+        <div class="obj-title">"I don't have time to implement something new."</div>
+      </div>
+      <div class="obj-body">
+        <div class="obj-col">
+          <div class="obj-col-label">Why It's Good News</div>
+          <div class="obj-col-text">They're busy BECAUSE of the exact work this system eliminates. This is a threshold problem, not a timing problem. Budget is confirmed. Urgency is confirmed. They just don't see the exit yet.</div>
+        </div>
+        <div class="obj-col">
+          <div class="obj-col-label">GRAVITY Flip</div>
+          <div class="obj-col-text">Agree with the symptom, not the conclusion. Make the ask feel small. Frame it as removing from their plate — not adding to it.</div>
+        </div>
+      </div>
+      <div class="obj-script">
+        "You don't have time because of the exact work this system removes. We're not adding to your plate — we're deploying AI that takes it off. Three hours of your time over two weeks. We handle everything else. It works on day one."
+      </div>
+    </div>
+
+    <div class="obj-card">
+      <div class="obj-header">
+        <div class="obj-icon">💡</div>
+        <div class="obj-title">"I've tried something like this before and it didn't work."</div>
+      </div>
+      <div class="obj-body">
+        <div class="obj-col">
+          <div class="obj-col-label">Why It's Good News</div>
+          <div class="obj-col-text">They have budget. They understand the concept. They know what failure looks like. This is the most educated, solution-aware prospect you can find. They're not saying no — they're saying "convince me you're different."</div>
+        </div>
+        <div class="obj-col">
+          <div class="obj-col-label">GRAVITY Flip</div>
+          <div class="obj-col-text">Let them describe what went wrong. 9 times out of 10 someone built one piece without understanding the full system. Their bad experience becomes the argument for your process.</div>
+        </div>
+      </div>
+      <div class="obj-script">
+        "What happened? [Listen.] Nine times out of ten, someone built one piece without understanding how everything connects. That's exactly why we map the full operation first. Your experience becomes the argument for why our process is different — and why this time the system actually holds."
+      </div>
+    </div>
+
+    <div class="obj-card">
+      <div class="obj-header">
+        <div class="obj-icon">🧠</div>
+        <div class="obj-title">"My business is different — you can't automate what we do."</div>
+      </div>
+      <div class="obj-body">
+        <div class="obj-col">
+          <div class="obj-col-label">Why It's Good News</div>
+          <div class="obj-col-text">They're protecting their identity and expertise, not rejecting automation. They believe their judgment and relationships are irreplaceable — which is correct. Agree with that truth, then show what sits below it.</div>
+        </div>
+        <div class="obj-col">
+          <div class="obj-col-label">GRAVITY Flip</div>
+          <div class="obj-col-text">Agree first. Never say "we can automate everything." Show what the AI employees handle — the administrative layer — so their team focuses 100% on human work.</div>
+        </div>
+      </div>
+      <div class="obj-script">
+        "You're right — the judgment and relationship parts, we never touch those. What we handle: inquiries answered 24/7, reviews generated automatically, CRM updated after every interaction. What's left is your team spending 100% of their time on work only humans can do."
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout" style="margin-top:24px;">
+    <strong>GRAVITY Objection Rule:</strong> Never defend. Never pitch. Agree with the truth in their objection — then redirect to the cost of the problem they just described.
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ════════════════════════════════════════════════════════════ SECTION 8: QUICK REF -->
+<section class="section" id="quickref">
+  <div class="section-label">Section 08</div>
+  <h2 class="section-title">Quick-Reference Call Card</h2>
+  <p class="section-desc">Keep this visible during every discovery call. Print Section 8 as a single-page desk reference.</p>
+
+  <div class="qr-wrap">
+    <div class="qr-card never">
+      <div class="qr-title never">🚫 Never Say in First 5 Min</div>
+      <div class="qr-item"><span class="qr-icon">✗</span> "AI" / "Automation" / "Platform"</div>
+      <div class="qr-item"><span class="qr-icon">✗</span> Software name or tech stack</div>
+      <div class="qr-item"><span class="qr-icon">✗</span> Case studies or past clients</div>
+      <div class="qr-item"><span class="qr-icon">✗</span> "We can automate that"</div>
+      <div class="qr-item"><span class="qr-icon">✗</span> Pricing or packages</div>
+      <div class="qr-item"><span class="qr-icon">✗</span> "Could" (use "would" always)</div>
+    </div>
+    <div class="qr-card always">
+      <div class="qr-title always">✅ Always Do in Every Call</div>
+      <div class="qr-item"><span class="qr-icon">✓</span> Set the frame in the first 60 seconds</div>
+      <div class="qr-item"><span class="qr-icon">✓</span> Let them talk 60+ seconds uninterrupted</div>
+      <div class="qr-item"><span class="qr-icon">✓</span> Say "Tell me more about that" 3+ times</div>
+      <div class="qr-item"><span class="qr-icon">✓</span> Do the math out loud together</div>
+      <div class="qr-item"><span class="qr-icon">✓</span> Get THEIR confirmation of THEIR number</div>
+      <div class="qr-item"><span class="qr-icon">✓</span> Use "Are you open to" for soft CTAs</div>
+    </div>
+  </div>
+
+  <div class="sequence-bar">
+    <div class="seq-step">
+      <div class="seq-dot"></div>
+      <div>
+        <div class="seq-text">Frame</div>
+        <div class="seq-time">0–2 min</div>
+      </div>
+    </div>
+    <div class="seq-arrow">→</div>
+    <div class="seq-step">
+      <div class="seq-dot"></div>
+      <div>
+        <div class="seq-text">Overview</div>
+        <div class="seq-time">2–7 min</div>
+      </div>
+    </div>
+    <div class="seq-arrow">→</div>
+    <div class="seq-step">
+      <div class="seq-dot"></div>
+      <div>
+        <div class="seq-text">Deep Dive</div>
+        <div class="seq-time">7–20 min</div>
+      </div>
+    </div>
+    <div class="seq-arrow">→</div>
+    <div class="seq-step">
+      <div class="seq-dot"></div>
+      <div>
+        <div class="seq-text">Quantify ROI</div>
+        <div class="seq-time">20–25 min</div>
+      </div>
+    </div>
+    <div class="seq-arrow">→</div>
+    <div class="seq-step">
+      <div class="seq-dot"></div>
+      <div>
+        <div class="seq-text">Next Steps</div>
+        <div class="seq-time">25–30 min</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:24px; text-align:center; padding:20px; background:rgba(201,168,76,.06); border:1px solid rgba(201,168,76,.2); border-radius:var(--radius);">
+    <p style="font-family:var(--font-display); font-size:18px; color:var(--gold); margin-bottom:6px;">You are the Architect. Not the Vendor. Not the Pitcher.</p>
+    <p style="font-size:13px; color:rgba(255,255,255,.5);">The Operational Waste Eliminator who maps, designs, builds, deploys, trains, documents, and supports.</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ FOOTER -->
+<footer class="footer">
+  <p>
+    Real Space Digital &nbsp;·&nbsp;
+    <a href="https://realspacedigital.net">realspacedigital.net</a> &nbsp;·&nbsp;
+    <a href="mailto:info@realspacedigital.net">info@realspacedigital.net</a> &nbsp;·&nbsp;
+    (434) 215-4276 &nbsp;·&nbsp;
+    <a href="https://calendly.com/realspacedigital/30min">Book a Call</a>
+  </p>
+  <p style="margin-top:6px;">GRAVITY Framework Sales Discovery Add-On · Confidential — Internal Use Only · Train.rsddirect.com</p>
+</footer>
+
+<script>
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.topnav-links a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.topnav-links a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(s => observer.observe(s));
+
+  // Smooth entrance animations
+  const cards = document.querySelectorAll('.pillar, .question-card, .roi-card, .pattern-card, .obj-card, .script-card');
+  const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '0';
+        entry.target.style.transform = 'translateY(16px)';
+        setTimeout(() => {
+          entry.target.style.transition = 'opacity .4s ease, transform .4s ease';
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }, 60);
+        cardObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  cards.forEach(c => cardObserver.observe(c));
+</script>
+</body>
+</html>
