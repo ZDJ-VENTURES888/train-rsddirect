@@ -164,6 +164,48 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
 }
 .nav-link:hover { color: var(--gold-lt); }
 
+/* ── HAMBURGER ────────────────────────────── */
+.nav-burger {
+  display: none;
+  flex-direction: column; justify-content: center; align-items: center;
+  gap: 5px; width: 36px; height: 36px;
+  background: none; border: 1px solid rgba(201,152,42,.35); border-radius: 3px;
+  cursor: pointer; padding: 0; transition: border-color .25s;
+}
+.nav-burger:hover { border-color: var(--gold); }
+.nav-burger span {
+  display: block; width: 18px; height: 1.5px;
+  background: var(--gold); border-radius: 2px;
+  transition: transform .3s var(--ease), opacity .3s;
+}
+.nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ── MOBILE DRAWER ────────────────────────── */
+.nav-drawer {
+  display: none;
+  position: fixed; top: 56px; left: 0; right: 0; z-index: 999;
+  background: rgba(12,7,32,.97);
+  backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid rgba(201,152,42,.3);
+  padding: 1.5rem var(--gutter) 2rem;
+  flex-direction: column; gap: 1.25rem;
+  transform: translateY(-8px); opacity: 0;
+  transition: transform .35s var(--ease), opacity .35s var(--ease);
+}
+.nav-drawer.open {
+  display: flex; transform: translateY(0); opacity: 1;
+}
+.nav-drawer .drawer-link {
+  font-size: .8rem; font-weight: 500; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--mist); text-decoration: none;
+  padding: .75rem 0; border-bottom: 1px solid rgba(107,70,193,.2);
+  transition: color .25s;
+}
+.nav-drawer .drawer-link:hover { color: var(--gold-lt); }
+.nav-drawer .btn { width: 100%; text-align: center; margin-top: .5rem; justify-content: center; }
+
 /* ── HERO ─────────────────────────────────── */
 #hero {
   min-height: 100vh;
@@ -620,6 +662,11 @@ footer::before {
 .f-contact a:hover { color: var(--gold-xlt); }
 
 /* ── RESPONSIVE ──────────────────────────── */
+@media (max-width: 768px) {
+  .nav-link, .nav-right > .btn { display: none; }
+  .nav-burger { display: flex; }
+  .nav-right { gap: .75rem; }
+}
 @media (max-width: 960px) {
   #hero { grid-template-columns: 1fr; padding-top: 7rem; }
   .hero-right { display: none; }
@@ -656,7 +703,7 @@ footer::before {
 
 <!-- ─── NAV ─────────────────────────────────── -->
 <nav id="nav">
-  <a class="nav-logo" href="https://realspacedigital.net">
+  <a class="nav-logo" href="#">
     <div>
       <span>Real <span class="logo-mark">Space</span> Digital</span>
       <span class="logo-sub">Digitizing Reality. Elevating Sales.™</span>
@@ -667,12 +714,25 @@ footer::before {
     <a class="nav-link" href="#icps">Who We Serve</a>
     <a class="nav-link" href="#partners">Partners</a>
     <a class="btn btn-prime" href="https://calendly.com/realspacedigital/30min" target="_blank">
-      <!-- rocket icon -->
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
       Book Strategy Call
     </a>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- ─── MOBILE NAV DRAWER ─────────────────── -->
+<div class="nav-drawer" id="navDrawer" role="navigation" aria-label="Mobile navigation">
+  <a class="drawer-link" href="#system">The System</a>
+  <a class="drawer-link" href="#icps">Who We Serve</a>
+  <a class="drawer-link" href="#partners">Partners</a>
+  <a class="btn btn-prime" href="https://calendly.com/realspacedigital/30min" target="_blank">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+    Book Strategy Call
+  </a>
+</div>
 
 <!-- ─── HERO ─────────────────────────────────── -->
 <section id="hero-sec" style="position:relative;z-index:2;">
@@ -1372,80 +1432,4 @@ footer::before {
   </div>
 </footer>
 
-<!-- ─── SCRIPTS ────────────────────────────────── -->
-<script>
-// ── STARFIELD ──────────────────────────────────────────────
-(function(){
-  const c = document.getElementById('starfield');
-  const ctx = c.getContext('2d');
-  let W, H, stars = [];
-
-  function resize(){
-    W = c.width  = window.innerWidth;
-    H = c.height = window.innerHeight;
-    stars = Array.from({length:200}, () => ({
-      x: Math.random() * W, y: Math.random() * H,
-      r: Math.random() * 1.4 + .2,
-      o: Math.random() * .6 + .15,
-      s: Math.random() * .4 + .1,
-      d: Math.random() * Math.PI * 2,
-      t: Math.random() * 60
-    }));
-  }
-
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    const t = Date.now() / 3000;
-    stars.forEach(s => {
-      const pulse = Math.sin(t * s.s + s.d) * .3 + .7;
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
-      ctx.fillStyle = `rgba(${155 + Math.random()*20},${140 + Math.random()*20},${220},${s.o * pulse})`;
-      ctx.fill();
-    });
-    requestAnimationFrame(draw);
-  }
-
-  window.addEventListener('resize', resize);
-  resize(); draw();
-})();
-
-// ── SCROLL REVEAL ──────────────────────────────────────────
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.rx,.rl,.rr,.rs').forEach(el => io.observe(el));
-
-// ── ICP TABS ───────────────────────────────────────────────
-function showICP(id, btn){
-  document.querySelectorAll('.icp-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.icp-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('icp-'+id).classList.add('active');
-  btn.classList.add('active');
-
-  // re-trigger reveals in new panel
-  document.querySelectorAll('#icp-'+id+' .rl, #icp-'+id+' .rr').forEach(el => {
-    el.classList.remove('on');
-    setTimeout(() => el.classList.add('on'), 60);
-  });
-}
-
-// ── NAV SCROLL BEHAVIOR ────────────────────────────────────
-window.addEventListener('scroll', () => {
-  document.getElementById('nav').style.background =
-    window.scrollY > 60 ? 'rgba(5,3,13,.97)' : 'rgba(5,3,13,.85)';
-});
-
-// ── STAGGER system cards ───────────────────────────────────
-document.querySelectorAll('.sys-grid .sys-card').forEach((c,i) => {
-  c.style.transitionDelay = (i * .07) + 's';
-});
-document.querySelectorAll('.gq-grid .gq-card').forEach((c,i) => {
-  c.style.transitionDelay = (i * .06) + 's';
-});
-</script>
-</body>
-</html>
+<!-- ─── SCRIPTS ─�
