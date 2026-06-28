@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Berriz Carousel Generator — RSD Founders Tool</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --dark: #111118;
+      --dark-card: #16161e;
+      --dark-border: #2a2a3a;
+      --gold: #c9a84c;
+      --gold-dim: rgba(201,168,76,0.35);
+      --gold-glow: rgba(201,168,76,0.08);
+      --gold-text: #e2c068;
+      --white: #f4f4f0;
+      --white-dim: rgba(244,244,240,0.65);
+      --white-faint: rgba(244,244,240,0.15);
+      --accent: #8b5cf6;
+      --accent-glow: rgba(139,92,246,0.12);
+      --green: #4ade80;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    /* -- NAV BACK BAR -- */
+    .back-nav {
+      background: rgba(10,10,10,0.97);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .back-nav-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white-dim);
+    }
+    .back-nav-left a {
+      color: var(--gold);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .back-nav-left a:hover { opacity: 0.75; }
+    .back-nav-sep { color: var(--dark-border); }
+    .back-nav-badge {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dim);
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: var(--gold-glow);
+    }
+    /* -- HERO -- */
+    .hero {
+      text-align: center;
+      padding: 80px 40px 60px;
+      background: linear-gradient(180deg, rgba(201,168,76,0.04) 0%, transparent 100%);
+      border-bottom: 1px solid var(--dark-border);
+    }
+    .hero-eyebrow {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 6vw, 68px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero-sub {
+      font-size: 15px;
+      color: var(--white-dim);
+      max-width: 640px;
+      margin: 0 auto 30px;
+    }
+    .hero-tags {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .hero-tag {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: 1px solid var(--dark-border);
+      padding: 6px 16px;
+      border-radius: 20px;
+      color: var(--white-dim);
+    }
+    .hero-tag.gold { border-color: var(--gold-dim); color: var(--gold); background: var(--gold-glow); }
+    /* -- SECTION WRAPPER -- */
+    .section {
+      padding: 70px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3.5vw, 36px);
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .section-desc {
+      font-size: 14px;
+      color: var(--white-dim);
+      max-width: 700px;
+      margin-bottom: 40px;
+    }
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--dark-border);
+      margin: 0;
+    }
+    /* -- FORM GRID -- */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      max-width: 1000px;
+    }
+    @media (max-width: 900px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .form-panel {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 12px;
+      padding: 30px;
+    }
+    .form-panel h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--white);
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--dark-border);
+      padding-bottom: 10px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 6px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    input[type="text"], select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--dark-border);
+      border-radius: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      color: var(--white);
+      background: rgba(10,10,10,0.4);
+    }
+    input[type="text"]::placeholder, textarea::placeholder {
+      color: var(--white-faint);
+    }
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: rgba(10,10,10,0.6);
+    }
+    .button-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    button {
+      flex: 1;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-generate {
+      background: var(--gold);
+      color: var(--black);
+    }
+    .btn-generate:hover {
+      opacity: 0.88;
+      transform: translateY(-1px);
+    }
+    .btn-clear {
+      background: transparent;
+      color: var(--gold-text);
+      border: 1px solid var(--gold-dim);
+    }
+    .btn-clear:hover {
+      background: var(--gold-glow);
+    }
+    .status {
+      padding: 14px;
+      border-radius: 6px;
+      margin-top: 12px;
+      font-size: 12px;
+      text-align: center;
+    }
+    .status.success {
+      background: rgba(74,222,128,0.1);
+      color: var(--green);
+      border: 1px solid rgba(74,222,128,0.3);
+    }
+    .status.error {
+      background: rgba(224,90,90,0.1);
+      color: #e05a5a;
+      border: 1px solid rgba(224,90,90,0.3);
+    }
+    .hidden {
+      display: none;
+    }
+    /* -- OUTPUT SECTION -- */
+    .output-section {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+    .output-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--white);
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--dark-border);
+      padding-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .copy-btn {
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .copy-btn:hover {
+      opacity: 0.88;
+    }
+    .slide {
+      background: rgba(201,168,76,0.04);
+      border-left: 2px solid var(--gold-dim);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      border-radius: 6px;
+    }
+    .slide-number {
+      font-weight: 700;
+      color: var(--gold);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+    .slide-beat {
+      font-size: 10px;
+      color: var(--white-dim);
+      font-weight: 600;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .slide-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: var(--white);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .slide-copy {
+      font-size: 13px;
+      color: var(--white-dim);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    .output-box {
+      background: rgba(10,10,10,0.4);
+      border: 1px solid var(--dark-border);
+      padding: 16px;
+      border-radius: 6px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      max-height: 400px;
+      overflow-y: auto;
+      color: var(--white-dim);
+    }
+    /* -- FOOTER -- */
+    footer {
+      border-top: 1px solid var(--dark-border);
+      padding: 40px 40px;
+      text-align: center;
+    }
+    footer .logo-text {
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    footer p {
+      font-size: 11px;
+      color: var(--white-faint);
+      margin-bottom: 4px;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { opacity: 0.75; }
+    /* -- RESPONSIVE -- */
+    @media (max-width: 700px) {
+      .back-nav { padding: 12px 20px; }
+      .hero { padding: 50px 20px 40px; }
+      .section { padding: 50px 20px; }
+      .form-grid { grid-template-columns: 1fr; }
+      footer { padding: 32px 20px; }
+      .back-nav-badge { display: none; }
+    }
+  </style>
+</head>
+<body>
+<!-- BACK NAV -->
+<nav class="back-nav">
+  <div class="back-nav-left">
+    <a href="index.html">&larr; RSD Founders Training</a>
+    <span class="back-nav-sep">/</span>
+    <span>Carousel Generator Tool</span>
+  </div>
+  <span class="back-nav-badge">Live Tool</span>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <p class="hero-eyebrow">Module F-04 &middot; Sales Intelligence</p>
+  <h1>Berriz <span>Carousel</span> Generator</h1>
+  <p class="hero-sub">Transform any project story into a 7-slide carousel. Generate copy, image prompts, and social caption instantly. Story-driven carousel automation for design-build sales.</p>
+  <div class="hero-tags">
+    <span class="hero-tag gold">Live Tool</span>
+    <span class="hero-tag">Sales Automation</span>
+    <span class="hero-tag">Copy Generation</span>
+    <span class="hero-tag">Social Ready</span>
+  </div>
+</header>
+
+<!-- DIVIDER -->
+<hr class="section-divider">
+
+<!-- MAIN CONTENT -->
+<div class="section">
+  <div class="form-grid">
+    <!-- INPUT PANEL -->
+    <div class="form-panel">
+      <h2>Generate Carousel</h2>
+
+      <div class="form-group">
+        <label for="projectType">Project Type</label>
+        <select id="projectType" required>
+          <option value="">Select project type...</option>
+          <option value="renovation">Luxury Residential Renovation</option>
+          <option value="new-construction">New Construction (High-Net-Worth)</option>
+          <option value="aging-place">Aging-in-Place Residential</option>
+          <option value="2nd-home">2nd Home / Vacation Property</option>
+          <option value="forever-home">Forever Home Renovation</option>
+          <option value="net-zero">Net-Zero / Sustainable Luxury</option>
+          <option value="multigenerational">Multigenerational Living Spaces</option>
+          <option value="smart-home">Smart Home Integration</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="skeleton">Narrative Framework</label>
+        <select id="skeleton" required>
+          <option value="">Select framework...</option>
+          <option value="clarity">Clarity Economy — Design Before Build</option>
+          <option value="coordination">Coordination Economy — One Voice</option>
+          <option value="cost">Cost Economy — Budget Certainty</option>
+          <option value="longevity">Longevity Economy — 20+ Years Design Life</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="rawIdea">Project Story & Result</label>
+        <textarea id="rawIdea" placeholder="Describe: (1) the client challenge, (2) what we delivered, (3) the key result. Example: 'Homeowner wanted to renovate their lower level but dreaded losing their summer to construction. We phased it 6 weeks (not 12), sealed off zones, delivered in June. Family had their summer back.'" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="keyNumber">Key Number / Metric</label>
+        <input type="text" id="keyNumber" placeholder="e.g., 6 weeks saved, $147K, June delivery, zero overages" required>
+      </div>
+
+      <div class="form-group">
+        <label for="outcome">Final Outcome (Emotional Pull)</label>
+        <input type="text" id="outcome" placeholder="e.g., 'The space they envisioned is the space they're living in.'">
+      </div>
+
+      <div class="button-group">
+        <button class="btn-generate" onclick="generateCarousel()">Generate Carousel</button>
+        <button class="btn-clear" onclick="clearForm()">Clear</button>
+      </div>
+
+      <div id="status" class="status hidden"></div>
+    </div>
+
+    <!-- INFO PANEL -->
+    <div class="form-panel" style="background: rgba(201,168,76,0.04); border-color: rgba(201,168,76,0.2);">
+      <h2 style="border-color: var(--gold-dim); color: var(--gold);">How It Works</h2>
+      <p style="font-size: 13px; color: var(--white-dim); line-height: 1.7; margin-bottom: 16px;">
+        <strong style="color: var(--gold);">1. Tell your story</strong> &mdash; Client challenge, what Berriz delivered, the result in numbers.
+      </p>
+      <p style="font-size: 13px; color: var(--white-dim); line-height: 1.7; margin-bottom: 16px;">
+        <strong style="color: var(--gold);">2. Select framework</strong> &mdash; Clarity, Coordination, Cost, or Longevity. Each positions the work differently.
+      </p>
+      <p style="font-size: 13px; color: var(--white-dim); line-height: 1.7; margin-bottom: 16px;">
+        <strong style="color: var(--gold);">3. Generate instantly</strong> &mdash; You get 7-slide carousel copy, image prompts for Midjourney/DALL-E, and a social caption ready to post.
+      </p>
+      <p style="font-size: 13px; color: var(--white-dim); line-height: 1.7;">
+        <strong style="color: var(--gold);">4. Copy to design tool</strong> &mdash; Paste into Canva, Figma, or your carousel builder. Generate images. Post.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- OUTPUT SECTION -->
+<div class="section hidden" id="outputContainer">
+  <hr class="section-divider" style="margin-bottom: 30px;">
+
+  <div class="output-section">
+    <h2>
+      7-Slide Carousel Copy
+      <button class="copy-btn" onclick="copyToClipboard('carouselCopyOutput')">Copy All</button>
+    </h2>
+    <div id="carouselCopyOutput"></div>
+  </div>
+
+  <div class="output-section">
+    <h2>
+      Social Caption
+      <button class="copy-btn" onclick="copyToClipboard('socialCaptionOutput')">Copy</button>
+    </h2>
+    <div class="output-box" id="socialCaptionOutput"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<hr class="section-divider">
+<footer>
+  <p class="logo-text">Berriz Design Build</p>
+  <p>Transforming Spaces, Delivering Vision.</p>
+  <p style="margin-top: 12px;"><a href="index.html">&larr; Return to RSD Founders Training</a></p>
+  <p style="margin-top: 16px; color: var(--white-faint); font-size: 10px;">Confidential &middot; Internal Use Only &middot; Top 2% Access</p>
+</footer>
+
+<!-- SCRIPT -->
+<script>
+  const skeletonData = {
+    clarity: { keyword: 'VISION', magnet: 'Design-Build Readiness Brief' },
+    coordination: { keyword: 'COORD', magnet: 'Phased Build Blueprint' },
+    cost: { keyword: 'BUDGET', magnet: 'Cost-Certainty Breakdown' },
+    longevity: { keyword: 'LONGEVITY', magnet: 'Multi-Decade Design Brief' }
+  };
+
+  function generateCarousel() {
+    const projectType = document.getElementById('projectType').value;
+    const skeleton = document.getElementById('skeleton').value;
+    const rawIdea = document.getElementById('rawIdea').value;
+    const keyNumber = document.getElementById('keyNumber').value;
+    const outcome = document.getElementById('outcome').value || 'The vision they had is the vision they\'re living in.';
+
+    if (!projectType || !skeleton || !rawIdea || !keyNumber) {
+      showStatus('Please fill in all required fields.', 'error');
+      return;
+    }
+
+    showStatus('Generating carousel...', 'processing');
+
+    const template = skeletonData[skeleton];
+    const slides = [
+      {
+        number: 1,
+        beat: 'Cold Open',
+        headline: `A homeowner's ${keyNumber} challenge was solved with our design-build approach.`,
+        copy: rawIdea
+      },
+      {
+        number: 2,
+        beat: 'Mirror',
+        headline: 'You keep building separately instead of as one unified system.',
+        copy: 'Design happens, then build happens. Nobody owns the gap between them.'
+      },
+      {
+        number: 3,
+        beat: 'Setup',
+        headline: 'The Traditional Approach',
+        copy: 'Architect hands off drawings. Contractor builds it. Owner absorbs every gap in communication, cost, and timeline.'
+      },
+      {
+        number: 4,
+        beat: 'Tension',
+        headline: 'The Problem',
+        copy: 'Surprises at every stage. Changes cost money. Timelines slip. You\'re managing multiple vendors, none of whom talk to each other.'
+      },
+      {
+        number: 5,
+        beat: 'Turn',
+        headline: 'The Solution',
+        copy: 'One partner coordinates everything. Design, build, completion. No surprises. No guessing. One voice from start to finish.'
+      },
+      {
+        number: 6,
+        beat: 'Payoff',
+        headline: outcome,
+        copy: `Design-build certainty. Comment ${template.keyword} and I'll send the ${template.magnet}.`
+      }
+    ];
+
+    displayCarouselCopy(slides);
+    displaySocialCaption(rawIdea, template.keyword, template.magnet);
+    document.getElementById('outputContainer').classList.remove('hidden');
+    showStatus('✓ Carousel generated!', 'success');
+    window.scrollTo({ top: document.getElementById('outputContainer').offsetTop - 100, behavior: 'smooth' });
+  }
+
+  function displayCarouselCopy(slides) {
+    const container = document.getElementById('carouselCopyOutput');
+    container.innerHTML = slides.map(s => `
+      <div class="slide">
+        <div class="slide-number">Slide ${s.number}</div>
+        <div class="slide-beat">${s.beat}</div>
+        <div class="slide-headline">${s.headline}</div>
+        <div class="slide-copy">${s.copy}</div>
+      </div>
+    `).join('');
+  }
+
+  function displaySocialCaption(rawIdea, keyword, magnet) {
+    const caption = `We transformed a design challenge into a system.
+
+${rawIdea}
+
+This is not inspiration. This is proof. Every carousel is a finished project with real numbers. Every story is resolved.
+
+Comment ${keyword} and I'll send the ${magnet}.
+
+#DesignBuild #LuxuryDesign #TransformingSpaces #ArchitecturalVision #HomesTransformed`;
+    document.getElementById('socialCaptionOutput').textContent = caption;
+  }
+
+  function copyToClipboard(elementId) {
+    const text = document.getElementById(elementId).textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = event.target;
+      const original = btn.textContent;
+      btn.textContent = '✓ Copied!';
+      setTimeout(() => { btn.textContent = original; }, 2000);
+    });
+  }
+
+  function showStatus(message, type) {
+    const status = document.getElementById('status');
+    status.textContent = message;
+    status.className = `status ${type}`;
+    status.classList.remove('hidden');
+  }
+
+  function clearForm() {
+    document.getElementById('projectType').value = '';
+    document.getElementById('skeleton').value = '';
+    document.getElementById('rawIdea').value = '';
+    document.getElementById('keyNumber').value = '';
+    document.getElementById('outcome').value = '';
+    document.getElementById('outputContainer').classList.add('hidden');
+    document.getElementById('status').classList.add('hidden');
+  }
+</script>
+</body>
+</html>
