@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Berriz Carousel Generator — RSD Founders Tool</title>
+  <title>Berriz Carousel Generator — Premium v3</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
@@ -19,9 +19,6 @@
       --white: #f4f4f0;
       --white-dim: rgba(244,244,240,0.65);
       --white-faint: rgba(244,244,240,0.15);
-      --accent: #8b5cf6;
-      --accent-glow: rgba(139,92,246,0.12);
-      --green: #4ade80;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -32,7 +29,6 @@
       font-size: 15px;
       line-height: 1.7;
     }
-    /* -- NAV BACK BAR -- */
     .back-nav {
       background: rgba(10,10,10,0.97);
       border-bottom: 1px solid var(--dark-border);
@@ -70,7 +66,6 @@
       border-radius: 20px;
       background: var(--gold-glow);
     }
-    /* -- HERO -- */
     .hero {
       text-align: center;
       padding: 80px 40px 60px;
@@ -115,7 +110,6 @@
       color: var(--white-dim);
     }
     .hero-tag.gold { border-color: var(--gold-dim); color: var(--gold); background: var(--gold-glow); }
-    /* -- SECTION WRAPPER -- */
     .section {
       padding: 70px 40px;
       max-width: 1200px;
@@ -145,7 +139,6 @@
       border-top: 1px solid var(--dark-border);
       margin: 0;
     }
-    /* -- FORM GRID -- */
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -248,18 +241,10 @@
     }
     .status.success {
       background: rgba(74,222,128,0.1);
-      color: var(--green);
+      color: #4ade80;
       border: 1px solid rgba(74,222,128,0.3);
     }
-    .status.error {
-      background: rgba(224,90,90,0.1);
-      color: #e05a5a;
-      border: 1px solid rgba(224,90,90,0.3);
-    }
-    .hidden {
-      display: none;
-    }
-    /* -- OUTPUT SECTION -- */
+    .hidden { display: none; }
     .output-section {
       background: var(--dark-card);
       border: 1px solid var(--dark-border);
@@ -338,11 +323,58 @@
       font-size: 12px;
       white-space: pre-wrap;
       word-break: break-word;
-      max-height: 400px;
+      max-height: 500px;
       overflow-y: auto;
       color: var(--white-dim);
+      line-height: 1.6;
     }
-    /* -- FOOTER -- */
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--dark-border);
+    }
+    .tab {
+      padding: 12px 16px;
+      border: none;
+      background: transparent;
+      color: var(--white-dim);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+    .tab.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+    .tab:hover {
+      color: var(--white);
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .checklist {
+      list-style: none;
+    }
+    .checklist li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--dark-border);
+      font-size: 13px;
+      color: var(--white-dim);
+    }
+    .checklist li:before {
+      content: "☐ ";
+      color: var(--gold);
+      font-weight: 700;
+      margin-right: 8px;
+    }
     footer {
       border-top: 1px solid var(--dark-border);
       padding: 40px 40px;
@@ -362,7 +394,6 @@
     }
     footer a { color: var(--gold); text-decoration: none; }
     footer a:hover { opacity: 0.75; }
-    /* -- RESPONSIVE -- */
     @media (max-width: 700px) {
       .back-nav { padding: 12px 20px; }
       .hero { padding: 50px 20px 40px; }
@@ -374,51 +405,44 @@
   </style>
 </head>
 <body>
-<!-- BACK NAV -->
 <nav class="back-nav">
   <div class="back-nav-left">
     <a href="index.html">&larr; RSD Founders Training</a>
     <span class="back-nav-sep">/</span>
-    <span>Carousel Generator Tool</span>
+    <span>Carousel Generator v3 Premium</span>
   </div>
-  <span class="back-nav-badge">Live Tool</span>
+  <span class="back-nav-badge">Top 2% Tool</span>
 </nav>
 
-<!-- HERO -->
 <header class="hero">
   <p class="hero-eyebrow">Module F-04 &middot; Sales Intelligence</p>
   <h1>Berriz <span>Carousel</span> Generator</h1>
-  <p class="hero-sub">Transform any project story into a 7-slide carousel. Generate copy, image prompts, and social caption instantly. Story-driven carousel automation for design-build sales.</p>
+  <p class="hero-sub">Complete carousel ecosystem in one tool. 7-slide copy, Higgsfield master prompt, slide-by-slide GPT/Midjourney image prompts, Canva/Figma specs, and pre-flight checklist. Ready for design and posting.</p>
   <div class="hero-tags">
-    <span class="hero-tag gold">Live Tool</span>
-    <span class="hero-tag">Sales Automation</span>
-    <span class="hero-tag">Copy Generation</span>
-    <span class="hero-tag">Social Ready</span>
+    <span class="hero-tag gold">Premium v3</span>
+    <span class="hero-tag">Full Stack Output</span>
+    <span class="hero-tag">Top 2% Level</span>
+    <span class="hero-tag">Design Ready</span>
   </div>
 </header>
 
-<!-- DIVIDER -->
 <hr class="section-divider">
 
-<!-- MAIN CONTENT -->
 <div class="section">
   <div class="form-grid">
-    <!-- INPUT PANEL -->
     <div class="form-panel">
-      <h2>Generate Carousel</h2>
+      <h2>Generate Full Carousel</h2>
 
       <div class="form-group">
         <label for="projectType">Project Type</label>
         <select id="projectType" required>
-          <option value="">Select project type...</option>
+          <option value="">Select type...</option>
           <option value="renovation">Luxury Residential Renovation</option>
-          <option value="new-construction">New Construction (High-Net-Worth)</option>
+          <option value="new-construction">New Construction</option>
           <option value="aging-place">Aging-in-Place Residential</option>
           <option value="2nd-home">2nd Home / Vacation Property</option>
           <option value="forever-home">Forever Home Renovation</option>
           <option value="net-zero">Net-Zero / Sustainable Luxury</option>
-          <option value="multigenerational">Multigenerational Living Spaces</option>
-          <option value="smart-home">Smart Home Integration</option>
         </select>
       </div>
 
@@ -435,68 +459,118 @@
 
       <div class="form-group">
         <label for="rawIdea">Project Story & Result</label>
-        <textarea id="rawIdea" placeholder="Describe: (1) the client challenge, (2) what we delivered, (3) the key result. Example: 'Homeowner wanted to renovate their lower level but dreaded losing their summer to construction. We phased it 6 weeks (not 12), sealed off zones, delivered in June. Family had their summer back.'" required></textarea>
+        <textarea id="rawIdea" placeholder="Describe: (1) client challenge, (2) what we delivered, (3) key result. Be specific with numbers and emotions." required></textarea>
       </div>
 
       <div class="form-group">
         <label for="keyNumber">Key Number / Metric</label>
-        <input type="text" id="keyNumber" placeholder="e.g., 6 weeks saved, $147K, June delivery, zero overages" required>
+        <input type="text" id="keyNumber" placeholder="e.g., $110K saved, 6 weeks faster, delivered on budget" required>
       </div>
 
       <div class="form-group">
         <label for="outcome">Final Outcome (Emotional Pull)</label>
-        <input type="text" id="outcome" placeholder="e.g., 'The space they envisioned is the space they're living in.'">
+        <input type="text" id="outcome" placeholder="e.g., They kept the home they loved and got the life they wanted.">
       </div>
 
       <div class="button-group">
-        <button class="btn-generate" onclick="generateCarousel()">Generate Carousel</button>
+        <button class="btn-generate" onclick="generateCarousel()">Generate All</button>
         <button class="btn-clear" onclick="clearForm()">Clear</button>
       </div>
 
       <div id="status" class="status hidden"></div>
     </div>
 
-    <!-- INFO PANEL -->
     <div class="form-panel" style="background: rgba(201,168,76,0.04); border-color: rgba(201,168,76,0.2);">
-      <h2 style="border-color: var(--gold-dim); color: var(--gold);">How It Works</h2>
-      <p style="font-size: 13px; color: var(--white-dim); line-height: 1.7; margin-bottom: 16px;">
-        <strong style="color: var(--gold);">1. Tell your story</strong> &mdash; Client challenge, what Berriz delivered, the result in numbers.
+      <h2 style="border-color: var(--gold-dim); color: var(--gold);">What You Get</h2>
+      <p style="font-size: 13px; color: var(--white-dim); line-height: 1.7; margin-bottom: 14px;">
+        <strong style="color: var(--gold);">✓ 7-Slide Carousel Copy</strong><br/>
+        Cold Open → Mirror → Setup → Tension → Turn → Payoff
       </p>
-      <p style="font-size: 13px; color: var(--white-dim); line-height: 1.7; margin-bottom: 16px;">
-        <strong style="color: var(--gold);">2. Select framework</strong> &mdash; Clarity, Coordination, Cost, or Longevity. Each positions the work differently.
+      <p style="font-size: 13px; color: var(--white-dim); line-height: 1.7; margin-bottom: 14px;">
+        <strong style="color: var(--gold);">✓ Higgsfield Master Prompt</strong><br/>
+        One prompt for all 7 slides (copy-paste to image generator)
       </p>
-      <p style="font-size: 13px; color: var(--white-dim); line-height: 1.7; margin-bottom: 16px;">
-        <strong style="color: var(--gold);">3. Generate instantly</strong> &mdash; You get 7-slide carousel copy, image prompts for Midjourney/DALL-E, and a social caption ready to post.
+      <p style="font-size: 13px; color: var(--white-dim); line-height: 1.7; margin-bottom: 14px;">
+        <strong style="color: var(--gold);">✓ 7 Image Prompts</strong><br/>
+        Slide-by-slide for GPT-4, Midjourney, DALL-E (1080×1350)
+      </p>
+      <p style="font-size: 13px; color: var(--white-dim); line-height: 1.7; margin-bottom: 14px;">
+        <strong style="color: var(--gold);">✓ Canva & Figma Specs</strong><br/>
+        Design layout, color codes, typography, spacing
       </p>
       <p style="font-size: 13px; color: var(--white-dim); line-height: 1.7;">
-        <strong style="color: var(--gold);">4. Copy to design tool</strong> &mdash; Paste into Canva, Figma, or your carousel builder. Generate images. Post.
+        <strong style="color: var(--gold);">✓ Pre-Flight Checklist</strong><br/>
+        9-point QA before posting (resolution, alignment, CTA)
       </p>
     </div>
   </div>
 </div>
 
-<!-- OUTPUT SECTION -->
 <div class="section hidden" id="outputContainer">
   <hr class="section-divider" style="margin-bottom: 30px;">
 
-  <div class="output-section">
-    <h2>
-      7-Slide Carousel Copy
-      <button class="copy-btn" onclick="copyToClipboard('carouselCopyOutput')">Copy All</button>
-    </h2>
-    <div id="carouselCopyOutput"></div>
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('carousel')">Carousel Copy</button>
+    <button class="tab" onclick="switchTab('higgsfield')">Higgsfield Prompt</button>
+    <button class="tab" onclick="switchTab('image-prompts')">Image Prompts</button>
+    <button class="tab" onclick="switchTab('design')">Design Specs</button>
+    <button class="tab" onclick="switchTab('social')">Social Caption</button>
+    <button class="tab" onclick="switchTab('checklist')">Pre-Flight</button>
   </div>
 
-  <div class="output-section">
-    <h2>
-      Social Caption
-      <button class="copy-btn" onclick="copyToClipboard('socialCaptionOutput')">Copy</button>
-    </h2>
-    <div class="output-box" id="socialCaptionOutput"></div>
+  <!-- CAROUSEL COPY TAB -->
+  <div id="carousel" class="tab-content active">
+    <div class="output-section">
+      <h2>7-Slide Carousel Copy<button class="copy-btn" onclick="copyToClipboard('carouselCopyOutput')">Copy</button></h2>
+      <div id="carouselCopyOutput"></div>
+    </div>
+  </div>
+
+  <!-- HIGGSFIELD PROMPT TAB -->
+  <div id="higgsfield" class="tab-content">
+    <div class="output-section">
+      <h2>Higgsfield Master Prompt<button class="copy-btn" onclick="copyToClipboard('higgsFieldOutput')">Copy</button></h2>
+      <p style="font-size: 12px; color: var(--white-dim); margin-bottom: 16px;">Paste this into your image generation tool (Higgsfield, Midjourney, DALL-E, etc.) to generate all 7 slides with cohesive visual language:</p>
+      <div class="output-box" id="higgsFieldOutput"></div>
+    </div>
+  </div>
+
+  <!-- IMAGE PROMPTS TAB -->
+  <div id="image-prompts" class="tab-content">
+    <div class="output-section">
+      <h2>Slide-by-Slide Image Prompts<button class="copy-btn" onclick="copyToClipboard('imagePromptsOutput')">Copy All</button></h2>
+      <p style="font-size: 12px; color: var(--white-dim); margin-bottom: 16px;">7 individual prompts for GPT-4V, Midjourney, or DALL-E (1080×1350 Instagram vertical format):</p>
+      <div class="output-box" id="imagePromptsOutput"></div>
+    </div>
+  </div>
+
+  <!-- DESIGN SPECS TAB -->
+  <div id="design" class="tab-content">
+    <div class="output-section">
+      <h2>Canva & Figma Design Specifications<button class="copy-btn" onclick="copyToClipboard('designSpecsOutput')">Copy</button></h2>
+      <p style="font-size: 12px; color: var(--white-dim); margin-bottom: 16px;">Layout, color palette, typography, spacing, and composition rules for building in Canva or Figma:</p>
+      <div class="output-box" id="designSpecsOutput"></div>
+    </div>
+  </div>
+
+  <!-- SOCIAL CAPTION TAB -->
+  <div id="social" class="tab-content">
+    <div class="output-section">
+      <h2>Social Media Caption<button class="copy-btn" onclick="copyToClipboard('socialCaptionOutput')">Copy</button></h2>
+      <div class="output-box" id="socialCaptionOutput"></div>
+    </div>
+  </div>
+
+  <!-- PRE-FLIGHT CHECKLIST TAB -->
+  <div id="checklist" class="tab-content">
+    <div class="output-section">
+      <h2>Pre-Flight Checklist (Before Posting)</h2>
+      <ul class="checklist" id="checklistOutput"></ul>
+    </div>
   </div>
 </div>
 
-<!-- FOOTER -->
 <hr class="section-divider">
 <footer>
   <p class="logo-text">Berriz Design Build</p>
@@ -505,13 +579,12 @@
   <p style="margin-top: 16px; color: var(--white-faint); font-size: 10px;">Confidential &middot; Internal Use Only &middot; Top 2% Access</p>
 </footer>
 
-<!-- SCRIPT -->
 <script>
   const skeletonData = {
-    clarity: { keyword: 'VISION', magnet: 'Design-Build Readiness Brief' },
-    coordination: { keyword: 'COORD', magnet: 'Phased Build Blueprint' },
-    cost: { keyword: 'BUDGET', magnet: 'Cost-Certainty Breakdown' },
-    longevity: { keyword: 'LONGEVITY', magnet: 'Multi-Decade Design Brief' }
+    clarity: { keyword: 'VISION', magnet: 'Design-Build Readiness Brief', color: '#E8D4B8' },
+    coordination: { keyword: 'COORD', magnet: 'Phased Build Blueprint', color: '#D4A574' },
+    cost: { keyword: 'BUDGET', magnet: 'Cost-Certainty Breakdown', color: '#C9945F' },
+    longevity: { keyword: 'LONGEVITY', magnet: 'Multi-Decade Design Brief', color: '#B8834A' }
   };
 
   function generateCarousel() {
@@ -526,7 +599,7 @@
       return;
     }
 
-    showStatus('Generating carousel...', 'processing');
+    showStatus('Generating premium carousel ecosystem...', 'processing');
 
     const template = skeletonData[skeleton];
     const slides = [
@@ -569,9 +642,14 @@
     ];
 
     displayCarouselCopy(slides);
+    displayHiggsfield(slides, template, projectType);
+    displayImagePrompts(slides, template, projectType);
+    displayDesignSpecs(template);
     displaySocialCaption(rawIdea, template.keyword, template.magnet);
+    displayChecklist();
+
     document.getElementById('outputContainer').classList.remove('hidden');
-    showStatus('✓ Carousel generated!', 'success');
+    showStatus('✓ Complete carousel ecosystem generated!', 'success');
     window.scrollTo({ top: document.getElementById('outputContainer').offsetTop - 100, behavior: 'smooth' });
   }
 
@@ -587,6 +665,152 @@
     `).join('');
   }
 
+  function displayHiggsfield(slides, template, projectType) {
+    const prompt = `You are creating a cohesive 7-slide Instagram carousel (1080×1350px vertical format) for a premium design-build project.
+
+VISUAL DIRECTIVE:
+- Style: High-end architectural/lifestyle photography mixed with aspirational moments
+- Color Palette: Warm neutrals (charcoal #2C3E50, copper #D4845C, cream #F5F1E8, accents of ${template.color})
+- Typography: Serif headlines (Playfair Display style), clean sans-serif body
+- Composition: Mix of full-bleed images, split-screen before/afters, and text-overlay slides
+- Mood: Aspirational, confident, problem-solved (not in-progress struggle)
+- Format: Instagram vertical (1080×1350px), high DPI (300ppi minimum for print quality)
+
+SLIDE-BY-SLIDE DIRECTION:
+
+SLIDE 1 (Cold Open):
+${slides[0].headline}
+Visual: Mid-moment image showing the transformation (after state). Show sophistication, completion, success. Include the specific number from the headline subtly.
+
+SLIDE 2 (Mirror):
+${slides[1].headline}
+Visual: Split-screen showing disconnect. Left side: frustration/chaos (sketches piling up, multiple people confused). Right side: clarity (one coordinated vision).
+
+SLIDE 3 (Setup):
+${slides[2].headline}
+Visual: Traditional architectural workflow diagram or montage showing separation of architect → design → builder → construction. Show the gaps visually.
+
+SLIDE 4 (Tension):
+${slides[3].headline}
+Visual: Conflict imagery — construction site challenges, budget overruns, timeline conflicts. Show real obstacles (not melodramatic, but honest).
+
+SLIDE 5 (Turn):
+${slides[4].headline}
+Visual: One-voice coordination. Show designer + builder together, unified systems, aligned vision. Represent seamlessness.
+
+SLIDE 6 (Payoff):
+${slides[5].headline}
+Visual: Hero shot of completed project. Beautiful, inhabited, lived-in. Show the emotion (family enjoying the space, daily life moments). Bottom text: "Comment ${template.keyword} for the ${template.magnet}"
+
+SLIDE 7 (CTA Slide):
+High-contrast text slide with: Berriz Design Build logo, call to action, and the comment keyword prominently featured.
+
+EXECUTION NOTES:
+- All images must be photorealistic and premium quality
+- Avoid stock imagery feel — aim for editorial/campaign style
+- Maintain consistent color grading across all 7 slides
+- Typography should match Berriz brand (serif + sans-serif hierarchy)
+- Every slide tells part of one story (progression from problem → solution)
+- Ensure text readability on all slides (use contrast, overlays, or solid backgrounds as needed)
+- Final carousel should feel like a mini-documentary, not a list of features`;
+
+    document.getElementById('higgsFieldOutput').textContent = prompt;
+  }
+
+  function displayImagePrompts(slides, template, projectType) {
+    const prompts = [
+      `SLIDE 1 — Cold Open / Hero Shot
+Prompt: "Premium design-build home completion, ${projectType}, finished luxury interior, photorealistic, warm lighting, lived-in elegantly, architectural photography style, golden hour, 1080x1350, Berriz Design Build aesthetic, charcoal and copper tones, high-end finish photography"`,
+
+      `SLIDE 2 — Mirror / Split-Screen Contrast
+Prompt: "Split-screen comparison: left side chaos (scattered architectural drawings, frustrated homeowner, multiple contractors), right side unified (one designer, one builder, aligned blueprints, calm confidence), 50/50 divide, ${projectType}, visual metaphor for coordination"`,
+
+      `SLIDE 3 — Setup / Traditional Workflow
+Prompt: "Infographic-style workflow diagram showing traditional architecture-to-construction separation, arrow flow, disconnected nodes, architectural drawings fading to construction site, representing gaps and communication breakdowns, clean design, minimalist"`,
+
+      `SLIDE 4 — Tension / Real Obstacles
+Prompt: "Construction site challenges: budget spreadsheet with overages circled, timeline chart with delays, multiple confused people, construction chaos, overhead lighting, realistic but not melodramatic, representing common renovation obstacles"`,
+
+      `SLIDE 5 — Turn / Coordination & Solution
+Prompt: "Unified team: designer and builder collaborating over plans, clear communication, aligned vision, single blueprint, calm confidence, modern office/job site environment, showing partnership and coordination, Berriz aesthetic"`,
+
+      `SLIDE 6 — Payoff / Hero Transformation
+Prompt: "Completed luxury home interior, family or homeowner enjoying the space, natural lighting, aspirational lifestyle, ${projectType}, beautiful composition, architectural photography, happiness/satisfaction evident, premium finish, Berriz Design Build quality"`,
+
+      `SLIDE 7 — CTA / Text Slide
+Prompt: "Clean text slide design, background: gradient charcoal to cream, text: 'Comment ${template.keyword} for the ${template.magnet}', Berriz Design Build logo, minimal elegant design, high contrast text, Instagram story style, call-to-action focused"`
+    ];
+
+    const output = prompts.map((p, i) => `${p}\n`).join('\n---\n\n');
+    document.getElementById('imagePromptsOutput').textContent = output;
+  }
+
+  function displayDesignSpecs(template) {
+    const specs = `CANVA & FIGMA DESIGN SPECIFICATIONS
+
+PROJECT: Berriz Design Build 7-Slide Carousel
+FORMAT: Instagram Vertical (1080×1350px)
+RESOLUTION: 300 DPI (screen: 72 DPI @ 100%)
+
+=== COLOR PALETTE ===
+Primary: Charcoal #2C3E50
+Accent: Copper #D4845C
+Light: Cream #F5F1E8
+Secondary: ${template.color}
+Dark Background: #0F1419
+Border: #2A2A3A
+
+=== TYPOGRAPHY ===
+Headlines: Playfair Display, 72-84px, Bold, Charcoal (#2C3E50)
+Subheads: Montserrat, 32-48px, SemiBold, Copper (#D4845C)
+Body Text: Montserrat, 18-24px, Regular, Charcoal (#2C3E50)
+Small Text/Captions: Montserrat, 14-16px, Regular, Gray (#666)
+
+=== SPACING RULES ===
+Padding from edge: 40px
+Line height: 1.5x font size
+Margin between sections: 24px
+Text to image transition: 16px gap minimum
+
+=== LAYOUT GRID ===
+All slides: 12-column grid system
+Safe text area: 80px from all edges
+Image bleeds: Full bleed (1080×1350) for photos
+Text overlays: Semi-transparent dark background (rgba(15,20,25,0.7)) for legibility
+
+=== DESIGN RULES ===
+- Consistency: Logo placement bottom-left, small (80×80px)
+- Contrast: Ensure 4.5:1 minimum for text readability
+- Images: High-quality, cohesive color grading across all 7
+- Whitespace: Use generously; don't crowd slides
+- Hierarchy: Headline > Subhead > Body > Caption
+- Call-to-Action: Slide 6 bottom 20% reserved for "Comment KEYWORD"
+
+=== FIGMA EXPORT SETTINGS ===
+- Format: PNG @ 2x scale (for high resolution)
+- Color Profile: sRGB
+- Layers: Label each slide (S1-Cold Open, S2-Mirror, etc.)
+- Components: Create reusable text block, logo, CTA button
+- Master Frame: 1080×1350, repeatable template
+
+=== CANVA BUILD NOTES ===
+1. Start with blank 1080×1350 template
+2. Add background image or solid color from palette
+3. Layer text over images (use opacity for readability)
+4. Maintain 40px padding on all sides
+5. Use Canva's grid feature (enable 12-column grid)
+6. Export each slide as PNG (minimum 300 DPI for printing)
+7. Create variation layer for headline text per slide
+
+=== BRAND LOCK (Berriz) ===
+Logo: Bottom-left, 80×80px, white or inverted
+Font: Playfair Display for display, Montserrat for body
+Colors: Charcoal primary, Copper secondary, Cream highlights
+Tone: Premium, confident, problem-solved`;
+
+    document.getElementById('designSpecsOutput').textContent = specs;
+  }
+
   function displaySocialCaption(rawIdea, keyword, magnet) {
     const caption = `We transformed a design challenge into a system.
 
@@ -596,8 +820,25 @@ This is not inspiration. This is proof. Every carousel is a finished project wit
 
 Comment ${keyword} and I'll send the ${magnet}.
 
-#DesignBuild #LuxuryDesign #TransformingSpaces #ArchitecturalVision #HomesTransformed`;
+#DesignBuild #LuxuryDesign #TransformingSpaces #ArchitecturalVision #HomesTransformed #BerrizDesignBuild`;
     document.getElementById('socialCaptionOutput').textContent = caption;
+  }
+
+  function displayChecklist() {
+    const items = [
+      'All 7 slide images are 1080×1350px at 300 DPI (print-quality)',
+      'Text is readable with 4.5:1 contrast ratio minimum (check with contrast checker)',
+      'Logo is consistent across all slides (Berriz branding locked)',
+      'Color palette is cohesive (charcoal, copper, cream) throughout carousel',
+      'Headline text is clear, benefit-focused, not vague ("$110K saved" not "savings")',
+      'Call-to-action slide includes keyword and lead magnet name clearly visible',
+      'Images flow logically (cold open → problem → solution → payoff)',
+      'Text overlays have dark background or enough contrast for readability',
+      'File names follow pattern: Carousel-Slide-01-ColdOpen.png, etc. (Instagram prep)'
+    ];
+
+    const checklist = items.map(item => `<li>${item}</li>`).join('');
+    document.getElementById('checklistOutput').innerHTML = checklist;
   }
 
   function copyToClipboard(elementId) {
@@ -615,6 +856,14 @@ Comment ${keyword} and I'll send the ${magnet}.
     status.textContent = message;
     status.className = `status ${type}`;
     status.classList.remove('hidden');
+  }
+
+  function switchTab(tabName) {
+    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+    event.target.classList.add('active');
+    document.getElementById(tabName).classList.add('active');
   }
 
   function clearForm() {
