@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Berriz Carousel Generator — Premium v3</title>
+  <title>Berriz Carousel Generator — Production Ready</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
@@ -128,17 +128,6 @@
       color: var(--white);
       margin-bottom: 12px;
     }
-    .section-desc {
-      font-size: 14px;
-      color: var(--white-dim);
-      max-width: 700px;
-      margin-bottom: 40px;
-    }
-    .section-divider {
-      border: none;
-      border-top: 1px solid var(--dark-border);
-      margin: 0;
-    }
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -146,9 +135,7 @@
       max-width: 1000px;
     }
     @media (max-width: 900px) {
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
+      .form-grid { grid-template-columns: 1fr; }
     }
     .form-panel {
       background: var(--dark-card);
@@ -189,10 +176,7 @@
     input[type="text"]::placeholder, textarea::placeholder {
       color: var(--white-faint);
     }
-    textarea {
-      resize: vertical;
-      min-height: 90px;
-    }
+    textarea { resize: vertical; min-height: 90px; }
     input:focus, select:focus, textarea:focus {
       outline: none;
       border-color: var(--gold);
@@ -278,6 +262,20 @@
     .copy-btn:hover {
       opacity: 0.88;
     }
+    .output-box {
+      background: rgba(10,10,10,0.4);
+      border: 1px solid var(--dark-border);
+      padding: 20px;
+      border-radius: 6px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      max-height: 600px;
+      overflow-y: auto;
+      color: var(--white-dim);
+      line-height: 1.6;
+    }
     .slide {
       background: rgba(201,168,76,0.04);
       border-left: 2px solid var(--gold-dim);
@@ -314,66 +312,10 @@
       margin-bottom: 8px;
       line-height: 1.5;
     }
-    .output-box {
-      background: rgba(10,10,10,0.4);
-      border: 1px solid var(--dark-border);
-      padding: 16px;
-      border-radius: 6px;
-      font-family: 'Courier New', monospace;
-      font-size: 12px;
-      white-space: pre-wrap;
-      word-break: break-word;
-      max-height: 500px;
-      overflow-y: auto;
-      color: var(--white-dim);
-      line-height: 1.6;
-    }
-    .tabs {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 20px;
-      border-bottom: 1px solid var(--dark-border);
-    }
-    .tab {
-      padding: 12px 16px;
+    .section-divider {
       border: none;
-      background: transparent;
-      color: var(--white-dim);
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      cursor: pointer;
-      border-bottom: 2px solid transparent;
-      transition: all 0.2s;
-    }
-    .tab.active {
-      color: var(--gold);
-      border-bottom-color: var(--gold);
-    }
-    .tab:hover {
-      color: var(--white);
-    }
-    .tab-content {
-      display: none;
-    }
-    .tab-content.active {
-      display: block;
-    }
-    .checklist {
-      list-style: none;
-    }
-    .checklist li {
-      padding: 10px 0;
-      border-bottom: 1px solid var(--dark-border);
-      font-size: 13px;
-      color: var(--white-dim);
-    }
-    .checklist li:before {
-      content: "☐ ";
-      color: var(--gold);
-      font-weight: 700;
-      margin-right: 8px;
+      border-top: 1px solid var(--dark-border);
+      margin: 0;
     }
     footer {
       border-top: 1px solid var(--dark-border);
@@ -409,20 +351,19 @@
   <div class="back-nav-left">
     <a href="index.html">&larr; RSD Founders Training</a>
     <span class="back-nav-sep">/</span>
-    <span>Carousel Generator v3 Premium</span>
+    <span>Carousel Generator — Production</span>
   </div>
-  <span class="back-nav-badge">Top 2% Tool</span>
+  <span class="back-nav-badge">Ready to Ship</span>
 </nav>
 
 <header class="hero">
   <p class="hero-eyebrow">Module F-04 &middot; Sales Intelligence</p>
   <h1>Berriz <span>Carousel</span> Generator</h1>
-  <p class="hero-sub">Complete carousel ecosystem in one tool. 7-slide copy, Higgsfield master prompt, slide-by-slide GPT/Midjourney image prompts, Canva/Figma specs, and pre-flight checklist. Ready for design and posting.</p>
+  <p class="hero-sub">Complete production-ready carousel system. Generates: 7-slide copy, all-in-one Higgsfield supercomputer prompt, slide-by-slide GPT/Midjourney image prompts, social caption, design specs, and pre-flight checklist.</p>
   <div class="hero-tags">
-    <span class="hero-tag gold">Premium v3</span>
+    <span class="hero-tag gold">Production Ready</span>
     <span class="hero-tag">Full Stack Output</span>
-    <span class="hero-tag">Top 2% Level</span>
-    <span class="hero-tag">Design Ready</span>
+    <span class="hero-tag">Copy-Paste Ready</span>
   </div>
 </header>
 
@@ -431,7 +372,7 @@
 <div class="section">
   <div class="form-grid">
     <div class="form-panel">
-      <h2>Generate Full Carousel</h2>
+      <h2>Generate Carousel Ecosystem</h2>
 
       <div class="form-group">
         <label for="projectType">Project Type</label>
@@ -450,16 +391,16 @@
         <label for="skeleton">Narrative Framework</label>
         <select id="skeleton" required>
           <option value="">Select framework...</option>
-          <option value="clarity">Clarity Economy — Design Before Build</option>
-          <option value="coordination">Coordination Economy — One Voice</option>
-          <option value="cost">Cost Economy — Budget Certainty</option>
-          <option value="longevity">Longevity Economy — 20+ Years Design Life</option>
+          <option value="clarity">Clarity Economy</option>
+          <option value="coordination">Coordination Economy</option>
+          <option value="cost">Cost Economy</option>
+          <option value="longevity">Longevity Economy</option>
         </select>
       </div>
 
       <div class="form-group">
         <label for="rawIdea">Project Story & Result</label>
-        <textarea id="rawIdea" placeholder="Describe: (1) client challenge, (2) what we delivered, (3) key result. Be specific with numbers and emotions." required></textarea>
+        <textarea id="rawIdea" placeholder="Be specific: (1) client challenge, (2) what Berriz delivered, (3) key result with numbers." required></textarea>
       </div>
 
       <div class="form-group">
@@ -468,7 +409,7 @@
       </div>
 
       <div class="form-group">
-        <label for="outcome">Final Outcome (Emotional Pull)</label>
+        <label for="outcome">Final Outcome (Emotional)</label>
         <input type="text" id="outcome" placeholder="e.g., They kept the home they loved and got the life they wanted.">
       </div>
 
@@ -481,26 +422,26 @@
     </div>
 
     <div class="form-panel" style="background: rgba(201,168,76,0.04); border-color: rgba(201,168,76,0.2);">
-      <h2 style="border-color: var(--gold-dim); color: var(--gold);">What You Get</h2>
-      <p style="font-size: 13px; color: var(--white-dim); line-height: 1.7; margin-bottom: 14px;">
+      <h2 style="border-color: var(--gold-dim); color: var(--gold);">Outputs Included</h2>
+      <p style="font-size: 13px; color: var(--white-dim); line-height: 1.7; margin-bottom: 12px;">
         <strong style="color: var(--gold);">✓ 7-Slide Carousel Copy</strong><br/>
-        Cold Open → Mirror → Setup → Tension → Turn → Payoff
+        Full narrative structure
       </p>
-      <p style="font-size: 13px; color: var(--white-dim); line-height: 1.7; margin-bottom: 14px;">
-        <strong style="color: var(--gold);">✓ Higgsfield Master Prompt</strong><br/>
-        One prompt for all 7 slides (copy-paste to image generator)
+      <p style="font-size: 13px; color: var(--white-dim); line-height: 1.7; margin-bottom: 12px;">
+        <strong style="color: var(--gold);">✓ Higgsfield Supercomputer Prompt</strong><br/>
+        All-in-one master prompt (copy-paste directly)
       </p>
-      <p style="font-size: 13px; color: var(--white-dim); line-height: 1.7; margin-bottom: 14px;">
-        <strong style="color: var(--gold);">✓ 7 Image Prompts</strong><br/>
-        Slide-by-slide for GPT-4, Midjourney, DALL-E (1080×1350)
+      <p style="font-size: 13px; color: var(--white-dim); line-height: 1.7; margin-bottom: 12px;">
+        <strong style="color: var(--gold);">✓ Slide-by-Slide GPT/Midjourney Prompts</strong><br/>
+        Individual prompts per slide (1080×1350)
       </p>
-      <p style="font-size: 13px; color: var(--white-dim); line-height: 1.7; margin-bottom: 14px;">
-        <strong style="color: var(--gold);">✓ Canva & Figma Specs</strong><br/>
-        Design layout, color codes, typography, spacing
+      <p style="font-size: 13px; color: var(--white-dim); line-height: 1.7; margin-bottom: 12px;">
+        <strong style="color: var(--gold);">✓ Design & Brand Specs</strong><br/>
+        Canva, Figma, colors, typography
       </p>
       <p style="font-size: 13px; color: var(--white-dim); line-height: 1.7;">
-        <strong style="color: var(--gold);">✓ Pre-Flight Checklist</strong><br/>
-        9-point QA before posting (resolution, alignment, CTA)
+        <strong style="color: var(--gold);">✓ Social Caption & Checklist</strong><br/>
+        Ready-to-post + QA
       </p>
     </div>
   </div>
@@ -509,64 +450,52 @@
 <div class="section hidden" id="outputContainer">
   <hr class="section-divider" style="margin-bottom: 30px;">
 
-  <!-- TABS -->
-  <div class="tabs">
-    <button class="tab active" onclick="switchTab('carousel')">Carousel Copy</button>
-    <button class="tab" onclick="switchTab('higgsfield')">Higgsfield Prompt</button>
-    <button class="tab" onclick="switchTab('image-prompts')">Image Prompts</button>
-    <button class="tab" onclick="switchTab('design')">Design Specs</button>
-    <button class="tab" onclick="switchTab('social')">Social Caption</button>
-    <button class="tab" onclick="switchTab('checklist')">Pre-Flight</button>
+  <!-- 1. CAROUSEL COPY -->
+  <div class="output-section">
+    <h2>7-Slide Carousel Copy<button class="copy-btn" onclick="copyToClipboard('carouselCopyOutput')">Copy All</button></h2>
+    <div id="carouselCopyOutput"></div>
   </div>
 
-  <!-- CAROUSEL COPY TAB -->
-  <div id="carousel" class="tab-content active">
-    <div class="output-section">
-      <h2>7-Slide Carousel Copy<button class="copy-btn" onclick="copyToClipboard('carouselCopyOutput')">Copy</button></h2>
-      <div id="carouselCopyOutput"></div>
-    </div>
+  <!-- 2. HIGGSFIELD SUPERCOMPUTER PROMPT -->
+  <div class="output-section">
+    <h2>Higgsfield Supercomputer Prompt<button class="copy-btn" onclick="copyToClipboard('higgsFieldOutput')">Copy for Higgsfield</button></h2>
+    <p style="font-size: 12px; color: var(--white-dim); margin-bottom: 14px;"><strong>Complete master prompt for image generation.</strong> Paste directly into Higgsfield AI, Midjourney, or DALL-E for cohesive 7-slide carousel with unified visual language, brand specs, and all composition directions.</p>
+    <div class="output-box" id="higgsFieldOutput"></div>
   </div>
 
-  <!-- HIGGSFIELD PROMPT TAB -->
-  <div id="higgsfield" class="tab-content">
-    <div class="output-section">
-      <h2>Higgsfield Master Prompt<button class="copy-btn" onclick="copyToClipboard('higgsFieldOutput')">Copy</button></h2>
-      <p style="font-size: 12px; color: var(--white-dim); margin-bottom: 16px;">Paste this into your image generation tool (Higgsfield, Midjourney, DALL-E, etc.) to generate all 7 slides with cohesive visual language:</p>
-      <div class="output-box" id="higgsFieldOutput"></div>
-    </div>
+  <!-- 3. SLIDE-BY-SLIDE IMAGE PROMPTS -->
+  <div class="output-section">
+    <h2>GPT / Midjourney Slide Prompts<button class="copy-btn" onclick="copyToClipboard('imagePromptsOutput')">Copy All Slides</button></h2>
+    <p style="font-size: 12px; color: var(--white-dim); margin-bottom: 14px;"><strong>Individual prompts for each slide.</strong> Use these for fine-tuned control per slide, or copy the Higgsfield Supercomputer Prompt above for batch generation.</p>
+    <div class="output-box" id="imagePromptsOutput"></div>
   </div>
 
-  <!-- IMAGE PROMPTS TAB -->
-  <div id="image-prompts" class="tab-content">
-    <div class="output-section">
-      <h2>Slide-by-Slide Image Prompts<button class="copy-btn" onclick="copyToClipboard('imagePromptsOutput')">Copy All</button></h2>
-      <p style="font-size: 12px; color: var(--white-dim); margin-bottom: 16px;">7 individual prompts for GPT-4V, Midjourney, or DALL-E (1080×1350 Instagram vertical format):</p>
-      <div class="output-box" id="imagePromptsOutput"></div>
-    </div>
+  <!-- 4. DESIGN SPECS -->
+  <div class="output-section">
+    <h2>Design Specifications<button class="copy-btn" onclick="copyToClipboard('designSpecsOutput')">Copy</button></h2>
+    <p style="font-size: 12px; color: var(--white-dim); margin-bottom: 14px;">Canva & Figma specifications: color palette (hex codes), typography, spacing, layout grid, export settings, brand lock.</p>
+    <div class="output-box" id="designSpecsOutput"></div>
   </div>
 
-  <!-- DESIGN SPECS TAB -->
-  <div id="design" class="tab-content">
-    <div class="output-section">
-      <h2>Canva & Figma Design Specifications<button class="copy-btn" onclick="copyToClipboard('designSpecsOutput')">Copy</button></h2>
-      <p style="font-size: 12px; color: var(--white-dim); margin-bottom: 16px;">Layout, color palette, typography, spacing, and composition rules for building in Canva or Figma:</p>
-      <div class="output-box" id="designSpecsOutput"></div>
-    </div>
+  <!-- 5. SOCIAL CAPTION -->
+  <div class="output-section">
+    <h2>Social Media Caption<button class="copy-btn" onclick="copyToClipboard('socialCaptionOutput')">Copy</button></h2>
+    <div class="output-box" id="socialCaptionOutput"></div>
   </div>
 
-  <!-- SOCIAL CAPTION TAB -->
-  <div id="social" class="tab-content">
-    <div class="output-section">
-      <h2>Social Media Caption<button class="copy-btn" onclick="copyToClipboard('socialCaptionOutput')">Copy</button></h2>
-      <div class="output-box" id="socialCaptionOutput"></div>
-    </div>
-  </div>
-
-  <!-- PRE-FLIGHT CHECKLIST TAB -->
-  <div id="checklist" class="tab-content">
-    <div class="output-section">
-      <h2>Pre-Flight Checklist (Before Posting)</h2>
-      <ul class="checklist" id="checklistOutput"></ul>
+  <!-- 6. PRE-FLIGHT CHECKLIST -->
+  <div class="output-section">
+    <h2>Pre-Flight Checklist (Before Posting)</h2>
+    <div style="font-size: 13px; color: var(--white-dim); line-height: 1.8;">
+      <div style="margin-bottom: 10px;">☐ All 7 slide images are 1080×1350px at 300 DPI (high resolution)</div>
+      <div style="margin-bottom: 10px;">☐ Text readability: 4.5:1 contrast ratio minimum (check with accessibility checker)</div>
+      <div style="margin-bottom: 10px;">☐ Logo placement: Consistent across all slides (Berriz branding locked)</div>
+      <div style="margin-bottom: 10px;">☐ Color palette: Charcoal (#2C3E50), Copper (#D4845C), Cream (#F5F1E8) cohesive throughout</div>
+      <div style="margin-bottom: 10px;">☐ Headlines are specific and benefit-driven ("$110K saved" not "big savings")</div>
+      <div style="margin-bottom: 10px;">☐ Call-to-action slide has keyword and lead magnet clearly visible</div>
+      <div style="margin-bottom: 10px;">☐ Image sequence flows logically (Cold Open → Problem → Solution → Payoff)</div>
+      <div style="margin-bottom: 10px;">☐ Text overlays have dark background or sufficient contrast for mobile readability</div>
+      <div style="margin-bottom: 10px;">☐ Files named: Carousel-Slide-01-ColdOpen.png, etc. (ready for Instagram upload)</div>
     </div>
   </div>
 </div>
@@ -581,10 +510,10 @@
 
 <script>
   const skeletonData = {
-    clarity: { keyword: 'VISION', magnet: 'Design-Build Readiness Brief', color: '#E8D4B8' },
-    coordination: { keyword: 'COORD', magnet: 'Phased Build Blueprint', color: '#D4A574' },
-    cost: { keyword: 'BUDGET', magnet: 'Cost-Certainty Breakdown', color: '#C9945F' },
-    longevity: { keyword: 'LONGEVITY', magnet: 'Multi-Decade Design Brief', color: '#B8834A' }
+    clarity: { keyword: 'VISION', magnet: 'Design-Build Readiness Brief' },
+    coordination: { keyword: 'COORD', magnet: 'Phased Build Blueprint' },
+    cost: { keyword: 'BUDGET', magnet: 'Cost-Certainty Breakdown' },
+    longevity: { keyword: 'LONGEVITY', magnet: 'Multi-Decade Design Brief' }
   };
 
   function generateCarousel() {
@@ -599,7 +528,7 @@
       return;
     }
 
-    showStatus('Generating premium carousel ecosystem...', 'processing');
+    showStatus('Generating complete carousel ecosystem...', 'processing');
 
     const template = skeletonData[skeleton];
     const slides = [
@@ -607,49 +536,54 @@
         number: 1,
         beat: 'Cold Open',
         headline: `A homeowner's ${keyNumber} challenge was solved with our design-build approach.`,
-        copy: rawIdea
+        copy: rawIdea,
+        imageContext: 'hero shot of completed transformation, finished space, professional photography'
       },
       {
         number: 2,
         beat: 'Mirror',
         headline: 'You keep building separately instead of as one unified system.',
-        copy: 'Design happens, then build happens. Nobody owns the gap between them.'
+        copy: 'Design happens, then build happens. Nobody owns the gap between them.',
+        imageContext: 'split-screen: chaos on left (scattered drawings, multiple people), clarity on right (unified team)'
       },
       {
         number: 3,
         beat: 'Setup',
         headline: 'The Traditional Approach',
-        copy: 'Architect hands off drawings. Contractor builds it. Owner absorbs every gap in communication, cost, and timeline.'
+        copy: 'Architect hands off drawings. Contractor builds it. Owner absorbs every gap in communication, cost, and timeline.',
+        imageContext: 'workflow diagram showing separation and disconnected nodes between architect and builder'
       },
       {
         number: 4,
         beat: 'Tension',
         headline: 'The Problem',
-        copy: 'Surprises at every stage. Changes cost money. Timelines slip. You\'re managing multiple vendors, none of whom talk to each other.'
+        copy: 'Surprises at every stage. Changes cost money. Timelines slip. You\'re managing multiple vendors.',
+        imageContext: 'construction site challenges, budget spreadsheets with overages, timeline delays, honest obstacles'
       },
       {
         number: 5,
         beat: 'Turn',
         headline: 'The Solution',
-        copy: 'One partner coordinates everything. Design, build, completion. No surprises. No guessing. One voice from start to finish.'
+        copy: 'One partner coordinates everything. Design, build, completion. No surprises. One voice from start to finish.',
+        imageContext: 'unified team collaborating, designer and builder together, clear blueprints, aligned vision'
       },
       {
         number: 6,
         beat: 'Payoff',
         headline: outcome,
-        copy: `Design-build certainty. Comment ${template.keyword} and I'll send the ${template.magnet}.`
+        copy: `Design-build certainty. Comment ${template.keyword} and I'll send the ${template.magnet}.`,
+        imageContext: 'hero shot of completed space, beautiful, aspirational, lived-in elegantly, family enjoying'
       }
     ];
 
     displayCarouselCopy(slides);
-    displayHiggsfield(slides, template, projectType);
+    displayHiggsFieldSupercomputer(slides, template, projectType);
     displayImagePrompts(slides, template, projectType);
-    displayDesignSpecs(template);
+    displayDesignSpecs();
     displaySocialCaption(rawIdea, template.keyword, template.magnet);
-    displayChecklist();
 
     document.getElementById('outputContainer').classList.remove('hidden');
-    showStatus('✓ Complete carousel ecosystem generated!', 'success');
+    showStatus('✓ All outputs generated! Scroll down to access.', 'success');
     window.scrollTo({ top: document.getElementById('outputContainer').offsetTop - 100, behavior: 'smooth' });
   }
 
@@ -665,148 +599,175 @@
     `).join('');
   }
 
-  function displayHiggsfield(slides, template, projectType) {
-    const prompt = `You are creating a cohesive 7-slide Instagram carousel (1080×1350px vertical format) for a premium design-build project.
+  function displayHiggsFieldSupercomputer(slides, template, projectType) {
+    const prompt = `YOU ARE A PREMIUM CAROUSEL IMAGE GENERATION SYSTEM
 
-VISUAL DIRECTIVE:
-- Style: High-end architectural/lifestyle photography mixed with aspirational moments
-- Color Palette: Warm neutrals (charcoal #2C3E50, copper #D4845C, cream #F5F1E8, accents of ${template.color})
-- Typography: Serif headlines (Playfair Display style), clean sans-serif body
-- Composition: Mix of full-bleed images, split-screen before/afters, and text-overlay slides
-- Mood: Aspirational, confident, problem-solved (not in-progress struggle)
-- Format: Instagram vertical (1080×1350px), high DPI (300ppi minimum for print quality)
+MISSION: Generate a cohesive 7-slide Instagram carousel (1080×1350px vertical) for Berriz Design Build that tells a complete story: Problem → Solution → Payoff. Every image must be photorealistic, premium-quality, and visually unified.
 
-SLIDE-BY-SLIDE DIRECTION:
+═══════════════════════════════════════════════════════════════════════════════
+VISUAL BRAND LOCK (MANDATORY)
+═══════════════════════════════════════════════════════════════════════════════
+Brand: Berriz Design Build
+Color Palette: Charcoal #2C3E50 (primary), Copper #D4845C (accent), Cream #F5F1E8 (light), accents of gold and warm neutrals
+Typography: Playfair Display (headlines, serif, premium), Montserrat (body, sans-serif, clean)
+Style: Architectural photography meets lifestyle aspirational. High-end, sophisticated, problem-solved tone.
+Mood: Confident, accomplished, transformation-complete. NOT in-progress or struggle-focused.
+Quality: Photorealistic. Premium finish. Architectural/editorial photography standards.
 
-SLIDE 1 (Cold Open):
-${slides[0].headline}
-Visual: Mid-moment image showing the transformation (after state). Show sophistication, completion, success. Include the specific number from the headline subtly.
+═══════════════════════════════════════════════════════════════════════════════
+COMPOSITION & TECHNICAL SPECS
+═══════════════════════════════════════════════════════════════════════════════
+Format: Instagram Vertical (1080×1350px per slide)
+Resolution: 300 DPI minimum (high quality for print or web)
+Aspect Ratio: 4:5 vertical
+Lighting: Professional, warm, flattering. Golden hour preferred for exterior. Ambient indoor lighting for interior.
+Color Grading: Warm, cohesive. Unified filter/tone across all 7 slides.
+Contrast: High contrast for text readability; ensure 4.5:1 minimum for any overlaid text.
 
-SLIDE 2 (Mirror):
-${slides[1].headline}
-Visual: Split-screen showing disconnect. Left side: frustration/chaos (sketches piling up, multiple people confused). Right side: clarity (one coordinated vision).
+═══════════════════════════════════════════════════════════════════════════════
+NARRATIVE STRUCTURE (7 SLIDES)
+═══════════════════════════════════════════════════════════════════════════════
 
-SLIDE 3 (Setup):
-${slides[2].headline}
-Visual: Traditional architectural workflow diagram or montage showing separation of architect → design → builder → construction. Show the gaps visually.
+SLIDE 1 — COLD OPEN (Hero Shot / Transformation)
+Headline: "${slides[0].headline}"
+Copy: "${slides[0].copy}"
+Visual Direction: ${slides[0].imageContext}
+Visual Details: Professional, high-end finish. Show the completed transformation as the hero image. Include the specific number subtly (on a blueprint, in a before/after split, or as a design element). Aspirational. Beautiful. SUCCESS.
 
-SLIDE 4 (Tension):
-${slides[3].headline}
-Visual: Conflict imagery — construction site challenges, budget overruns, timeline conflicts. Show real obstacles (not melodramatic, but honest).
+SLIDE 2 — MIRROR (Split-Screen Contrast)
+Headline: "${slides[1].headline}"
+Copy: "${slides[1].copy}"
+Visual Direction: ${slides[1].imageContext}
+Visual Details: 50/50 split showing visual metaphor. Left = chaos/disconnection (scattered papers, multiple people looking confused, architectural drawings everywhere). Right = clarity/unity (one designer, one builder, one blueprint, calm collaboration). Use Berriz colors to transition between chaos and clarity.
 
-SLIDE 5 (Turn):
-${slides[4].headline}
-Visual: One-voice coordination. Show designer + builder together, unified systems, aligned vision. Represent seamlessness.
+SLIDE 3 — SETUP (Traditional Workflow)
+Headline: "${slides[2].headline}"
+Copy: "${slides[2].copy}"
+Visual Direction: ${slides[2].imageContext}
+Visual Details: Diagram or infographic style showing traditional architecture → design → construction workflow. Show the GAPS and DISCONNECTS visually (arrows pointing to nowhere, people not making eye contact, separate buildings/offices). Clean design. Minimalist. Educational but not condescending.
 
-SLIDE 6 (Payoff):
-${slides[5].headline}
-Visual: Hero shot of completed project. Beautiful, inhabited, lived-in. Show the emotion (family enjoying the space, daily life moments). Bottom text: "Comment ${template.keyword} for the ${template.magnet}"
+SLIDE 4 — TENSION (Real Obstacles)
+Headline: "${slides[3].headline}"
+Copy: "${slides[3].copy}"
+Visual Direction: ${slides[3].imageContext}
+Visual Details: Honest depiction of construction site challenges. Budget spreadsheet with red overages circled. Timeline chart with delays. Multiple contractors looking frustrated. Overhead lighting. REAL but not melodramatic. This is where the problem peaks.
 
-SLIDE 7 (CTA Slide):
-High-contrast text slide with: Berriz Design Build logo, call to action, and the comment keyword prominently featured.
+SLIDE 5 — TURN (Solution & Coordination)
+Headline: "${slides[4].headline}"
+Copy: "${slides[4].copy}"
+Visual Direction: ${slides[4].imageContext}
+Visual Details: Designer and builder collaborating together. Clear blueprints. Unified systems. Modern office or job site. They're ALIGNED, solving together, communicating. Calm confidence. Berriz brand colors prominent (charcoal, copper). This is the pivot.
 
-EXECUTION NOTES:
-- All images must be photorealistic and premium quality
-- Avoid stock imagery feel — aim for editorial/campaign style
-- Maintain consistent color grading across all 7 slides
-- Typography should match Berriz brand (serif + sans-serif hierarchy)
-- Every slide tells part of one story (progression from problem → solution)
-- Ensure text readability on all slides (use contrast, overlays, or solid backgrounds as needed)
-- Final carousel should feel like a mini-documentary, not a list of features`;
+SLIDE 6 — PAYOFF (Hero Transformation Complete)
+Headline: "${slides[5].headline}"
+Copy: "${slides[5].copy}"
+Visual Direction: ${slides[5].imageContext}
+Visual Details: BEAUTIFUL completed space. Family or homeowner enjoying the space. Natural lighting. Aspirational. Sophisticated. Lived-in elegantly. The transformation is REAL, COMPLETE, and BEAUTIFUL. Bottom 20% reserved for text: "Comment ${template.keyword} for the ${template.magnet}"
+
+═══════════════════════════════════════════════════════════════════════════════
+EXECUTION RULES
+═══════════════════════════════════════════════════════════════════════════════
+1. ALL IMAGES: Photorealistic. Premium quality. Architectural/editorial photography standards.
+2. COLORS: Consistent color grading across all 7 slides. Warm, cohesive. Use Berriz palette (charcoal, copper, cream).
+3. STORYTELLING: Each slide progresses the narrative (Problem → Problem Why → Solution → Payoff). NOT disjointed.
+4. TEXT READABILITY: High contrast. Use dark backgrounds or overlays if text is overlaid. Ensure 4.5:1 contrast.
+5. COMPOSITION: Mix of full-bleed images, split-screens, diagrams, and lifestyle moments. Variety but cohesion.
+6. LOGO: Berriz Design Build logo subtle but consistent (bottom-left or watermark style, does not dominate).
+7. BRAND LOCK: Every image should FEEL like Berriz (premium, sophisticated, problem-solved, aspirational).
+
+═══════════════════════════════════════════════════════════════════════════════
+FINAL OUTPUT
+═══════════════════════════════════════════════════════════════════════════════
+Generate 7 images as described above. Ensure:
+✓ Visual cohesion across all slides
+✓ High-quality, photorealistic output
+✓ Narrative progression (cold open → payoff)
+✓ Berriz brand lock applied
+✓ 1080×1350px format compliance
+✓ Premium editorial/architectural photography style
+✓ Text-overlay readability where needed
+✓ Color grading unified across carousel
+
+DO NOT generate stock photography or generic imagery. This is a PREMIUM carousel for a luxury design-build firm.`;
 
     document.getElementById('higgsFieldOutput').textContent = prompt;
   }
 
   function displayImagePrompts(slides, template, projectType) {
-    const prompts = [
-      `SLIDE 1 — Cold Open / Hero Shot
-Prompt: "Premium design-build home completion, ${projectType}, finished luxury interior, photorealistic, warm lighting, lived-in elegantly, architectural photography style, golden hour, 1080x1350, Berriz Design Build aesthetic, charcoal and copper tones, high-end finish photography"`,
+    const prompts = slides.map((slide, i) => {
+      const prompts = [
+        `SLIDE 1 — COLD OPEN / HERO
+1080×1350px vertical, photorealistic, luxury home interior, ${projectType}, completed transformation, golden hour lighting, architectural photography, warm charcoal and copper tones, Berriz Design Build aesthetic, premium finish, family enjoying the space, aspirational sophisticated`,
 
-      `SLIDE 2 — Mirror / Split-Screen Contrast
-Prompt: "Split-screen comparison: left side chaos (scattered architectural drawings, frustrated homeowner, multiple contractors), right side unified (one designer, one builder, aligned blueprints, calm confidence), 50/50 divide, ${projectType}, visual metaphor for coordination"`,
+        `SLIDE 2 — MIRROR / SPLIT SCREEN
+1080×1350px vertical, 50/50 split composition, left side: chaos (scattered architectural drawings, multiple confused people, disconnected elements), right side: unity (designer and builder aligned, one blueprint, calm confidence), visual contrast, metaphorical, modern minimalist`,
 
-      `SLIDE 3 — Setup / Traditional Workflow
-Prompt: "Infographic-style workflow diagram showing traditional architecture-to-construction separation, arrow flow, disconnected nodes, architectural drawings fading to construction site, representing gaps and communication breakdowns, clean design, minimalist"`,
+        `SLIDE 3 — SETUP / WORKFLOW
+1080×1350px vertical, workflow diagram infographic, traditional architecture-to-construction separation, disconnected nodes, arrow flows showing gaps, architectural drawing fading to construction site, clean minimalist design, educational visual`,
 
-      `SLIDE 4 — Tension / Real Obstacles
-Prompt: "Construction site challenges: budget spreadsheet with overages circled, timeline chart with delays, multiple confused people, construction chaos, overhead lighting, realistic but not melodramatic, representing common renovation obstacles"`,
+        `SLIDE 4 — TENSION / OBSTACLES
+1080×1350px vertical, construction site challenges, budget spreadsheet with red overages, timeline chart with delays, multiple contractors, honest obstacles, overhead lighting, realistic but professional, NOT melodramatic`,
 
-      `SLIDE 5 — Turn / Coordination & Solution
-Prompt: "Unified team: designer and builder collaborating over plans, clear communication, aligned vision, single blueprint, calm confidence, modern office/job site environment, showing partnership and coordination, Berriz aesthetic"`,
+        `SLIDE 5 — TURN / SOLUTION
+1080×1350px vertical, designer and builder collaborating, modern workspace, clear unified blueprints, aligned systems, calm confidence, Berriz charcoal and copper colors, team synergy, problem-solving together`,
 
-      `SLIDE 6 — Payoff / Hero Transformation
-Prompt: "Completed luxury home interior, family or homeowner enjoying the space, natural lighting, aspirational lifestyle, ${projectType}, beautiful composition, architectural photography, happiness/satisfaction evident, premium finish, Berriz Design Build quality"`,
+        `SLIDE 6 — PAYOFF / TRANSFORMATION
+1080×1350px vertical, luxury home interior, family enjoying completed space, natural lighting, aspirational sophisticated, ${projectType}, beautiful composition, architectural photography, premium finish, happiness evident`,
 
-      `SLIDE 7 — CTA / Text Slide
-Prompt: "Clean text slide design, background: gradient charcoal to cream, text: 'Comment ${template.keyword} for the ${template.magnet}', Berriz Design Build logo, minimal elegant design, high contrast text, Instagram story style, call-to-action focused"`
-    ];
+        `SLIDE 7 — CTA / TEXT SLIDE
+1080×1350px vertical, clean elegant text slide, gradient background charcoal to cream, headline "Comment ${template.keyword} for the ${template.magnet}", Berriz logo, minimal design, high contrast, Instagram story style, call-to-action focused`
+      ];
+      return `${prompts[i]}`;
+    }).join('\n\n---\n\n');
 
-    const output = prompts.map((p, i) => `${p}\n`).join('\n---\n\n');
-    document.getElementById('imagePromptsOutput').textContent = output;
+    document.getElementById('imagePromptsOutput').textContent = prompts;
   }
 
-  function displayDesignSpecs(template) {
+  function displayDesignSpecs() {
     const specs = `CANVA & FIGMA DESIGN SPECIFICATIONS
 
-PROJECT: Berriz Design Build 7-Slide Carousel
-FORMAT: Instagram Vertical (1080×1350px)
-RESOLUTION: 300 DPI (screen: 72 DPI @ 100%)
+PROJECT: Berriz Carousel Generator
+FORMAT: Instagram Vertical (1080×1350px per slide)
+RESOLUTION: 300 DPI (72 DPI @ 100% for screen)
 
 === COLOR PALETTE ===
-Primary: Charcoal #2C3E50
-Accent: Copper #D4845C
-Light: Cream #F5F1E8
-Secondary: ${template.color}
-Dark Background: #0F1419
-Border: #2A2A3A
+Charcoal: #2C3E50 (primary text, backgrounds)
+Copper: #D4845C (accents, headlines, CTAs)
+Cream: #F5F1E8 (light backgrounds, text highlights)
+Gold: #C9A84C (secondary accent)
+Dark: #0F1419 (dark backgrounds)
 
 === TYPOGRAPHY ===
-Headlines: Playfair Display, 72-84px, Bold, Charcoal (#2C3E50)
-Subheads: Montserrat, 32-48px, SemiBold, Copper (#D4845C)
-Body Text: Montserrat, 18-24px, Regular, Charcoal (#2C3E50)
-Small Text/Captions: Montserrat, 14-16px, Regular, Gray (#666)
+Headlines: Playfair Display, 72-84px, Bold, Charcoal
+Subheads: Montserrat, 32-48px, SemiBold, Copper
+Body: Montserrat, 18-24px, Regular, Charcoal
+Small Text: Montserrat, 14-16px, Regular, Gray
 
-=== SPACING RULES ===
-Padding from edge: 40px
+=== SPACING ===
+Padding from edge: 40px minimum
 Line height: 1.5x font size
 Margin between sections: 24px
-Text to image transition: 16px gap minimum
+Safe text area: 80px from edges
 
 === LAYOUT GRID ===
-All slides: 12-column grid system
-Safe text area: 80px from all edges
-Image bleeds: Full bleed (1080×1350) for photos
-Text overlays: Semi-transparent dark background (rgba(15,20,25,0.7)) for legibility
+12-column grid system for all slides
+Image bleeds: Full (1080×1350) for photos
+Text overlays: Semi-transparent dark background (rgba(15,20,25,0.7))
 
 === DESIGN RULES ===
-- Consistency: Logo placement bottom-left, small (80×80px)
-- Contrast: Ensure 4.5:1 minimum for text readability
-- Images: High-quality, cohesive color grading across all 7
-- Whitespace: Use generously; don't crowd slides
-- Hierarchy: Headline > Subhead > Body > Caption
-- Call-to-Action: Slide 6 bottom 20% reserved for "Comment KEYWORD"
-
-=== FIGMA EXPORT SETTINGS ===
-- Format: PNG @ 2x scale (for high resolution)
-- Color Profile: sRGB
-- Layers: Label each slide (S1-Cold Open, S2-Mirror, etc.)
-- Components: Create reusable text block, logo, CTA button
-- Master Frame: 1080×1350, repeatable template
-
-=== CANVA BUILD NOTES ===
-1. Start with blank 1080×1350 template
-2. Add background image or solid color from palette
-3. Layer text over images (use opacity for readability)
-4. Maintain 40px padding on all sides
-5. Use Canva's grid feature (enable 12-column grid)
-6. Export each slide as PNG (minimum 300 DPI for printing)
-7. Create variation layer for headline text per slide
-
-=== BRAND LOCK (Berriz) ===
 Logo: Bottom-left, 80×80px, white or inverted
-Font: Playfair Display for display, Montserrat for body
-Colors: Charcoal primary, Copper secondary, Cream highlights
-Tone: Premium, confident, problem-solved`;
+Contrast: 4.5:1 minimum for text readability
+Consistency: Same layout/logo placement across all 7
+Whitespace: Use generously
+Hierarchy: Headline > Subhead > Body > Caption
+
+=== CANVA BUILD ===
+1. Create 1080×1350 template
+2. Add background (image or solid color)
+3. Layer text over images with opacity for readability
+4. Use grid feature (12-column)
+5. Export as PNG (300 DPI minimum)
+6. Name: Carousel-Slide-01-ColdOpen.png, etc.`;
 
     document.getElementById('designSpecsOutput').textContent = specs;
   }
@@ -824,23 +785,6 @@ Comment ${keyword} and I'll send the ${magnet}.
     document.getElementById('socialCaptionOutput').textContent = caption;
   }
 
-  function displayChecklist() {
-    const items = [
-      'All 7 slide images are 1080×1350px at 300 DPI (print-quality)',
-      'Text is readable with 4.5:1 contrast ratio minimum (check with contrast checker)',
-      'Logo is consistent across all slides (Berriz branding locked)',
-      'Color palette is cohesive (charcoal, copper, cream) throughout carousel',
-      'Headline text is clear, benefit-focused, not vague ("$110K saved" not "savings")',
-      'Call-to-action slide includes keyword and lead magnet name clearly visible',
-      'Images flow logically (cold open → problem → solution → payoff)',
-      'Text overlays have dark background or enough contrast for readability',
-      'File names follow pattern: Carousel-Slide-01-ColdOpen.png, etc. (Instagram prep)'
-    ];
-
-    const checklist = items.map(item => `<li>${item}</li>`).join('');
-    document.getElementById('checklistOutput').innerHTML = checklist;
-  }
-
   function copyToClipboard(elementId) {
     const text = document.getElementById(elementId).textContent;
     navigator.clipboard.writeText(text).then(() => {
@@ -856,14 +800,6 @@ Comment ${keyword} and I'll send the ${magnet}.
     status.textContent = message;
     status.className = `status ${type}`;
     status.classList.remove('hidden');
-  }
-
-  function switchTab(tabName) {
-    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-
-    event.target.classList.add('active');
-    document.getElementById(tabName).classList.add('active');
   }
 
   function clearForm() {
